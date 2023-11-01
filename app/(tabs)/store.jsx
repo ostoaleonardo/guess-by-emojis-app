@@ -4,7 +4,6 @@ import { StyleSheet, Text } from 'react-native'
 export default function Store() {
     return (
         <SafeAreaView style={styles.container}>
-            <Text style={styles.title}>Tienda</Text>
         </SafeAreaView>
     )
 }
@@ -12,7 +11,7 @@ export default function Store() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'white',
+        backgroundColor: '#4388f8',
     },
     title: {
         margin: 20,

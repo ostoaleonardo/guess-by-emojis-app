@@ -1,18 +1,7 @@
 import { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
-import { Stack } from 'expo-router'
-
-const movies = [
-    { title: 'El Rey León', emojis: ['🦁', '👑'] },
-    { title: 'Titanic', emojis: ['🚢', '🧊'] },
-    { title: 'Rapidos y Furiosos', emojis: ['🏎️', '😡'] },
-    { title: 'Spiderman', emojis: ['🕷️', '🕸️'] },
-    { title: 'Toy Story', emojis: ['🧸', '🤠'] },
-    { title: 'Buscando a Nemo', emojis: ['🔎', '🐠'] },
-    { title: 'Monsters Inc', emojis: ['👹', '👧'] },
-    { title: 'Up', emojis: ['🎈', '🏠'] },
-]
+import { movies } from '../../src/contants/emojis'
 
 export default function Game() {
     const length = movies.length

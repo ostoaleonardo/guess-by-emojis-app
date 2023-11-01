@@ -1,21 +1,21 @@
 export const modes = [
     {
-        href: '/game',
+        href: '/levels',
         title: 'Palabras',
         // image: require('../assets/images/words.png')
     },
     {
-        href: '/game',
+        href: '/levels',
         title: 'Personajes',
         // image: require('../assets/images/characters.png')
     },
     {
-        href: '/game',
+        href: '/levels',
         title: 'Peliculas',
         // image: require('../assets/images/movies.png')
     },
     {
-        href: '/game',
+        href: '/levels',
         title: 'Series',
         // image: require('../assets/images/series.png')
     },
