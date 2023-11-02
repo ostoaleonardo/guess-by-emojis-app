@@ -1,33 +1,45 @@
 import { useEffect, useState } from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import { Pressable, StyleSheet, Text, View } from 'react-native'
-import { movies } from '../../src/contants/emojis'
+import { useGlobalSearchParams, useRouter } from 'expo-router'
+import { StyleSheet, Text, View } from 'react-native'
+import { movies, series, characters, videogames, brands, countries } from '../../src/contants/emojis'
+import { LetterKey } from '../../src/components/LetterKey'
+import { LetterAnswer } from '../../src/components/LetterAnswer'
+import { EmojiText } from '../../src/components/EmojiText'
 
 export default function Game() {
-    const length = movies.length
+    const router = useRouter()
+    const params = useGlobalSearchParams()
+    const lvl = params.id
+    const mode = params.mode === 'movies' ? movies
+        : params.mode === 'series' ? series
+            : params.mode === 'characters' ? characters
+                : params.mode === 'videogames' ? videogames
+                    : params.mode === 'brands' ? brands
+                        : params.mode === 'countries' && countries
+    const title = params.mode === 'movies' ? 'Películas'
+        : params.mode === 'series' ? 'Series'
+            : params.mode === 'characters' ? 'Personajes'
+                : params.mode === 'videogames' ? 'Videojuegos'
+                    : params.mode === 'brands' ? 'Marcas'
+                        : params.mode === 'countries' && 'Países'
     const [guess, setGuess] = useState({})
     const [userAnswer, setUserAnswer] = useState([])
     const [keyboard, setKeyboard] = useState([])
-    const [originalKeyboard, setOriginalKeyboard] = useState([])
     const [answerPositions, setAnswerPositions] = useState([])
 
     useEffect(() => {
+        router.setParams({ name: title })
         getEmojis()
     }, [])
 
-    const getRandomNumber = () => {
-        return Math.floor(Math.random() * length)
-    }
-
     const getEmojis = () => {
-        const id = getRandomNumber()
-        const movie = movies[id]
-        setGuess(movie)
-        getKeyboard(movie.title)
+        const level = mode[lvl - 1]
+        setGuess(level)
+        getKeyboard(level.title)
         setUserAnswer(
-            Array(movie.title.length)
+            Array(level.title.length)
                 .fill(false)
-                .map((_, index) => movie.title[index] === ' ' && '-')
+                .map((_, index) => level.title[index] === ' ' && '-')
         )
     }
 
@@ -37,7 +49,6 @@ export default function Game() {
             .filter((letter) => letter !== ' ')
             .sort(() => Math.random() - 0.5)
         setKeyboard(letters)
-        setOriginalKeyboard(letters)
     }
 
     const addLetterToAnswer = (letter, index) => {
@@ -101,53 +112,35 @@ export default function Game() {
     }
 
     return (
-        <SafeAreaView style={styles.container}>
-            <View style={styles.viewTitle}>
-                <Text style={styles.title}>Peliculas</Text>
-            </View>
-            <View style={styles.word}>
+        <View style={styles.container}>
+            <View style={styles.emojisContainer}>
                 {guess.emojis?.map((emoji, index) => (
-                    <Text key={index} style={styles.emoji}>
-                        {emoji}
-                    </Text>
+                    <EmojiText key={index} emoji={emoji} />
                 ))}
             </View>
             <View style={styles.answerContainer}>
                 <View style={styles.answer}>
                     {userAnswer.map((letter, index) => (
-                        <Pressable
+                        <LetterAnswer
                             key={index}
                             onPress={() => removeLetterFromAnswer(index)}
-                        >
-                            <Text style={styles.letter}>
-                                {letter[index] === ' ' ? '-' : letter}
-                                {/* {letter} */}
-                            </Text>
-                        </Pressable>
+                            letter={letter[index] === ' ' ? '-' : letter}
+                        />
                     ))}
                 </View>
             </View>
             <View style={styles.keyboardContainer}>
                 <View style={styles.keyboard}>
                     {keyboard.map((letter, index) => (
-                        <Pressable
+                        <LetterKey
                             key={index}
                             onPress={() => addLetterToAnswer(letter, index)}
-                        >
-                            <Text style={styles.letter}>
-                                {letter}
-                            </Text>
-                        </Pressable>
+                            letter={letter}
+                        />
                     ))}
                 </View>
             </View>
-            <Pressable
-                onPress={getEmojis}
-                style={styles.nextButton}
-            >
-                <Text>Siguiente</Text>
-            </Pressable>
-        </SafeAreaView>
+        </View>
     )
 }
 
@@ -157,43 +150,29 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: 'white',
     },
-    viewTitle: {
-        width: '90%',
-        flexWrap: 'wrap',
-        flexDirection: 'row',
-        justifyContent: 'center',
-    },
-    title: {
-        fontSize: 32,
-        fontWeight: 'bold',
-        alignSelf: 'center',
-        textAlign: 'center',
-    },
-    word: {
+    emojisContainer: {
+        gap: 10,
+        width: '100%',
         marginTop: 20,
         flexDirection: 'row',
         justifyContent: 'center',
     },
-    emoji: {
-        padding: 6,
-        fontSize: 38,
-        borderRadius: 10,
-        marginHorizontal: 5,
-        backgroundColor: '#eee',
+    answerContainer: {
+        flex: 1,
+        width: '100%',
+        paddingVertical: 29,
+        alignItems: 'center',
     },
-    letter: {
-        width: 35,
-        height: 35,
-        margin: 5,
-        padding: 6,
-        fontSize: 16,
-        borderRadius: 10,
-        textAlign: 'center',
-        backgroundColor: '#eee',
-        textTransform: 'uppercase',
+    answer: {
+        gap: 10,
+        width: '90%',
+        marginTop: 20,
+        flexWrap: 'wrap',
+        flexDirection: 'row',
+        justifyContent: 'center',
     },
     keyboardContainer: {
-        flex: 1,
+        flex: 2,
         width: '100%',
         paddingTop: 20,
         alignItems: 'center',
@@ -202,32 +181,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#4278ff',
     },
     keyboard: {
+        gap: 10,
         width: '90%',
         marginTop: 20,
         flexWrap: 'wrap',
         flexDirection: 'row',
         justifyContent: 'center',
-    },
-    answerContainer: {
-        width: '100%',
-        paddingVertical: 29,
-        alignItems: 'center',
-    },
-    answer: {
-        width: '90%',
-        marginTop: 20,
-        flexWrap: 'wrap',
-        flexDirection: 'row',
-        justifyContent: 'center',
-    },
-    nextButton: {
-        position: 'absolute',
-        bottom: 20,
-        width: '90%',
-        padding: 16,
-        borderRadius: 24,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#eee',
     },
 })

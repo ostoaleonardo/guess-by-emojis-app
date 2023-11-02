@@ -9,6 +9,8 @@ export default function LevelsLayout() {
                     backgroundColor: '#2c71e1',
                 },
 
+                headerShadowVisible: false,
+
                 headerTitleStyle: {
                     fontSize: 24,
                     fontWeight: 'bold',

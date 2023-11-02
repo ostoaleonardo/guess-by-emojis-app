@@ -1,11 +1,10 @@
-import { SafeAreaView } from 'react-native-safe-area-context'
 import { ScrollView, StyleSheet, View } from 'react-native'
 import { ModeCard } from '../../src/components/ModeCard'
 import { modes } from '../../src/contants/ui'
 
 export default function Home() {
     return (
-        <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
             <ScrollView>
                 <View style={styles.grid}>
                     {modes.map((item, index) => (
@@ -13,7 +12,7 @@ export default function Home() {
                     ))}
                 </View>
             </ScrollView>
-        </SafeAreaView>
+        </View>
     )
 }
 
@@ -26,14 +25,8 @@ const styles = StyleSheet.create({
         gap: 10,
         flexWrap: 'wrap',
         flexDirection: 'row',
-        paddingHorizontal: 20,
+        paddingVertical: 20,
+        marginHorizontal: 20,
         justifyContent: 'space-between',
-    },
-    title: {
-        margin: 20,
-        fontSize: 24,
-        color: 'white',
-        fontWeight: 'bold',
-        alignSelf: 'center',
     },
 })

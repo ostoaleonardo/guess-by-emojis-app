@@ -2,12 +2,12 @@ import { router } from 'expo-router'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 
 export function ModeCard({ item }) {
-    const goHref = () => {
-        router.push(item.href)
+    const goLevels = () => {
+        router.push('/levels?mode=' + item.mode)
     }
 
     return (
-        <Pressable style={styles.card} onPress={goHref}>
+        <Pressable style={styles.card} onPress={goLevels}>
             <View style={styles.shadow} />
             <View style={styles.container}>
                 <View style={styles.image} />
@@ -23,8 +23,9 @@ const styles = StyleSheet.create({
     card: {
         position: 'relative',
         width: '48%',
-        height: 210,
+        height: 'auto',
         borderRadius: 16,
+        aspectRatio: 1 / 1.2,
         alignItems: 'center',
         justifyContent: 'center',
     },

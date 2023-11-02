@@ -1,10 +1,9 @@
-import { SafeAreaView } from 'react-native-safe-area-context'
-import { StyleSheet, Text } from 'react-native'
+import { StyleSheet } from 'react-native'
 
 export default function Store() {
     return (
-        <SafeAreaView style={styles.container}>
-        </SafeAreaView>
+        <View style={styles.container}>
+        </View>
     )
 }
 

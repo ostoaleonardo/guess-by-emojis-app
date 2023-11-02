@@ -1,16 +1,20 @@
+import { router } from 'expo-router'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 
-export function EmojiCard({ item }) {
-    const goHref = () => {
-        router.push(item.href)
+export function EmojiCard({ item, mode }) {
+    const goLevel = () => {
+        router.push('/game?mode=' + mode + '&id=' + item.id)
     }
 
     return (
-        <Pressable style={styles.card} onPress={goHref}>
+        <Pressable
+            style={styles.card}
+            onPress={goLevel}
+        >
             <View style={styles.shadow} />
             {/* <View style={styles.unlocked} /> */}
             <View style={styles.container}>
-                <Text style={styles.title}>
+                <Text style={styles.emojis}>
                     {item.emojis.join('')}
                 </Text>
             </View>
@@ -45,9 +49,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: '#2c71e1',
     },
-    title: {
-        fontSize: 20,
-        fontWeight: 'bold',
+    emojis: {
+        fontSize: 18,
         textAlign: 'center',
     },
     unlocked: {

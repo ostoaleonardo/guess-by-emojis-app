@@ -1,22 +1,32 @@
 export const modes = [
     {
-        href: '/levels',
-        title: 'Palabras',
-        // image: require('../assets/images/words.png')
-    },
-    {
-        href: '/levels',
-        title: 'Personajes',
-        // image: require('../assets/images/characters.png')
-    },
-    {
-        href: '/levels',
+        mode: 'movies',
         title: 'Peliculas',
         // image: require('../assets/images/movies.png')
     },
     {
-        href: '/levels',
+        mode: 'series',
         title: 'Series',
         // image: require('../assets/images/series.png')
     },
+    {
+        mode: 'characters',
+        title: 'Personajes',
+        // image: require('../assets/images/characters.png')
+    },
+    {
+        mode: 'videogames',
+        title: 'Videojuegos',
+        // image: require('../assets/images/videogames.png')
+    },
+    {
+        mode: 'brands',
+        title: 'Marcas',
+        // image: require('../assets/images/brands.png')
+    },
+    {
+        mode: 'çountries',
+        title: 'Paises',
+        // image: require('../assets/images/countries.png')
+    }
 ]
