@@ -37,8 +37,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#eee',
     },
     letter: {
-        fontSize: 16,
+        fontSize: 18,
         textAlign: 'center',
+        fontFamily: 'Rubik-Bold',
         textTransform: 'uppercase',
     },
     empty: {

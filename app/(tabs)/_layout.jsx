@@ -17,7 +17,6 @@ export default function TabsLayout() {
 
                 headerTitleStyle: {
                     fontSize: 24,
-                    fontWeight: 'bold',
                     fontFamily: 'Rubik-Bold',
                 },
 
@@ -32,7 +31,7 @@ export default function TabsLayout() {
 
                 tabBarLabelStyle: {
                     fontSize: 14,
-                    fontWeight: 'bold',
+                    fontFamily: 'Rubik-Bold',
                 },
 
                 tabBarShowLabel: false,

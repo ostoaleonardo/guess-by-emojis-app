@@ -15,7 +15,6 @@ export default function GameLayout() {
 
                 headerTitleStyle: {
                     fontSize: 24,
-                    fontWeight: 'bold',
                     fontFamily: 'Rubik-Bold',
                 },
 

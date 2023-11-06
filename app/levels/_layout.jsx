@@ -13,7 +13,6 @@ export default function LevelsLayout() {
 
                 headerTitleStyle: {
                     fontSize: 24,
-                    fontWeight: 'bold',
                     fontFamily: 'Rubik-Bold',
                 },
 

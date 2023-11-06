@@ -51,8 +51,9 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
     },
     letter: {
-        fontSize: 20,
+        fontSize: 24,
         textAlign: 'center',
+        fontFamily: 'Rubik-Bold',
         textTransform: 'uppercase',
     },
     empty: {

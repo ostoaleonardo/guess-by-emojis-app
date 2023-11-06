@@ -58,7 +58,6 @@ const styles = StyleSheet.create({
         fontSize: 18,
         marginTop: 5,
         color: 'white',
-        fontWeight: 'bold',
         fontFamily: 'Rubik-Bold',
     },
 })
