@@ -1,12 +1,15 @@
-import { ScrollView, StyleSheet, View } from 'react-native'
+import { Image, ScrollView, StyleSheet, View } from 'react-native'
 import { ModeCard } from '../../src/components/ModeCard'
 import { modes } from '../../src/contants/ui'
+
+const image = require('../../assets/images/header.png')
 
 export default function Home() {
     return (
         <View style={styles.container}>
-            <ScrollView>
-                <View style={styles.grid}>
+            <Image source={image} style={styles.imageHeader} />
+            <ScrollView style={styles.scrollContainer}>
+                <View style={styles.viewContainer}>
                     {modes.map((item, index) => (
                         <ModeCard key={index} item={item} />
                     ))}
@@ -19,14 +22,21 @@ export default function Home() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#4388f8',
+        backgroundColor: '#e9f0ff',
     },
-    grid: {
-        gap: 10,
-        flexWrap: 'wrap',
-        flexDirection: 'row',
-        paddingVertical: 20,
-        marginHorizontal: 20,
-        justifyContent: 'space-between',
+    imageHeader: {
+        width: '100%',
+        height: 100,
+        resizeMode: 'stretch',
+    },
+    scrollContainer: {
+        width: '100%',
+        height: '100%',
+    },
+    viewContainer: {
+        width: '100%',
+        height: '100%',
+        padding: 24,
+        gap: 8,
     },
 })

@@ -8,7 +8,7 @@ export function EmojiCard({ item, mode }) {
 
     return (
         <Pressable
-            style={styles.card}
+            style={styles.cardContainer}
             onPress={goLevel}
         >
             <View style={styles.shadow} />
@@ -23,31 +23,28 @@ export function EmojiCard({ item, mode }) {
 }
 
 const styles = StyleSheet.create({
-    card: {
+    cardContainer: {
         position: 'relative',
         width: '30%',
         height: 70,
-        borderRadius: 16,
-        alignItems: 'center',
-        justifyContent: 'center',
     },
     shadow: {
         zIndex: 1,
         width: '100%',
         height: '100%',
         borderRadius: 16,
-        backgroundColor: '#1a56b6',
+        backgroundColor: '#e4e3f1',
     },
     container: {
         position: 'absolute',
         top: 0,
         zIndex: 2,
         width: '100%',
-        height: '92%',
+        height: '90%',
         borderRadius: 16,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#2c71e1',
+        backgroundColor: 'white',
     },
     emojis: {
         fontSize: 18,

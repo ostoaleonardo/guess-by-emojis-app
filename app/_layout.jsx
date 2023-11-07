@@ -31,6 +31,8 @@ export default function AppLayout() {
         <Stack
             screenOptions={{
                 headerShown: false,
+                navigationBarHidden: true,
+                statusBarTranslucent: true,
             }}
             onLayout={onLayoutRootView}
         >

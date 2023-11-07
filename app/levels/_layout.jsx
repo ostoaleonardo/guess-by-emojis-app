@@ -4,10 +4,7 @@ export default function LevelsLayout() {
     return (
         <Stack
             screenOptions={{
-                headerStyle: {
-                    elevation: 0,
-                    backgroundColor: '#2c71e1',
-                },
+                headerTransparent: true,
 
                 headerShadowVisible: false,
 

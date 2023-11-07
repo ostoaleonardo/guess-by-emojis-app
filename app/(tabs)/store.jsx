@@ -1,8 +1,11 @@
-import { StyleSheet, View } from 'react-native'
+import { Image, StyleSheet, View } from 'react-native'
+
+const image = require('../../assets/images/header.png')
 
 export default function Store() {
     return (
         <View style={styles.container}>
+            <Image source={image} style={styles.imageHeader} />
         </View>
     )
 }
@@ -10,12 +13,11 @@ export default function Store() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#4388f8',
+        backgroundColor: '#e9f0ff',
     },
-    title: {
-        margin: 20,
-        fontSize: 24,
-        fontWeight: 'bold',
-        alignSelf: 'center',
+    imageHeader: {
+        width: '100%',
+        height: 100,
+        resizeMode: 'stretch',
     },
 })

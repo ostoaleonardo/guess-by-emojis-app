@@ -1,8 +1,9 @@
 import { useGlobalSearchParams } from 'expo-router'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import { StyleSheet, View } from 'react-native'
+import { Image, StyleSheet, View } from 'react-native'
 import { EmojiCard } from '../../src/components/EmojiCard'
 import { movies, series, characters, videogames, brands, countries } from '../../src/contants/emojis'
+
+const image = require('../../assets/images/header.png')
 
 export default function Levels() {
     const params = useGlobalSearchParams()
@@ -15,31 +16,32 @@ export default function Levels() {
                         : params.mode === 'countries' && countries
 
     return (
-        <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
+            <Image source={image} style={styles.imageHeader} />
             <View style={styles.grid}>
                 {mode.map((item, index) => (
                     <EmojiCard key={index} item={item} mode={params.mode} />
                 ))}
             </View>
-        </SafeAreaView>
+        </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#4388f8',
+        backgroundColor: '#e9f0ff',
     },
-    title: {
-        margin: 20,
-        fontSize: 24,
-        fontWeight: 'bold',
-        alignSelf: 'center',
+    imageHeader: {
+        width: '100%',
+        height: 100,
+        resizeMode: 'stretch',
     },
     grid: {
         gap: 10,
         flexWrap: 'wrap',
         flexDirection: 'row',
+        paddingVertical: 24,
         paddingHorizontal: 20,
         justifyContent: 'center',
     },

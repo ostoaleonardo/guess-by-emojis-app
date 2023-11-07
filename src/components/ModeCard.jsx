@@ -7,57 +7,66 @@ export function ModeCard({ item }) {
     }
 
     return (
-        <Pressable style={styles.card} onPress={goLevels}>
+        <Pressable
+            onPress={goLevels}
+            style={styles.pressContainer}
+        >
             <View style={styles.shadow} />
             <View style={styles.container}>
                 <View style={styles.image} />
-                <Text style={styles.title}>
-                    {item.title}
-                </Text>
+                <View style={styles.titleContainer}>
+                    <Text style={styles.title}>
+                        {item.title}
+                    </Text>
+                    <Text style={styles.subtitle}>
+                        {item.title}
+                    </Text>
+                </View>
             </View>
         </Pressable>
     )
 }
 
 const styles = StyleSheet.create({
-    card: {
+    pressContainer: {
         position: 'relative',
-        width: '48%',
-        height: 'auto',
-        borderRadius: 16,
-        aspectRatio: 1 / 1.2,
+        width: '100%',
+        height: 110,
         alignItems: 'center',
-        justifyContent: 'center',
     },
     shadow: {
-        zIndex: 1,
-        width: '100%',
+        width: '96%',
         height: '100%',
         borderRadius: 16,
-        backgroundColor: '#1a56b6',
+        backgroundColor: '#e4e3f1',
     },
     container: {
         position: 'absolute',
-        top: 0,
         zIndex: 2,
-        padding: 10,
         width: '100%',
-        height: '96%',
+        height: '94%',
+        padding: 16,
         borderRadius: 16,
+        flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: '#2c71e1',
+        backgroundColor: 'white',
     },
     image: {
-        width: '98%',
-        height: 'auto',
+        width: 55,
+        height: 55,
         aspectRatio: 1,
-        borderRadius: 12,
-        backgroundColor: '#1a56b6'
+        borderRadius: 10,
+        backgroundColor: '#eee'
+    },
+    titleContainer: {
+        marginLeft: 16,
     },
     title: {
-        fontSize: 18,
-        marginTop: 5,
-        color: 'white',
-        fontFamily: 'Rubik-Bold',
+        fontSize: 20,
+        fontFamily: 'Rubik-Medium',
+    },
+    subtitle: {
+        fontSize: 16,
+        fontFamily: 'Rubik-Medium',
     },
 })

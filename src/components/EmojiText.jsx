@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#eee',
+        backgroundColor: '#e4e3f1',
     },
     emoji: {
         fontSize: 32,

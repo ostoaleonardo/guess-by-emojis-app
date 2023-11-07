@@ -10,10 +10,7 @@ export default function TabsLayout() {
     return (
         <Tabs
             screenOptions={{
-                headerStyle: {
-                    elevation: 0,
-                    backgroundColor: '#2c71e1',
-                },
+                headerTransparent: true,
 
                 headerTitleStyle: {
                     fontSize: 24,
@@ -25,7 +22,7 @@ export default function TabsLayout() {
 
                 tabBarStyle: {
                     height: 80,
-                    backgroundColor: '#2c71e1',
+                    backgroundColor: 'white',
                     borderColor: 'transparent',
                 },
 
@@ -48,7 +45,7 @@ export default function TabsLayout() {
                                 source={homeIcon}
                                 style={{ width: 42, height: 42 }}
                             />
-                            {pathname === '/home' && <View style={{ width: 10, height: 5, backgroundColor: 'white', borderRadius: 10 }} />}
+                            {pathname === '/home' && <View style={{ width: 10, height: 5, backgroundColor: '#212121', borderRadius: 10 }} />}
                         </View>
                     ),
                 }}
@@ -63,7 +60,7 @@ export default function TabsLayout() {
                                 source={storeIcon}
                                 style={{ width: 42, height: 42 }}
                             />
-                            {pathname === '/store' && <View style={{ width: 10, height: 5, backgroundColor: 'white', borderRadius: 10 }} />}
+                            {pathname === '/store' && <View style={{ width: 10, height: 5, backgroundColor: '#212121', borderRadius: 10 }} />}
                         </View>
                     ),
                 }}

@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
 import { useGlobalSearchParams, useRouter } from 'expo-router'
-import { StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, View } from 'react-native'
 import { movies, series, characters, videogames, brands, countries } from '../../src/contants/emojis'
 import { LetterKey } from '../../src/components/LetterKey'
 import { LetterAnswer } from '../../src/components/LetterAnswer'
 import { EmojiText } from '../../src/components/EmojiText'
+
+const image = require('../../assets/images/header.png')
 
 export default function Game() {
     const router = useRouter()
@@ -113,31 +115,40 @@ export default function Game() {
 
     return (
         <View style={styles.container}>
-            <View style={styles.emojisContainer}>
-                {guess.emojis?.map((emoji, index) => (
-                    <EmojiText key={index} emoji={emoji} />
-                ))}
-            </View>
-            <View style={styles.answerContainer}>
-                <View style={styles.answer}>
-                    {userAnswer.map((letter, index) => (
-                        <LetterAnswer
-                            key={index}
-                            onPress={() => removeLetterFromAnswer(index)}
-                            letter={letter[index] === ' ' ? '-' : letter}
-                        />
-                    ))}
+            <Image source={image} style={styles.imageHeader} />
+            <View style={styles.topContainer}>
+                <View style={styles.topShadow} />
+                <View style={styles.topContent}>
+                    <View style={styles.emojisContainer}>
+                        {guess.emojis?.map((emoji, index) => (
+                            <EmojiText key={index} emoji={emoji} />
+                        ))}
+                    </View>
+                    <View style={styles.answerContainer}>
+                        <View style={styles.answer}>
+                            {userAnswer.map((letter, index) => (
+                                <LetterAnswer
+                                    key={index}
+                                    onPress={() => removeLetterFromAnswer(index)}
+                                    letter={letter[index] === ' ' ? '-' : letter}
+                                />
+                            ))}
+                        </View>
+                    </View>
                 </View>
             </View>
-            <View style={styles.keyboardContainer}>
-                <View style={styles.keyboard}>
-                    {keyboard.map((letter, index) => (
-                        <LetterKey
-                            key={index}
-                            onPress={() => addLetterToAnswer(letter, index)}
-                            letter={letter}
-                        />
-                    ))}
+            <View style={styles.bottomContainer}>
+                <View style={styles.bottomShadow} />
+                <View style={styles.keyboardContainer}>
+                    <View style={styles.keyboard}>
+                        {keyboard.map((letter, index) => (
+                            <LetterKey
+                                key={index}
+                                onPress={() => addLetterToAnswer(letter, index)}
+                                letter={letter}
+                            />
+                        ))}
+                    </View>
                 </View>
             </View>
         </View>
@@ -148,44 +159,85 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
+        backgroundColor: '#e9f0ff',
+    },
+    imageHeader: {
+        width: '100%',
+        height: 100,
+        resizeMode: 'stretch',
+    },
+    topContainer: {
+        position: 'relative',
+        flex: 1,
+        width: '90%',
+        marginTop: 16,
+        alignItems: 'center',
+    },
+    topShadow: {
+        width: '96%',
+        height: '100%',
+        borderRadius: 20,
+        backgroundColor: '#e4e3f1',
+    },
+    topContent: {
+        position: 'absolute',
+        zIndex: 2,
+        width: '100%',
+        height: '97%',
+        borderRadius: 24,
+        alignItems: 'center',
         backgroundColor: 'white',
     },
     emojisContainer: {
         gap: 10,
         width: '100%',
-        marginTop: 20,
+        flexWrap: 'wrap',
+        paddingVertical: 20,
         flexDirection: 'row',
+        alignContent: 'center',
         justifyContent: 'center',
     },
     answerContainer: {
-        flex: 1,
         width: '100%',
-        paddingVertical: 29,
         alignItems: 'center',
     },
     answer: {
-        gap: 10,
-        width: '90%',
-        marginTop: 20,
+        gap: 5,
+        width: '95%',
         flexWrap: 'wrap',
         flexDirection: 'row',
         justifyContent: 'center',
     },
-    keyboardContainer: {
-        flex: 2,
-        width: '100%',
-        paddingTop: 20,
+    bottomContainer: {
+        flex: 1,
+        position: 'relative',
+        width: '90%',
+        marginVertical: 24,
         alignItems: 'center',
-        borderTopLeftRadius: 40,
-        borderTopRightRadius: 40,
-        backgroundColor: '#4278ff',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    bottomShadow: {
+        width: '100%',
+        height: '100%',
+        borderRadius: 32,
+        backgroundColor: '#101722',
+    },
+    keyboardContainer: {
+        position: 'absolute',
+        width: '95%',
+        height: '95%',
+        borderRadius: 24,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: 'white',
     },
     keyboard: {
         gap: 10,
         width: '90%',
-        marginTop: 20,
         flexWrap: 'wrap',
         flexDirection: 'row',
+        alignItems: 'center',
         justifyContent: 'center',
     },
 })

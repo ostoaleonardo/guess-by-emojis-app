@@ -6,10 +6,7 @@ export default function GameLayout() {
     return (
         <Stack
             screenOptions={{
-                headerStyle: {
-                    elevation: 0,
-                    backgroundColor: 'white',
-                },
+                headerTransparent: true,
 
                 headerShadowVisible: false,
 
@@ -18,7 +15,7 @@ export default function GameLayout() {
                     fontFamily: 'Rubik-Bold',
                 },
 
-                headerTintColor: 'black',
+                headerTintColor: 'white',
                 headerTitleAlign: 'center',
             }}
         >
