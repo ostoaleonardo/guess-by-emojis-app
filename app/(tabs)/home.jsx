@@ -8,7 +8,11 @@ export default function Home() {
     return (
         <View style={styles.container}>
             <Image source={image} style={styles.imageHeader} />
-            <ScrollView style={styles.scrollContainer}>
+            <ScrollView
+                style={styles.scrollContainer}
+                showsVerticalScrollIndicator={false}
+                overScrollMode='never'
+            >
                 <View style={styles.viewContainer}>
                     {modes.map((item, index) => (
                         <ModeCard key={index} item={item} />

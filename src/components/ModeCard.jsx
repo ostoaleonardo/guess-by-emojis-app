@@ -13,13 +13,22 @@ export function ModeCard({ item }) {
         >
             <View style={styles.shadow} />
             <View style={styles.container}>
-                <View style={styles.image} />
+                <View style={styles.emojiContainer}>
+                    <Text style={styles.emojiText}>
+                        {item.emoji}
+                    </Text>
+                </View>
                 <View style={styles.titleContainer}>
                     <Text style={styles.title}>
                         {item.title}
                     </Text>
                     <Text style={styles.subtitle}>
-                        {item.title}
+                        {item.description}
+                    </Text>
+                </View>
+                <View style={styles.levelsContainer}>
+                    <Text style={styles.levels}>
+                        {item.levels}
                     </Text>
                 </View>
             </View>
@@ -51,22 +60,40 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: 'white',
     },
-    image: {
-        width: 55,
-        height: 55,
+    emojiContainer: {
+        width: 60,
+        height: 60,
         aspectRatio: 1,
         borderRadius: 10,
-        backgroundColor: '#eee'
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    emojiText: {
+        fontSize: 32,
+        textAlign: 'center',
     },
     titleContainer: {
         marginLeft: 16,
     },
     title: {
-        fontSize: 20,
+        fontSize: 18,
         fontFamily: 'Rubik-Medium',
     },
     subtitle: {
-        fontSize: 16,
+        fontSize: 14,
+        color: '#555',
+        fontFamily: 'Rubik-Medium',
+    },
+    levelsContainer: {
+        position: 'absolute',
+        top: 16,
+        right: 16,
+        backgroundColor: '#e4e3f1',
+        borderRadius: 10,
+        paddingHorizontal: 8,
+    },
+    levels: {
+        fontSize: 12,
         fontFamily: 'Rubik-Medium',
     },
 })

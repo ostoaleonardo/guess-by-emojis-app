@@ -2,31 +2,43 @@ export const modes = [
     {
         mode: 'movies',
         title: 'Peliculas',
-        // image: require('../assets/images/movies.png')
+        description: 'Nuevas y clásicas',
+        emoji: '🍿',
+        levels: '+20 niveles',
     },
     {
         mode: 'series',
         title: 'Series',
-        // image: require('../assets/images/series.png')
+        description: 'Populares y de culto',
+        emoji: '📺',
+        levels: '+20 niveles',
     },
     {
         mode: 'characters',
         title: 'Personajes',
-        // image: require('../assets/images/characters.png')
+        description: 'De películas y videojuegos',
+        emoji: '👾',
+        levels: '+20 niveles',
     },
     {
         mode: 'videogames',
         title: 'Videojuegos',
-        // image: require('../assets/images/videogames.png')
+        description: 'De todas las consolas',
+        emoji: '🎮',
+        levels: '+20 niveles',
     },
     {
         mode: 'brands',
         title: 'Marcas',
-        // image: require('../assets/images/brands.png')
+        description: 'Tus marcas favoritas',
+        emoji: '📦',
+        levels: '+20 niveles',
     },
     {
         mode: 'çountries',
         title: 'Paises',
-        // image: require('../assets/images/countries.png')
+        description: 'Paises de todo el mundo',
+        emoji: '🌎',
+        levels: '+20 niveles',
     }
 ]

@@ -21,6 +21,8 @@ export const series = [
     { id: 6, title: 'Stranger Things', emojis: ['👽', '🧑‍🦱', '🧑‍🦰'] },
     { id: 7, title: 'The Simpsons', emojis: ['👨‍👩‍👧‍👦', '🍩', '🍺'] },
     { id: 8, title: 'The Office', emojis: ['👨‍💼', '📄', '📈'] },
+    { id: 9, title: 'La Casa de Papel', emojis: ['💰', '🏦', '👺'] },
+    { id: 10, title: 'The Mandalorian', emojis: ['👽', '🪐', '👶'] },
 ]
 
 export const characters = [
@@ -51,6 +53,14 @@ export const videogames = [
     { id: 10, title: 'PUBG', emojis: ['🔫', '🍳'] },
     { id: 11, title: 'Fortnite', emojis: ['🔫', '🏹'] },
     { id: 12, title: 'Call of Duty', emojis: ['🔫', '💣'] },
+    { id: 13, title: 'FIFA', emojis: ['⚽', '🎮'] },
+    { id: 14, title: 'MineCraft', emojis: ['🧱', '⚔️'] },
+    { id: 15, title: 'Among Us', emojis: ['👽', '🔪'] },
+    { id: 16, title: 'Candy Crush', emojis: ['🍬', '🍭'] },
+    { id: 17, title: 'GTA', emojis: ['🚗', '🔫'] },
+    { id: 18, title: 'Need for Speed', emojis: ['🚗', '🚓'] },
+    { id: 19, title: 'Mario Kart', emojis: ['🏎️', '🏁'] },
+    { id: 20, title: 'Rocket League', emojis: ['🚗', '⚽'] },
 ]
 
 export const brands = [
