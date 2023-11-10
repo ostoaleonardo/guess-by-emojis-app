@@ -5,12 +5,14 @@ import { movies, series, characters, videogames, brands, countries } from '../..
 import { LetterKey } from '../../src/components/LetterKey'
 import { LetterAnswer } from '../../src/components/LetterAnswer'
 import { EmojiText } from '../../src/components/EmojiText'
+import useLockLevels from '../../src/hooks/useLockLevels'
 
 const image = require('../../assets/images/header.png')
 
 export default function Game() {
     const router = useRouter()
     const params = useGlobalSearchParams()
+    const { unlockLevel, getLockedLevels } = useLockLevels()
     const lvl = params.id
     const mode = params.mode === 'movies' ? movies
         : params.mode === 'series' ? series
@@ -78,6 +80,7 @@ export default function Game() {
             const newAnswerPositions = [...answerPositions]
             newAnswerPositions[emptyIndex] = { original: index, new: emptyIndex }
             setAnswerPositions(newAnswerPositions)
+            checkAnswer(newAnswer)
         }
     }
 
@@ -104,13 +107,28 @@ export default function Game() {
         setKeyboard(newKeyboard)
     }
 
-    const checkAnswer = () => {
+    const checkAnswer = (answer) => {
         // Check if all spaces are filled
-        const isAnswerComplete = userAnswer.every((letter) => letter !== false)
+        const isAnswerComplete = answer.every((letter) => letter !== false)
+        // Join answer reclacing '-' with spaces
+        const answerWithoutSpaces = answer.join('').replace(/-/g, ' ').toLowerCase()
+        console.log(answerWithoutSpaces)
+        // Set tile to lowercase
+        const titleLowerCase = guess.title.toLowerCase()
 
-        if (userAnswer.join('') === guess.title) {
-            console.log('Ganaste')
+        if (isAnswerComplete) {
+            if (answerWithoutSpaces === titleLowerCase) {
+                console.log('You win')
+                unlockNextLevel()
+            } else {
+                console.log('You lose')
+            }
         }
+    }
+
+    const unlockNextLevel = async () => {
+        const nextId = parseInt(lvl) + 1
+        await unlockLevel(nextId, params.mode)
     }
 
     return (

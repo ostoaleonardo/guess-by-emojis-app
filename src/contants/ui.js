@@ -35,7 +35,7 @@ export const modes = [
         levels: '+20 niveles',
     },
     {
-        mode: 'çountries',
+        mode: 'countries',
         title: 'Paises',
         description: 'Paises de todo el mundo',
         emoji: '🌎',
