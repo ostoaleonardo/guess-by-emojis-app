@@ -60,6 +60,9 @@ export default function Game() {
     }
 
     const addLetterToAnswer = (letter, index) => {
+        // If the letter is a space, return
+        if (letter === '-') { return }
+
         const newAnswer = [...userAnswer]
         // Get the first empty index
         const emptyIndex = newAnswer.indexOf(false)
@@ -90,9 +93,7 @@ export default function Game() {
 
     const removeLetterFromAnswer = (index) => {
         // If the letter is a space, return
-        if (userAnswer[index] === '-') {
-            return
-        }
+        if (userAnswer[index] === '-') { return }
 
         // Get the original position of the letter
         const originalPosition = answerPositions[index].original
