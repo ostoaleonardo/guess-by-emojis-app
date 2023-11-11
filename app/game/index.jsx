@@ -8,6 +8,7 @@ import { PowerUp } from '../../src/components/PowerUp'
 import { movies, series, characters, videogames, brands, countries } from '../../src/contants/emojis'
 import { items } from '../../src/contants/ui'
 import useLockLevels from '../../src/hooks/useLockLevels'
+import { WinModal } from '../../src/components/WinModal'
 
 const image = require('../../assets/images/header.png')
 
@@ -32,6 +33,7 @@ export default function Game() {
     const [userAnswer, setUserAnswer] = useState([])
     const [keyboard, setKeyboard] = useState([])
     const [answerPositions, setAnswerPositions] = useState([])
+    const [youWin, setYouWin] = useState(false)
 
     useEffect(() => {
         router.setParams({ name: title })
@@ -120,10 +122,8 @@ export default function Game() {
 
         if (isAnswerComplete) {
             if (answerWithoutSpaces === titleLowerCase) {
-                console.log('You win')
+                setYouWin(true)
                 unlockNextLevel()
-            } else {
-                console.log('You lose')
             }
         }
     }
@@ -135,6 +135,7 @@ export default function Game() {
 
     return (
         <View style={styles.container}>
+            {youWin && <WinModal mode={params.mode} />}
             <Image source={image} style={styles.imageHeader} />
             <View style={styles.topContainer}>
                 <View style={styles.topShadow} />
