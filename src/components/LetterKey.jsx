@@ -24,8 +24,8 @@ export function LetterKey({ onPress, letter }) {
 
 const styles = StyleSheet.create({
     pressContainer: {
-        width: 55,
-        height: 55,
+        width: 50,
+        height: 50,
     },
     keyContainer: {
         position: 'relative',
@@ -47,8 +47,8 @@ const styles = StyleSheet.create({
         zIndex: 2,
         top: 0,
         right: 0,
-        width: '92%',
-        height: '92%',
+        width: '94%',
+        height: '94%',
         borderWidth: 4,
         borderColor: '#ffa258',
         borderRadius: 10,

@@ -28,8 +28,8 @@ export function LetterAnswer({ onPress, letter }) {
 
 const styles = StyleSheet.create({
     pressContainer: {
-        width: 45,
-        height: 45,
+        width: 40,
+        height: 40,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -53,8 +53,8 @@ const styles = StyleSheet.create({
         zIndex: 2,
         top: 0,
         right: 0,
-        width: '94%',
-        height: '94%',
+        width: '96%',
+        height: '96%',
         borderWidth: 4,
         borderColor: '#ffa258',
         borderRadius: 10,

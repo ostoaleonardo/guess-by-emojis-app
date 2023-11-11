@@ -19,8 +19,8 @@ export default function AppLayout() {
         }
 
         loadFont()
-        // lockLevelsByCategory()
-        getAsyncStorage()
+        lockLevelsByCategory()
+        // getAsyncStorage()
         // removeAsyncStorage()
     }, [])
 

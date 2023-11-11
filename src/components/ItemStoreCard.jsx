@@ -1,14 +1,9 @@
 import { router } from 'expo-router'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 
-export function ModeCard({ item }) {
-    const goLevels = () => {
-        router.push('/levels?mode=' + item.mode)
-    }
-
+export function ItemStoreCard({ item }) {
     return (
         <Pressable
-            onPress={goLevels}
             style={styles.pressContainer}
         >
             <View style={styles.shadow} />
@@ -18,17 +13,12 @@ export function ModeCard({ item }) {
                         {item.emoji}
                     </Text>
                 </View>
-                <View style={styles.titleContainer}>
-                    <Text style={styles.title}>
-                        {item.title}
-                    </Text>
-                    <Text style={styles.subtitle}>
-                        {item.description}
-                    </Text>
-                </View>
-                <View style={styles.levelsContainer}>
-                    <Text style={styles.levels}>
-                        {item.levels}
+                <Text style={styles.title}>
+                    {item.title}
+                </Text>
+                <View style={styles.priceContainer}>
+                    <Text style={styles.price}>
+                        {'$ ' + item.price}
                     </Text>
                 </View>
             </View>
@@ -39,8 +29,8 @@ export function ModeCard({ item }) {
 const styles = StyleSheet.create({
     pressContainer: {
         position: 'relative',
-        width: '100%',
-        height: 110,
+        width: '48%',
+        height: 200,
         alignItems: 'center',
     },
     shadow: {
@@ -52,48 +42,45 @@ const styles = StyleSheet.create({
     container: {
         position: 'absolute',
         zIndex: 2,
+        gap: 8,
         width: '100%',
-        height: '94%',
+        height: '96%',
         padding: 16,
         borderRadius: 16,
-        flexDirection: 'row',
         alignItems: 'center',
         backgroundColor: 'white',
     },
     emojiContainer: {
-        width: 60,
-        height: 60,
+        width: 80,
+        height: 80,
         aspectRatio: 1,
-        borderRadius: 10,
+        borderRadius: 16,
         alignItems: 'center',
         justifyContent: 'center',
+        backgroundColor: '#e4e3f14a',
     },
     emojiText: {
         fontSize: 32,
         textAlign: 'center',
     },
-    titleContainer: {
-        marginLeft: 16,
-    },
     title: {
-        fontSize: 16,
+        fontSize: 14,
+        textAlign: 'center',
         fontFamily: 'Rubik-Medium',
     },
     subtitle: {
-        fontSize: 12,
+        fontSize: 14,
         color: '#555',
+        textAlign: 'center',
         fontFamily: 'Rubik-Medium',
     },
-    levelsContainer: {
-        position: 'absolute',
-        top: 16,
-        right: 16,
-        backgroundColor: '#e4e3f1',
-        borderRadius: 10,
+    priceContainer: {
+        borderRadius: 12,
         paddingHorizontal: 8,
+        backgroundColor: '#e4e3f1',
     },
-    levels: {
-        fontSize: 12,
+    price: {
+        fontSize: 18,
         fontFamily: 'Rubik-Medium',
     },
 })

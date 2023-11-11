@@ -42,3 +42,23 @@ export const modes = [
         levels: '+20 niveles',
     }
 ]
+
+export const items = [{
+        title: 'Una letra',
+        description: 'Revela una letra especifica de la palabra',
+        price: 20,
+        emoji: '🔍',
+    },
+    {
+        title: 'Pista',
+        description: 'Revela una pista de la palabra',
+        price: 30,
+        emoji: '💡',
+    },
+    {
+        title: 'Revelar',
+        description: 'Revela la palabra completa',
+        price: 50,
+        emoji: '💣',
+    }
+]

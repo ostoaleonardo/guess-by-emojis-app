@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
 import { useGlobalSearchParams, useRouter } from 'expo-router'
-import { Image, StyleSheet, View } from 'react-native'
-import { movies, series, characters, videogames, brands, countries } from '../../src/contants/emojis'
+import { Image, StyleSheet, Text, View } from 'react-native'
 import { LetterKey } from '../../src/components/LetterKey'
 import { LetterAnswer } from '../../src/components/LetterAnswer'
 import { EmojiText } from '../../src/components/EmojiText'
+import { PowerUp } from '../../src/components/PowerUp'
+import { movies, series, characters, videogames, brands, countries } from '../../src/contants/emojis'
+import { items } from '../../src/contants/ui'
 import useLockLevels from '../../src/hooks/useLockLevels'
 
 const image = require('../../assets/images/header.png')
@@ -156,17 +158,19 @@ export default function Game() {
                 </View>
             </View>
             <View style={styles.bottomContainer}>
-                <View style={styles.bottomShadow} />
+                <View style={styles.powerUpsContainer}>
+                    {items.map((item, index) => (
+                        <PowerUp key={index} item={item} />
+                    ))}
+                </View>
                 <View style={styles.keyboardContainer}>
-                    <View style={styles.keyboard}>
-                        {keyboard.map((letter, index) => (
-                            <LetterKey
-                                key={index}
-                                onPress={() => addLetterToAnswer(letter, index)}
-                                letter={letter}
-                            />
-                        ))}
-                    </View>
+                    {keyboard.map((letter, index) => (
+                        <LetterKey
+                            key={index}
+                            onPress={() => addLetterToAnswer(letter, index)}
+                            letter={letter}
+                        />
+                    ))}
                 </View>
             </View>
         </View>
@@ -188,7 +192,7 @@ const styles = StyleSheet.create({
         position: 'relative',
         flex: 1,
         width: '90%',
-        marginTop: 16,
+        marginVertical: 16,
         alignItems: 'center',
     },
     topShadow: {
@@ -200,59 +204,54 @@ const styles = StyleSheet.create({
     topContent: {
         position: 'absolute',
         zIndex: 2,
+        gap: 28,
         width: '100%',
         height: '97%',
         borderRadius: 24,
         alignItems: 'center',
+        justifyContent: 'center',
         backgroundColor: 'white',
     },
     emojisContainer: {
         gap: 10,
         width: '100%',
         flexWrap: 'wrap',
-        paddingVertical: 20,
         flexDirection: 'row',
         alignContent: 'center',
         justifyContent: 'center',
     },
     answerContainer: {
-        width: '100%',
+        width: '90%',
         alignItems: 'center',
     },
     answer: {
-        gap: 5,
+        gap: 4,
         width: '95%',
         flexWrap: 'wrap',
         flexDirection: 'row',
         justifyContent: 'center',
     },
     bottomContainer: {
-        flex: 1,
         position: 'relative',
-        width: '90%',
-        marginVertical: 24,
-        alignItems: 'center',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    bottomShadow: {
         width: '100%',
-        height: '100%',
-        borderRadius: 32,
-        backgroundColor: '#101722',
-    },
-    keyboardContainer: {
-        position: 'absolute',
-        width: '95%',
-        height: '95%',
-        borderRadius: 24,
+        flex: 1,
+        gap: 8,
         alignItems: 'center',
-        justifyContent: 'center',
         backgroundColor: 'white',
     },
-    keyboard: {
-        gap: 10,
+    keyboardContainer: {
+        gap: 4,
+        width: '100%',
+        flexWrap: 'wrap',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    powerUpsContainer: {
+        gap: 8,
         width: '90%',
+        marginTop: 16,
+        marginBottom: 12,
         flexWrap: 'wrap',
         flexDirection: 'row',
         alignItems: 'center',
