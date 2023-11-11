@@ -4,7 +4,7 @@ export function LetterAnswer({ onPress, letter }) {
     return (
         <Pressable
             style={styles.pressContainer}
-            onPress={onPress}
+            onPress={letter !== false ? onPress : null}
         >
             {letter !== false && letter !== '-' ? (
                 <View style={styles.keyContainer}>

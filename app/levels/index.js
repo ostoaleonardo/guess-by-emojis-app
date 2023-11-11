@@ -20,13 +20,13 @@ export default function Levels() {
                         : params.mode === 'countries' && countries
 
     useEffect(() => {
+        const checkLockedCategory = async () => {
+            const levels = await getLevelsByCategory(params.mode)
+            setLevel(levels)
+        }
+
         checkLockedCategory()
     }, [])
-
-    const checkLockedCategory = async () => {
-        const levels = await getLevelsByCategory(params.mode)
-        setLevel(levels)
-    }
 
     return (
         <View style={styles.container}>
