@@ -4,7 +4,7 @@ import { ItemStoreCard } from '../../src/components/ItemStoreCard'
 import { BuyModal } from '../../src/components/BuyModal'
 import { items } from '../../src/contants/ui'
 import usePowerUps from '../../src/hooks/usePowerUps'
-import { parse } from 'expo-linking'
+import useMoney from '../../src/hooks/useMoney'
 
 const image = require('../../assets/images/header.png')
 

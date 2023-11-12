@@ -3,12 +3,11 @@ import { StyleSheet, Text, View } from 'react-native'
 import useMoney from '../hooks/useMoney'
 
 export function MoneyChip() {
-    const { money, initMoney, addMoney } = useMoney()
+    const { money, initMoney } = useMoney()
 
     useEffect(() => {
         const loadMoney = async () => {
             await initMoney()
-            // await addMoney('1000')
         }
 
         loadMoney()

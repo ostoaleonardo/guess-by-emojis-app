@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect } from 'react'
+import { MoneyContext } from '../context/moneyContext'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export default function useMoney() {
-    const [money, setMoney] = useState(0)
+    const { money, setMoney } = useContext(MoneyContext)
 
     const getMoney = async () => {
         const storedMoney = await AsyncStorage.getItem('money')
@@ -15,6 +16,7 @@ export default function useMoney() {
         newMoney = parseInt(currentMoney) - parseInt(money)
         newMoneyString = newMoney.toString()
         await AsyncStorage.setItem('money', newMoneyString)
+        setMoney(newMoneyString)
         getMoney()
     }
 
@@ -41,7 +43,7 @@ export default function useMoney() {
 
     useEffect(() => {
         getMoney()
-    }, [money])
+    }, [])
 
     return {
         money,

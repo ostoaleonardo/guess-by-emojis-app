@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect } from 'react'
+import { PowerUpsContext } from '../context/powerUpsContext'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export default function usePowerUps() {
-    const [powerUps, setPowerUps] = useState({})
+    const { powerUps, setPowerUps } = useContext(PowerUpsContext)
 
     const getPowerUps = async () => {
         const storedPowerUps = await AsyncStorage.getItem('powerUps')
