@@ -44,18 +44,21 @@ export const modes = [
 ]
 
 export const items = [{
+        id: 1,
         title: 'Una letra',
         description: 'Revela una letra especifica de la palabra',
         price: 20,
         emoji: '🔍',
     },
     {
+        id: 2,
         title: 'Pista',
         description: 'Revela una pista de la palabra',
         price: 30,
         emoji: '💡',
     },
     {
+        id: 3,
         title: 'Revelar',
         description: 'Revela la palabra completa',
         price: 50,

@@ -4,7 +4,6 @@ import { useFonts } from 'expo-font'
 import * as SplashScreen from 'expo-splash-screen'
 import { movies, series, characters, videogames, brands, countries } from '../src/contants/emojis'
 import useLockLevels from '../src/hooks/useLockLevels'
-import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export default function AppLayout() {
     const { lockLevels, getLockedLevels, removeFromAsyncStorage } = useLockLevels()
@@ -20,13 +19,13 @@ export default function AppLayout() {
 
         loadFont()
         lockLevelsByCategory()
-        // getAsyncStorage()
+        getAsyncStorage()
         // removeAsyncStorage()
     }, [])
 
     const getAsyncStorage = async () => {
         const storedLevels = await getLockedLevels('lockedLevels')
-        console.log(storedLevels)
+        // console.log(storedLevels)
     }
     
     const removeAsyncStorage = async () => {

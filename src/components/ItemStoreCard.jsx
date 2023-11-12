@@ -1,10 +1,10 @@
-import { router } from 'expo-router'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 
-export function ItemStoreCard({ item }) {
+export function ItemStoreCard({ item, count, onPress }) {
     return (
         <Pressable
             style={styles.pressContainer}
+            onPress={onPress}
         >
             <View style={styles.shadow} />
             <View style={styles.container}>
@@ -12,13 +12,17 @@ export function ItemStoreCard({ item }) {
                     <Text style={styles.emojiText}>
                         {item.emoji}
                     </Text>
+                    <Text style={styles.counterText}>
+                        {count}
+                    </Text>
                 </View>
                 <Text style={styles.title}>
                     {item.title}
                 </Text>
                 <View style={styles.priceContainer}>
-                    <Text style={styles.price}>
-                        {'$ ' + item.price}
+                    <Text style={styles.priceIcon}>💵</Text>
+                    <Text style={styles.priceText}>
+                        {item.price}
                     </Text>
                 </View>
             </View>
@@ -48,6 +52,7 @@ const styles = StyleSheet.create({
         padding: 16,
         borderRadius: 16,
         alignItems: 'center',
+        justifyContent: 'center',
         backgroundColor: 'white',
     },
     emojiContainer: {
@@ -63,6 +68,21 @@ const styles = StyleSheet.create({
         fontSize: 32,
         textAlign: 'center',
     },
+    counterText: {
+        position: 'absolute',
+        top: -5,
+        right: -5,
+        width: 24,
+        height: 24,
+        padding: 4,
+        fontSize: 10,
+        borderRadius: 16,
+        textAlign: 'center',
+        textAlignVertical: 'center',
+        color: 'white',
+        fontFamily: 'Rubik-Medium',
+        backgroundColor: '#3177FF',
+    },
     title: {
         fontSize: 14,
         textAlign: 'center',
@@ -75,12 +95,23 @@ const styles = StyleSheet.create({
         fontFamily: 'Rubik-Medium',
     },
     priceContainer: {
-        borderRadius: 12,
+        borderWidth: 2,
+        borderRadius: 20,
+        paddingVertical: 2,
         paddingHorizontal: 8,
-        backgroundColor: '#e4e3f1',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderColor: '#e4e3f1',
+        backgroundColor: 'white',
     },
-    price: {
-        fontSize: 18,
+    priceIcon: {
+        fontSize: 14,
+        paddingRight: 8,
+        fontFamily: 'Rubik-Medium',
+    },
+    priceText: {
+        fontSize: 14,
         fontFamily: 'Rubik-Medium',
     },
 })

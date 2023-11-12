@@ -1,5 +1,6 @@
 import { Tabs, usePathname } from 'expo-router'
 import { Image, View } from 'react-native'
+import { MoneyChip } from '../../src/components/MoneyChip'
 
 const homeIcon = require('../../assets/icons/home.png')
 const storeIcon = require('../../assets/icons/store.png')
@@ -32,6 +33,10 @@ export default function TabsLayout() {
                 },
 
                 tabBarShowLabel: false,
+                
+                headerRight: () => (
+                    <MoneyChip />
+                ),
             }}
         >
             <Tabs.Screen

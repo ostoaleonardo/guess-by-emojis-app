@@ -22,6 +22,7 @@ export default function Levels() {
     useEffect(() => {
         const checkLockedCategory = async () => {
             const levels = await getLevelsByCategory(params.mode)
+            console.log('levels', levels)
             setLevel(levels)
         }
 
