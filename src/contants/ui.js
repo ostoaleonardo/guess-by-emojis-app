@@ -52,10 +52,10 @@ export const items = [{
     },
     {
         id: 2,
-        title: 'Pista',
-        description: 'Revela una pista de la palabra',
+        title: 'Eliminar letras',
+        description: 'Elimina las letras que no estan en su posición correcta',
         price: 30,
-        emoji: '💡',
+        emoji: '🗑️',
     },
     {
         id: 3,

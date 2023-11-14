@@ -1,7 +1,8 @@
-import { Pressable, Text, View } from 'react-native'
-import { StyleSheet } from 'react-native'
+import { Pressable, StyleSheet, Text, View } from 'react-native'
 
-export function SolidButton({ label, onPress }) {
+export function SolidButton({ label, variant = 'primary', onPress }) {
+    const styles = getStyles(variant)
+
     return (
         <Pressable
             onPress={onPress}
@@ -9,7 +10,7 @@ export function SolidButton({ label, onPress }) {
             android_ripple={{ color: 'rgba(255, 255, 255, 0.3)', borderless: true }}
         >
             <View style={styles.buttonContainer}>
-                <View style={styles.shadowLeft} />
+                <View style={styles.shadow} />
                 <View style={styles.content}>
                     <Text style={styles.label}>
                         {label}
@@ -20,37 +21,59 @@ export function SolidButton({ label, onPress }) {
     )
 }
 
-const styles = StyleSheet.create({
-    pressContainer: {
-        width: '100%',
-        height: 70,
-    },
-    buttonContainer: {
-        width: '100%',
-        height: '100%',
-        position: 'relative',
-    },
-    shadowLeft: {
-        width: '100%',
-        height: '96%',
-        borderRadius: 16,
-        backgroundColor: '#e4e3f1',
-    },
-    content: {
-        position: 'absolute',
-        zIndex: 2,
-        width: '100%',
-        height: '90%',
-        borderWidth: 4,
-        borderRadius: 18,
-        borderColor: '#e4e3f1',
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: 'white',
-    },
-    label: {
-        fontSize: 18,
-        color: 'black',
-        fontFamily: 'Rubik-Medium',
-    },
-})
+const getStyles = (variant) => {
+    let buttonColor, buttonBorder, textColor
+
+    switch (variant) {
+        case 'primary':
+            buttonColor = '#3177ff'
+            buttonBorder = '#1e60e0'
+            textColor = 'white'
+            break
+        case 'secondary':
+            buttonColor = 'white'
+            buttonBorder = '#e4e3f1'
+            textColor = 'black'
+            break
+        default:
+            buttonColor = '#3177ff'
+            buttonBorder = '#1e60e0'
+            textColor = 'white'
+            break
+    }
+
+    return StyleSheet.create({
+        pressContainer: {
+            width: '100%',
+            height: 70,
+        },
+        buttonContainer: {
+            width: '100%',
+            height: '100%',
+            position: 'relative',
+        },
+        shadow: {
+            width: '100%',
+            height: '96%',
+            borderRadius: 16,
+            backgroundColor: buttonBorder,
+        },
+        content: {
+            position: 'absolute',
+            zIndex: 2,
+            width: '100%',
+            height: '90%',
+            borderWidth: 4,
+            borderRadius: 18,
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderColor: buttonBorder,
+            backgroundColor: buttonColor,
+        },
+        label: {
+            fontSize: 18,
+            color: textColor,
+            fontFamily: 'Rubik-Medium',
+        },
+    })
+}

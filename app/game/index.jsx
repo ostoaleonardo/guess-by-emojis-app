@@ -1,21 +1,26 @@
 import { useEffect, useState } from 'react'
 import { useGlobalSearchParams, useRouter } from 'expo-router'
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, View } from 'react-native'
 import { LetterKey } from '../../src/components/LetterKey'
 import { LetterAnswer } from '../../src/components/LetterAnswer'
 import { EmojiText } from '../../src/components/EmojiText'
 import { PowerUp } from '../../src/components/PowerUp'
-import { movies, series, characters, videogames, brands, countries } from '../../src/contants/emojis'
 import { items } from '../../src/contants/ui'
-import useLockLevels from '../../src/hooks/useLockLevels'
+import { movies, series, characters, videogames, brands, countries } from '../../src/contants/emojis'
 import { WinModal } from '../../src/components/WinModal'
+import useLockLevels from '../../src/hooks/useLockLevels'
+import useMoney from '../../src/hooks/useMoney'
+import usePowerUps from '../../src/hooks/usePowerUps'
+import { Alert } from '../../src/components/Alert'
 
 const image = require('../../assets/images/header.png')
 
 export default function Game() {
     const router = useRouter()
     const params = useGlobalSearchParams()
-    const { unlockLevel, getLockedLevels } = useLockLevels()
+    const { unlockLevel } = useLockLevels()
+    const { addMoney } = useMoney()
+    const { powerUps, spendPowerUps } = usePowerUps()
     const lvl = params.id
     const mode = params.mode === 'movies' ? movies
         : params.mode === 'series' ? series
@@ -33,7 +38,9 @@ export default function Game() {
     const [userAnswer, setUserAnswer] = useState([])
     const [keyboard, setKeyboard] = useState([])
     const [answerPositions, setAnswerPositions] = useState([])
+    const [isRevealed, setIsRevealed] = useState(false)
     const [youWin, setYouWin] = useState(false)
+    const [showAlert, setShowAlert] = useState('')
 
     useEffect(() => {
         router.setParams({ name: title })
@@ -63,32 +70,41 @@ export default function Game() {
         // If the letter is a space, return
         if (letter === '-') { return }
 
+        let indexAnswer = -1
         const newAnswer = [...userAnswer]
-        // Get the first empty index
-        const emptyIndex = newAnswer.indexOf(false)
 
-        if (newAnswer[emptyIndex] === '-') {
-            emptyIndex += 1
-        }
+        if (!isRevealed) {
+            // Get the first empty index
+            var emptyIndex = newAnswer.indexOf(false)
+            if (newAnswer[emptyIndex] === '-') { emptyIndex += 1 }
 
-        // If there is an empty index
-        if (newAnswer[emptyIndex] === false) {
             // Set the letter in the empty index
             newAnswer[emptyIndex] = letter
-
-            // Get a new keyboard without the letter
-            const newKeyboard = [...keyboard]
-            newKeyboard[index] = '-'
-
             setUserAnswer(newAnswer)
-            setKeyboard(newKeyboard)
-
-            // Save the letter (original and new position)
-            const newAnswerPositions = [...answerPositions]
-            newAnswerPositions[emptyIndex] = { original: index, new: emptyIndex }
-            setAnswerPositions(newAnswerPositions)
-            checkAnswer(newAnswer)
+            indexAnswer = emptyIndex
         }
+
+        if (isRevealed) {
+            const correctIndex = revealLetter(letter)
+            newAnswer[correctIndex] = letter
+            setUserAnswer(newAnswer)
+            setIsRevealed(false)
+            indexAnswer = correctIndex
+        }
+
+        // Get a new keyboard without the letter
+        const newKeyboard = [...keyboard]
+        newKeyboard[index] = '-'
+        setKeyboard(newKeyboard)
+
+        // Save the letter (original and new position)
+        const newAnswerPositions = [...answerPositions]
+        newAnswerPositions[indexAnswer] = { original: index, new: indexAnswer }
+        setAnswerPositions(newAnswerPositions)
+        checkAnswer(newAnswer)
+
+        setIsRevealed(false)
+        setShowAlert('')
     }
 
     const removeLetterFromAnswer = (index) => {
@@ -117,12 +133,12 @@ export default function Game() {
         const isAnswerComplete = answer.every((letter) => letter !== false)
         // Join answer reclacing '-' with spaces
         const answerWithoutSpaces = answer.join('').replace(/-/g, ' ').toLowerCase()
-        console.log(answerWithoutSpaces)
         // Set tile to lowercase
         const titleLowerCase = guess.title.toLowerCase()
 
         if (isAnswerComplete) {
             if (answerWithoutSpaces === titleLowerCase) {
+                addMoney(5)
                 setYouWin(true)
                 unlockNextLevel()
             }
@@ -134,9 +150,88 @@ export default function Game() {
         await unlockLevel(nextId, params.mode)
     }
 
+    const toggleRevealLetter = () => {
+        setIsRevealed(true)
+        spendPowerUps(1, 1)
+        setShowAlert('Selecciona la letra que quieras revelar')
+    }
+
+    const revealLetter = (letter) => {
+        // When is pressed, the user can select a letter to reveal
+        const answerLowerCase = guess.title.toLowerCase().split('')
+        const answerWithoutSpaces = answerLowerCase.map((letter) => letter === ' ' ? '-' : letter)
+
+        const letterIndices = answerWithoutSpaces.reduce((indices, char, index) => {
+            if (char === letter.toLowerCase()) { indices.push(index) }
+            return indices
+        }, [])
+
+        // Get the first index that is not revealed
+        const availableIndex = letterIndices.find((index) => !userAnswer[index])
+
+        if (availableIndex !== undefined) {
+            userAnswer[availableIndex] = true
+            return availableIndex
+        } else {
+            return -1
+        }
+
+    }
+
+    const deleteLetters = () => {
+        // Remove of the answer the letters that are not in the correct position
+        const answer = guess.title.split('')
+        const answerWithoutSpaces = answer.map((letter) => letter === ' ' ? '-' : letter)
+
+        const newAnswer = [...userAnswer]
+
+        if (newAnswer.every((letter) => letter === false || letter === '-')) {
+            setShowAlert('No hay letras que eliminar')
+            timeAlert()
+            return
+        }
+
+        const newKeyboard = [...keyboard]
+        const newAnswerPositions = [...answerPositions]
+
+        newAnswer.forEach((letter, index) => {
+            if (letter !== answerWithoutSpaces[index]) {
+                const originalPosition = answerPositions[index]?.original
+                newKeyboard[originalPosition] = letter
+                newAnswer[index] = false
+            }
+        })
+
+        spendPowerUps(2, 1)
+        setUserAnswer(newAnswer)
+        setKeyboard(newKeyboard)
+        setAnswerPositions(newAnswerPositions)
+    }
+
+    const revealAnswer = () => {
+        // Get the answer without spaces
+        const answer = guess.title.split('')
+        const answerWithoutSpaces = answer.map((letter) => letter === ' ' ? '-' : letter)
+        setUserAnswer(answerWithoutSpaces)
+
+        // Set the keyboard to empty with '-'
+        const newKeyboard = keyboard.fill('-')
+        setKeyboard(newKeyboard)
+
+        spendPowerUps(3, 1)
+        checkAnswer(answerWithoutSpaces)
+    }
+
+    const timeAlert = () => {
+        setTimeout(() => {
+            setShowAlert('')
+        }, 3000)
+    }
+
     return (
         <View style={styles.container}>
-            {youWin && <WinModal mode={params.mode} />}
+            {showAlert !== '' && <Alert label={showAlert} />}
+            {youWin && <WinModal level={guess} mode={params.mode} />}
             <Image source={image} style={styles.imageHeader} />
             <View style={styles.topContainer}>
                 <View style={styles.topShadow} />
@@ -162,7 +257,16 @@ export default function Game() {
             <View style={styles.bottomContainer}>
                 <View style={styles.powerUpsContainer}>
                     {items.map((item, index) => (
-                        <PowerUp key={index} item={item} />
+                        <PowerUp
+                            key={index}
+                            item={item}
+                            count={powerUps[item.id] ? powerUps[item.id].count : 0}
+                            onPress={
+                                () => item.id === 1 ? toggleRevealLetter()
+                                    : item.id === 2 ? deleteLetters()
+                                        : item.id === 3 && revealAnswer()
+                            }
+                        />
                     ))}
                 </View>
                 <View style={styles.keyboardContainer}>

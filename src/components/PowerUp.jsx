@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 
-export function PowerUp({ onPress, item }) {
+export function PowerUp({ onPress, item, count }) {
     return (
         <Pressable
             style={styles.pressContainer}
@@ -13,7 +13,7 @@ export function PowerUp({ onPress, item }) {
                         {item.emoji}
                     </Text>
                     <Text style={styles.count}>
-                        {'x' + item.price}
+                        {'x' + count}
                     </Text>
                 </View>
             </View>

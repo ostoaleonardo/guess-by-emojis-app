@@ -27,7 +27,7 @@ export function BuyModal({ onPress, powerUp }) {
             <View style={styles.background} />
             <View style={styles.modal}>
                 <Text style={styles.title}>
-                    Comprar Power Up '{powerUp?.title}'
+                    {powerUp?.title}
                 </Text>
                 <Text style={styles.subtitle}>
                     {powerUp?.description}
@@ -53,7 +53,11 @@ export function BuyModal({ onPress, powerUp }) {
                     onPress={buyItem}
                     label={'Comprar por $' + (powerUp?.price * counter)}
                 />
-                <SolidButton onPress={onPress} label='Cancelar' />
+                <SolidButton
+                    onPress={onPress}
+                    label='Cancelar'
+                    variant='secondary'
+                />
             </View>
         </Modal>
     )
@@ -94,7 +98,6 @@ const styles = StyleSheet.create({
         marginVertical: 32,
         flexDirection: 'row',
         alignItems: 'center',
-        paddingHorizontal: 24,
         justifyContent: 'space-between',
     },
     pressCounter: {
