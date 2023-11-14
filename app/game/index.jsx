@@ -60,6 +60,7 @@ export default function Game() {
 
     const getKeyboard = (title) => {
         const letters = title
+            .toLowerCase()
             .split('')
             .filter((letter) => letter !== ' ')
             .sort(() => Math.random() - 0.5)
@@ -131,17 +132,16 @@ export default function Game() {
     const checkAnswer = (answer) => {
         // Check if all spaces are filled
         const isAnswerComplete = answer.every((letter) => letter !== false)
+        if (!isAnswerComplete) { return }
+
         // Join answer reclacing '-' with spaces
-        const answerWithoutSpaces = answer.join('').replace(/-/g, ' ').toLowerCase()
-        // Set tile to lowercase
+        const answerWithoutSpaces = answer.join('').replace(/-/g, ' ')
         const titleLowerCase = guess.title.toLowerCase()
 
-        if (isAnswerComplete) {
-            if (answerWithoutSpaces === titleLowerCase) {
-                addMoney(5)
-                setYouWin(true)
-                unlockNextLevel()
-            }
+        if (answerWithoutSpaces === titleLowerCase) {
+            addMoney(5)
+            setYouWin(true)
+            unlockNextLevel()
         }
     }
 
@@ -151,6 +151,8 @@ export default function Game() {
     }
 
     const toggleRevealLetter = () => {
+        if (isRevealed) { return }
+        
         setIsRevealed(true)
         spendPowerUps(1, 1)
         setShowAlert('Selecciona la letra que quieras revelar')
@@ -178,14 +180,15 @@ export default function Game() {
 
     }
 
-    const deleteLetters = () => {
+    const removeLetters = () => {
         // Remove of the answer the letters that are not in the correct position
-        const answer = guess.title.split('')
+        const answer = guess.title.toLowerCase().split('')
         const answerWithoutSpaces = answer.map((letter) => letter === ' ' ? '-' : letter)
 
         const newAnswer = [...userAnswer]
 
-        if (newAnswer.every((letter) => letter === false || letter === '-')) {
+        // If there are no letters to remove, return
+        if (newAnswer.every((letter, index) => letter === false || letter.toLowerCase() === answerWithoutSpaces[index])) {
             setShowAlert('No hay letras que eliminar')
             timeAlert()
             return
@@ -210,7 +213,7 @@ export default function Game() {
 
     const revealAnswer = () => {
         // Get the answer without spaces
-        const answer = guess.title.split('')
+        const answer = guess.title.toLowerCase().split('')
         const answerWithoutSpaces = answer.map((letter) => letter === ' ' ? '-' : letter)
         setUserAnswer(answerWithoutSpaces)
 
@@ -263,7 +266,7 @@ export default function Game() {
                             count={powerUps[item.id] ? powerUps[item.id].count : 0}
                             onPress={
                                 () => item.id === 1 ? toggleRevealLetter()
-                                    : item.id === 2 ? deleteLetters()
+                                    : item.id === 2 ? removeLetters()
                                         : item.id === 3 && revealAnswer()
                             }
                         />
