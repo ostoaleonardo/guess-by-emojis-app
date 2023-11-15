@@ -14,6 +14,8 @@ export default function usePowerUps() {
 
     const spendPowerUps = async (id, int) => {
         const currentPowerUps = await getPowerUps()
+        console.log(currentPowerUps)
+        if (currentPowerUps[id].count < 1) { return }
 
         const updatedPowerUps = {
             ...currentPowerUps,
@@ -35,7 +37,7 @@ export default function usePowerUps() {
                 count: currentPowerUps[id].count + int
             }
         }
-        
+
         await AsyncStorage.setItem('powerUps', JSON.stringify(updatedPowerUps))
         getPowerUps()
     }

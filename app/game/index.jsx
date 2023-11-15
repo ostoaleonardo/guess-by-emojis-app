@@ -150,8 +150,36 @@ export default function Game() {
         await unlockLevel(nextId, params.mode)
     }
 
+    const enoughPowerUps = (id) => {
+        if (powerUps[id].count < 1) {
+            setShowAlert('No tienes este power up, puedes comprarlo en la tienda')
+            timeAlert()
+            return
+        }
+
+        switch (id) {
+            case 1:
+                toggleRevealLetter()
+                break
+            case 2:
+                removeLetters()
+                break
+            case 3:
+                revealAnswer()
+                break
+            default:
+                break
+        }
+    }
+
     const toggleRevealLetter = () => {
         if (isRevealed) { return }
+
+        if (powerUps[1].count === 0) {
+            setShowAlert('No tienes este power up, puedes comprarlo en la tienda')
+            timeAlert()
+            return
+        }
 
         setIsRevealed(true)
         spendPowerUps(1, 1)
@@ -264,11 +292,7 @@ export default function Game() {
                             key={index}
                             item={item}
                             count={powerUps[item.id] ? powerUps[item.id].count : 0}
-                            onPress={
-                                () => item.id === 1 ? toggleRevealLetter()
-                                    : item.id === 2 ? removeLetters()
-                                        : item.id === 3 && revealAnswer()
-                            }
+                            onPress={() => enoughPowerUps(item.id)}
                         />
                     ))}
                 </View>
