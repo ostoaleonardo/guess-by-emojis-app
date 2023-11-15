@@ -42,8 +42,7 @@ export default function TabsLayout() {
             <Tabs.Screen
                 name='home'
                 options={{
-                    title: 'Modos de juego',
-                    tabBarLabel: 'Inicio',
+                    title: 'Inicio',
                     tabBarIcon: () => (
                         <View style={{ alignItems: 'center', justifyContent: 'center' }}>
                             <Image
