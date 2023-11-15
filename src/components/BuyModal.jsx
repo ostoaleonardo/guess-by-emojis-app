@@ -1,11 +1,13 @@
+import { useState } from 'react'
 import { Modal, Pressable, StyleSheet, Text, View } from 'react-native'
 import { SolidButton } from './SolidButton'
-import { useState } from 'react'
+import { Alert } from './Alert'
 import useMoney from '../hooks/useMoney'
 import usePowerUps from '../hooks/usePowerUps'
 
 export function BuyModal({ onPress, powerUp }) {
     const [counter, setCounter] = useState(1)
+    const [enoughMoney, setEnoughMoney] = useState('')
     const { money, spendMoney } = useMoney()
     const { addPowerUps } = usePowerUps()
 
@@ -15,15 +17,30 @@ export function BuyModal({ onPress, powerUp }) {
     }
 
     const buyItem = async () => {
-        if (money < powerUp.price * counter) return
+        if (money < powerUp.price * counter) {
+            showAlert('No tienes suficiente dinero')
+            return
+        }
 
         await spendMoney(powerUp.price * counter)
         await addPowerUps(powerUp.id, counter)
         onPress()
     }
 
+    const showAlert = (message) => {
+        setEnoughMoney(message)
+        timeAlert()
+    }
+
+    const timeAlert = () => {
+        setTimeout(() => {
+            setEnoughMoney('')
+        }, 3000)
+    }
+
     return (
         <Modal animationType='slide' transparent={true} statusBarTranslucent>
+            {enoughMoney && <Alert label={enoughMoney} />}
             <View style={styles.background} />
             <View style={styles.modal}>
                 <Text style={styles.title}>

@@ -37,12 +37,12 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
     },
     moneyIcon: {
-        fontSize: 14,
+        fontSize: 12,
         paddingRight: 8,
         fontFamily: 'Rubik-Bold',
     },
     moneyText: {
-        fontSize: 14,
+        fontSize: 12,
         fontFamily: 'Rubik-Medium',
     },
 })
