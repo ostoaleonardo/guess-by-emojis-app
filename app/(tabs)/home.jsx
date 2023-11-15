@@ -1,17 +1,14 @@
-import { Image, ScrollView, StyleSheet, View } from 'react-native'
+import { ScrollView, StyleSheet, View } from 'react-native'
 import { ModeCard } from '../../src/components/ModeCard'
 import { modes } from '../../src/contants/ui'
-
-const image = require('../../assets/images/header.png')
 
 export default function Home() {
     return (
         <View style={styles.container}>
-            <Image source={image} style={styles.imageHeader} />
             <ScrollView
+                overScrollMode='never'
                 style={styles.scrollContainer}
                 showsVerticalScrollIndicator={false}
-                overScrollMode='never'
             >
                 <View style={styles.viewContainer}>
                     {modes.map((item, index) => (
@@ -28,11 +25,6 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#e9f0ff',
     },
-    imageHeader: {
-        width: '100%',
-        height: 100,
-        resizeMode: 'stretch',
-    },
     scrollContainer: {
         width: '100%',
         height: '100%',
@@ -41,6 +33,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
         padding: 24,
+        paddingTop: 32,
         gap: 8,
     },
 })

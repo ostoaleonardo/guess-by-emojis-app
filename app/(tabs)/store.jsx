@@ -6,7 +6,6 @@ import { items } from '../../src/contants/ui'
 import usePowerUps from '../../src/hooks/usePowerUps'
 import { MoneyAdCard } from '../../src/components/MoneyAdCard'
 
-const header = require('../../assets/images/header.png')
 const dollarSection = require('../../assets/images/dollar-section.png')
 const powerUpsSection = require('../../assets/images/power-ups-section.png')
 
@@ -36,7 +35,6 @@ export default function Store() {
                     powerUp={selectedItem}
                 />
             }
-            <Image source={header} style={styles.imageHeader} />
             <ScrollView
                 style={styles.scrollContainer}
                 showsVerticalScrollIndicator={false}
@@ -68,11 +66,6 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#e9f0ff',
     },
-    imageHeader: {
-        width: '100%',
-        height: 100,
-        resizeMode: 'stretch',
-    },
     imageSection: {
         width: '100%',
         marginVertical: -40,
@@ -94,7 +87,6 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
         padding: 24,
-        paddingTop: 0,
     },
     powerUpsContainer: {
         width: '100%',
