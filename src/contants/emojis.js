@@ -79,7 +79,7 @@ export const brands = [
 ]
 
 export const countries = [
-    { id: 1, title: 'Mexico', emojis: ['🇲🇽'] },
+    { id: 1, title: 'México', emojis: ['🇲🇽'] },
     { id: 2, title: 'Canada', emojis: ['🇨🇦'] },
     { id: 3, title: 'Brasil', emojis: ['🇧🇷'] },
     { id: 4, title: 'Argentina', emojis: ['🇦🇷'] },

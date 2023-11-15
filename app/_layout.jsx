@@ -2,12 +2,9 @@ import { useCallback, useEffect } from 'react'
 import { Stack } from 'expo-router'
 import { useFonts } from 'expo-font'
 import * as SplashScreen from 'expo-splash-screen'
-import { movies, series, characters, videogames, brands, countries } from '../src/contants/emojis'
 import { Providers } from './providers'
-import useLockLevels from '../src/hooks/useLockLevels'
 
 export default function AppLayout() {
-    const { lockLevels } = useLockLevels()
     const [fontsLoaded, fontError] = useFonts({
         'Rubik-Medium': require('../assets/fonts/Rubik-Medium.ttf'),
         'Rubik-Bold': require('../assets/fonts/Rubik-Bold.ttf'),
@@ -19,7 +16,6 @@ export default function AppLayout() {
         }
 
         loadFont()
-        lockLevelsByCategory()
     }, [])
 
     const onLayoutRootView = useCallback(async () => {
@@ -27,15 +23,6 @@ export default function AppLayout() {
             await SplashScreen.hideAsync()
         }
     }, [fontsLoaded, fontError])
-
-    const lockLevelsByCategory = () => {
-        const categories = ['movies', 'series', 'characters', 'videogames', 'brands', 'countries']
-        const levels = [movies, series, characters, videogames, brands, countries]
-
-        categories.forEach((category, index) => {
-            lockLevels(category, levels[index])
-        })
-    }
 
     if (!fontsLoaded) {
         return null

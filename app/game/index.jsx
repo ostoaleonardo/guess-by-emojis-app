@@ -8,17 +8,17 @@ import { PowerUp } from '../../src/components/PowerUp'
 import { items } from '../../src/contants/ui'
 import { movies, series, characters, videogames, brands, countries } from '../../src/contants/emojis'
 import { WinModal } from '../../src/components/WinModal'
-import useLockLevels from '../../src/hooks/useLockLevels'
-import useMoney from '../../src/hooks/useMoney'
-import usePowerUps from '../../src/hooks/usePowerUps'
 import { Alert } from '../../src/components/Alert'
+import useUnlockLevels from '../../src/hooks/useUnlockLevels'
+import usePowerUps from '../../src/hooks/usePowerUps'
+import useMoney from '../../src/hooks/useMoney'
 
 const image = require('../../assets/images/header.png')
 
 export default function Game() {
     const router = useRouter()
     const params = useGlobalSearchParams()
-    const { unlockLevel } = useLockLevels()
+    const { unlockLevel } = useUnlockLevels()
     const { addMoney } = useMoney()
     const { powerUps, spendPowerUps } = usePowerUps()
     const lvl = params.id
@@ -152,7 +152,7 @@ export default function Game() {
 
     const toggleRevealLetter = () => {
         if (isRevealed) { return }
-        
+
         setIsRevealed(true)
         spendPowerUps(1, 1)
         setShowAlert('Selecciona la letra que quieras revelar')

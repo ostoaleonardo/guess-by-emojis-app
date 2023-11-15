@@ -4,7 +4,7 @@ import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 const lockIcon = require('../../assets/icons/lock.png')
 const locked = require('../../assets/icons/locked.png')
 
-export function EmojiCard({ item, mode, isLocked = true }) {
+export function EmojiCard({ item, mode, isUnlocked = false }) {
     const goLevel = () => {
         router.push('/game?mode=' + mode + '&id=' + item.id)
     }
@@ -12,9 +12,9 @@ export function EmojiCard({ item, mode, isLocked = true }) {
     return (
         <Pressable
             style={styles.cardContainer}
-            onPress={isLocked ? null : goLevel}
+            onPress={isUnlocked ? goLevel : null}
         >
-            {isLocked && (
+            {!isUnlocked && (
                 <>
                     <View style={styles.unlocked}>
                         <Image source={lockIcon} style={styles.locked} />

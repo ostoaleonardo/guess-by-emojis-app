@@ -3,14 +3,14 @@ import { useGlobalSearchParams } from 'expo-router'
 import { Image, StyleSheet, View } from 'react-native'
 import { EmojiCard } from '../../src/components/EmojiCard'
 import { movies, series, characters, videogames, brands, countries } from '../../src/contants/emojis'
-import useLockLevels from '../../src/hooks/useLockLevels'
+import useUnlockLevels from '../../src/hooks/useUnlockLevels'
 
 const image = require('../../assets/images/header.png')
 
 export default function Levels() {
     const params = useGlobalSearchParams()
     const [level, setLevel] = useState([])
-    const { getLevelsByCategory } = useLockLevels()
+    const { getLevelsByCategory } = useUnlockLevels()
 
     const mode = params.mode === 'movies' ? movies
         : params.mode === 'series' ? series
@@ -22,8 +22,7 @@ export default function Levels() {
     useEffect(() => {
         const checkLockedCategory = async () => {
             const levels = await getLevelsByCategory(params.mode)
-            console.log('levels', levels)
-            setLevel(levels)
+            level && setLevel(levels)
         }
 
         checkLockedCategory()
@@ -33,12 +32,12 @@ export default function Levels() {
         <View style={styles.container}>
             <Image source={image} style={styles.imageHeader} />
             <View style={styles.grid}>
-                {level.length > 0 && mode.map((item, index) => (
+                {mode.map((item, index) => (
                     <EmojiCard
                         key={index}
                         item={item}
                         mode={params.mode}
-                        isLocked={level[index]?.locked}
+                        isUnlocked={index === 0 ? true : level && level[item.id - 1]?.unlocked ? true : false}
                     />
                 ))}
             </View>
