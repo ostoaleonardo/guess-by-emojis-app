@@ -1,38 +1,38 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export default function useUnlockLevels() {
     const asyncStorageKey = 'lockedLevels'
-    const [unlockedLevels, setUnlockedLevels] = useState({})
 
-    const getLockedLevels = async () => {
+    const initCategory = async (category) => {
+        // If there are no levels, add the first one
+        const categoryLevels = []
+        categoryLevels.push({ id: 1, unlocked: true })
+
+        // Update the category levels
+        const lockedLevels = await getUnlockedLevels()
+        lockedLevels[category] = categoryLevels
+        await AsyncStorage.mergeItem(asyncStorageKey, JSON.stringify(lockedLevels))
+        
+        return categoryLevels
+    }
+
+    const getUnlockedLevels = async () => {
         const storedLevels = await AsyncStorage.getItem(asyncStorageKey)
         const unlockedLevels = storedLevels ? JSON.parse(storedLevels) : {}
-        setUnlockedLevels(unlockedLevels)
         return unlockedLevels
     }
 
     const getLevelsByCategory = async (category) => {
-        const lockedLevels = await getLockedLevels()
-        const categoryLevels = lockedLevels[category]
+        const lockedLevels = await getUnlockedLevels()
+        const categoryLevels = lockedLevels ? lockedLevels[category] : initCategory(category)
         return categoryLevels
-    }
-
-    const getLevelByIdAndCategory = async (id, category) => {
-        const categoryLevels = await getLevelsByCategory(category)
-        const level = categoryLevels.find((level) => level.id === id)
-        return level
     }
 
     const unlockLevel = async (id, category) => {
         // Get category levels
         const categoryStored = await getLevelsByCategory(category)
-        const categoryLevels = categoryStored ? categoryStored : []
-
-        if (categoryLevels.length === 0) {
-            // If there are no levels, add the first one
-            categoryLevels.push({ id: 1, unlocked: true })
-        }
+        const categoryLevels = categoryStored ? categoryStored : initCategory(category)
 
         // Add a new level in the category if it doesn't exist
         const level = categoryLevels.find((level) => level.id === id)
@@ -42,7 +42,7 @@ export default function useUnlockLevels() {
         }
 
         // Update the category levels
-        const lockedLevels = await getLockedLevels()
+        const lockedLevels = await getUnlockedLevels()
         lockedLevels[category] = categoryLevels
 
         // Update the AsyncStorage
@@ -54,13 +54,11 @@ export default function useUnlockLevels() {
     }
 
     useEffect(() => {
-        getLockedLevels()
+        getUnlockedLevels()
     }, [])
 
     return {
-        unlockedLevels,
-        getLockedLevels,
-        getLevelByIdAndCategory,
+        getUnlockedLevels,
         getLevelsByCategory,
         unlockLevel,
         removeAllLevels,
