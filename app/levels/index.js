@@ -24,7 +24,6 @@ export default function Levels() {
             const checkLockedCategory = async () => {
                 const levels = await getLevelsByCategory(params.mode)
                 setLevel(levels)
-                console.log('levels', levels)
             }
 
             checkLockedCategory()

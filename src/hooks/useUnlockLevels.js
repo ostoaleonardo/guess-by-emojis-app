@@ -13,7 +13,7 @@ export default function useUnlockLevels() {
         const lockedLevels = await getUnlockedLevels()
         lockedLevels[category] = categoryLevels
         await AsyncStorage.mergeItem(asyncStorageKey, JSON.stringify(lockedLevels))
-        
+
         return categoryLevels
     }
 
@@ -25,14 +25,14 @@ export default function useUnlockLevels() {
 
     const getLevelsByCategory = async (category) => {
         const lockedLevels = await getUnlockedLevels()
-        const categoryLevels = lockedLevels ? lockedLevels[category] : initCategory(category)
+        const categoryLevels = lockedLevels[category] || await initCategory(category)
         return categoryLevels
     }
 
     const unlockLevel = async (id, category) => {
         // Get category levels
         const categoryStored = await getLevelsByCategory(category)
-        const categoryLevels = categoryStored ? categoryStored : initCategory(category)
+        const categoryLevels = categoryStored || await initCategory(category)
 
         // Add a new level in the category if it doesn't exist
         const level = categoryLevels.find((level) => level.id === id)
