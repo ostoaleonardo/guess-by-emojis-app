@@ -13,7 +13,8 @@ import useUnlockLevels from '../../src/hooks/useUnlockLevels'
 import usePowerUps from '../../src/hooks/usePowerUps'
 import useMoney from '../../src/hooks/useMoney'
 
-const image = require('../../assets/images/header.png')
+const header = require('../../assets/images/header.png')
+const board = require('../../assets/images/board.png')
 
 export default function Game() {
     const router = useRouter()
@@ -263,9 +264,9 @@ export default function Game() {
         <View style={styles.container}>
             {showAlert !== '' && <Alert label={showAlert} />}
             {youWin && <WinModal level={guess} mode={params.mode} />}
-            <Image source={image} style={styles.imageHeader} />
+            <Image source={header} style={styles.imageHeader} />
             <View style={styles.topContainer}>
-                <View style={styles.topShadow} />
+                <Image source={board} style={styles.board} />
                 <View style={styles.topContent}>
                     <View style={styles.emojisContainer}>
                         {guess.emojis?.map((emoji, index) => (
@@ -273,15 +274,13 @@ export default function Game() {
                         ))}
                     </View>
                     <View style={styles.answerContainer}>
-                        <View style={styles.answer}>
-                            {userAnswer.map((letter, index) => (
-                                <LetterAnswer
-                                    key={index}
-                                    onPress={() => removeLetterFromAnswer(index)}
-                                    letter={letter[index] === ' ' ? '-' : letter}
-                                />
-                            ))}
-                        </View>
+                        {userAnswer.map((letter, index) => (
+                            <LetterAnswer
+                                key={index}
+                                onPress={() => removeLetterFromAnswer(index)}
+                                letter={letter[index] === ' ' ? '-' : letter}
+                            />
+                        ))}
                     </View>
                 </View>
             </View>
@@ -328,38 +327,34 @@ const styles = StyleSheet.create({
         marginVertical: 16,
         alignItems: 'center',
     },
-    topShadow: {
-        width: '96%',
+    board: {
+        position: 'absolute',
+        zIndex: 1,
+        width: '100%',
         height: '100%',
-        borderRadius: 20,
-        backgroundColor: '#e4e3f1',
+        resizeMode: 'stretch',
     },
     topContent: {
         position: 'absolute',
         zIndex: 2,
-        gap: 28,
-        width: '100%',
-        height: '97%',
-        borderRadius: 24,
+        gap: 24,
+        width: '90%',
+        height: '100%',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'white',
     },
     emojisContainer: {
         gap: 10,
         width: '100%',
+        paddingTop: 24,
         flexWrap: 'wrap',
         flexDirection: 'row',
         alignContent: 'center',
         justifyContent: 'center',
     },
     answerContainer: {
-        width: '90%',
-        alignItems: 'center',
-    },
-    answer: {
         gap: 4,
-        width: '95%',
+        width: '90%',
         flexWrap: 'wrap',
         flexDirection: 'row',
         justifyContent: 'center',
@@ -374,7 +369,7 @@ const styles = StyleSheet.create({
     },
     keyboardContainer: {
         gap: 4,
-        width: '100%',
+        width: '90%',
         flexWrap: 'wrap',
         flexDirection: 'row',
         alignItems: 'center',

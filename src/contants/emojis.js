@@ -23,6 +23,7 @@ export const series = [
     { id: 8, title: 'The Office', emojis: ['👨‍💼', '📄', '📈'] },
     { id: 9, title: 'La Casa de Papel', emojis: ['💰', '🏦', '👺'] },
     { id: 10, title: 'The Mandalorian', emojis: ['👽', '🪐', '👶'] },
+    { id: 11, title: 'El Juego del Calamar', emojis: ['🔺', '🟥', '🔴'] },
 ]
 
 export const characters = [
@@ -38,6 +39,14 @@ export const characters = [
     { id: 10, title: 'Doraemon', emojis: ['🐱', '🔨'] },
     { id: 11, title: 'Papa Pitufo', emojis: ['👴', '🔵'] },
     { id: 12, title: 'Garfield', emojis: ['🐱', '🍕'] },
+    { id: 13, title: 'Goku', emojis: ['🥋', '🟠', '🐒'] },
+    { id: 14, title: 'Patricio Estrella', emojis: ['⭐', '🪨', '🌊'] },
+    { id: 15, title: 'Master Chief', emojis: ['👨‍🚀', '🔫'] },
+    { id: 16, title: 'Kratos', emojis: ['🪓', '🏛️'] },
+    { id: 17, title: 'Donkey Kong', emojis: ['🦍', '🍌'] },
+    { id: 18, title: 'Ryu', emojis: ['🥋', '👊'] },
+    { id: 19, title: 'Princesa Peach', emojis: ['👸', '🍑'] },
+    { id: 20, title: 'Pacman', emojis: ['👻', '🟡'] },
 ]
 
 export const videogames = [
@@ -76,6 +85,14 @@ export const brands = [
     { id: 10, title: 'Airbnb', emojis: ['🏠', '🛌'] },
     { id: 11, title: 'TikTok', emojis: ['🎵', '🎶'] },
     { id: 12, title: 'Twitter', emojis: ['🐦', '📄'] },
+    { id: 13, title: 'Instagram', emojis: ['📷', '📄'] },
+    { id: 14, title: 'Snapchat', emojis: ['👻', '📷'] },
+    { id: 15, title: 'Youtube', emojis: ['📺', '📹'] },
+    { id: 16, title: 'Whatsapp', emojis: ['📱', '💬'] },
+    { id: 17, title: 'Telegram', emojis: ['📱', '💬'] },
+    { id: 18, title: 'Zoom', emojis: ['📹', '👨‍💻'] },
+    { id: 19, title: 'Tinder', emojis: ['🔥', '💬'] },
+    { id: 20, title: 'LinkedIn', emojis: ['👨‍💼', '📄'] },
 ]
 
 export const countries = [
@@ -91,4 +108,12 @@ export const countries = [
     { id: 10, title: 'Alemania', emojis: ['🇩🇪'] },
     { id: 11, title: 'Italia', emojis: ['🇮🇹'] },
     { id: 12, title: 'Japon', emojis: ['🇯🇵'] },
+    { id: 13, title: 'China', emojis: ['🇨🇳'] },
+    { id: 14, title: 'Rusia', emojis: ['🇷🇺'] },
+    { id: 15, title: 'India', emojis: ['🇮🇳'] },
+    { id: 16, title: 'Estados Unidos', emojis: ['🇺🇸'] },
+    { id: 17, title: 'Inglaterra', emojis: ['🇬🇧'] },
+    { id: 18, title: 'Australia', emojis: ['🇦🇺'] },
+    { id: 19, title: 'Corea del Sur', emojis: ['🇰🇷'] },
+    { id: 20, title: 'Sudafrica', emojis: ['🇿🇦'] },
 ]
