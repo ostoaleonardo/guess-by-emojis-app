@@ -1,5 +1,6 @@
 import { router } from 'expo-router'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { colors, fonts } from '../contants/theme'
 
 export function ModeCard({ item }) {
     const goLevels = () => {
@@ -13,6 +14,7 @@ export function ModeCard({ item }) {
         >
             <View style={styles.shadow} />
             <View style={styles.container}>
+                <View style={styles.reflection} />
                 <View style={styles.emojiContainer}>
                     <Text style={styles.emojiText}>
                         {item.emoji}
@@ -44,10 +46,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     shadow: {
-        width: '96%',
+        width: '100%',
         height: '100%',
         borderRadius: 16,
-        backgroundColor: '#e4e3f1',
+        backgroundColor: colors.shadowCard,
     },
     container: {
         position: 'absolute',
@@ -58,7 +60,17 @@ const styles = StyleSheet.create({
         borderRadius: 16,
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: 'white',
+        backgroundColor: colors.backgroundCard,
+        overflow: 'hidden',
+    },
+    reflection: {
+        position: 'absolute',
+        left: -10,
+        width: 85,
+        height: '200%',
+        opacity: 0.1,
+        transform: [{ rotate: '20deg' }],
+        backgroundColor: colors.backgroundContainer,
     },
     emojiContainer: {
         width: 60,
@@ -77,23 +89,26 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 16,
-        fontFamily: 'Rubik-Medium',
+        color: colors.textCard,
+        fontFamily: fonts.medium,
     },
     subtitle: {
         fontSize: 12,
-        color: '#555',
-        fontFamily: 'Rubik-Medium',
+        opacity: 0.5,
+        color: colors.textCard,
+        fontFamily: fonts.medium,
     },
     levelsContainer: {
         position: 'absolute',
         top: 16,
         right: 16,
-        backgroundColor: '#e4e3f1',
         borderRadius: 10,
         paddingHorizontal: 8,
+        backgroundColor: colors.backgroundContainer,
     },
     levels: {
         fontSize: 12,
-        fontFamily: 'Rubik-Medium',
+        color: colors.textCard,
+        fontFamily: fonts.medium,
     },
 })

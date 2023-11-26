@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native'
+import { colors } from '../contants/theme'
 
 export function EmojiText({ emoji }) {
     return (
@@ -27,21 +28,21 @@ const styles = StyleSheet.create({
         height: '100%',
         borderWidth: 4,
         borderRadius: 14,
-        borderColor: '#070200',
-        backgroundColor: '#7d878b',
+        borderColor: colors.borderShadow,
+        backgroundColor: colors.backgroundShadow,
     },
     emojiContainer: {
         position: 'absolute',
         top: 3,
         zIndex: 2,
         width: '80%',
-        height: '85%',
+        height: '82%',
         borderWidth: 2,
         borderRadius: 10,
         alignItems: 'center',
         justifyContent: 'center',
-        borderColor: '#fefde7',
-        backgroundColor: '#c5c5b9',
+        borderColor: colors.borderContainer,
+        backgroundColor: colors.backgroundContainer,
     },
     emoji: {
         fontSize: 24,

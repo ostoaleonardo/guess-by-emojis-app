@@ -1,4 +1,5 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { colors, fonts } from '../contants/theme'
 
 export function LetterKey({ onPress, letter }) {
     return (
@@ -26,6 +27,8 @@ const styles = StyleSheet.create({
     pressContainer: {
         width: 40,
         height: 40,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     keyContainer: {
         position: 'relative',
@@ -39,8 +42,8 @@ const styles = StyleSheet.create({
         height: '100%',
         borderWidth: 3,
         borderRadius: 10,
-        borderColor: '#070200',
-        backgroundColor: '#7d878b',
+        borderColor: colors.borderShadow,
+        backgroundColor: colors.backgroundShadow,
     },
     letterContainer: {
         position: 'absolute',
@@ -52,24 +55,24 @@ const styles = StyleSheet.create({
         borderRadius: 6,
         alignItems: 'center',
         justifyContent: 'center',
-        borderColor: '#fefde7',
-        backgroundColor: '#c5c5b9',
+        borderColor: colors.borderContainer,
+        backgroundColor: colors.backgroundContainer,
     },
     letter: {
         fontSize: 16,
-        color: '#070200',
+        color: colors.letter,
         textAlign: 'center',
-        fontFamily: 'Rubik-Bold',
+        fontFamily: fonts.bold,
         textTransform: 'uppercase',
     },
     empty: {
-        width: '100%',
-        height: '100%',
+        width: '90%',
+        height: '90%',
         aspectRatio: 1,
         borderRadius: 10,
         alignItems: 'center',
         justifyContent: 'center',
-        opacity: 0.1,
-        backgroundColor: '#3e170f',
+        opacity: 0.05,
+        backgroundColor: colors.letter,
     }
 })

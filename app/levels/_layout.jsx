@@ -1,16 +1,19 @@
 import { Stack } from 'expo-router'
+import { colors, fonts } from '../../src/contants/theme'
 
 export default function LevelsLayout() {
     return (
         <Stack
             screenOptions={{
-                headerTransparent: true,
-
                 headerShadowVisible: false,
+
+                headerStyle: {
+                    backgroundColor: colors.backgroundHeader,
+                },
 
                 headerTitleStyle: {
                     fontSize: 24,
-                    fontFamily: 'Rubik-Bold',
+                    fontFamily: fonts.bold,
                 },
 
                 headerTintColor: 'white',

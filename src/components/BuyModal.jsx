@@ -1,9 +1,12 @@
 import { useState } from 'react'
-import { Modal, Pressable, StyleSheet, Text, View } from 'react-native'
+import { Image, Modal, Pressable, StyleSheet, Text, View } from 'react-native'
 import { SolidButton } from './SolidButton'
 import { Alert } from './Alert'
+import { colors, fonts } from '../contants/theme'
 import useMoney from '../hooks/useMoney'
 import usePowerUps from '../hooks/usePowerUps'
+
+const blur = require('../../assets/images/blur.png')
 
 export function BuyModal({ onPress, powerUp }) {
     const [counter, setCounter] = useState(1)
@@ -42,7 +45,13 @@ export function BuyModal({ onPress, powerUp }) {
         <Modal animationType='slide' transparent={true} statusBarTranslucent>
             {enoughMoney && <Alert label={enoughMoney} />}
             <View style={styles.background} />
+            <Image source={blur} style={styles.blurImage} />
             <View style={styles.modal}>
+                <View style={styles.emojiContainer}>
+                    <Text style={styles.emojiText}>
+                        {powerUp?.emoji}
+                    </Text>
+                </View>
                 <Text style={styles.title}>
                     {powerUp?.title}
                 </Text>
@@ -51,30 +60,36 @@ export function BuyModal({ onPress, powerUp }) {
                 </Text>
                 <View style={styles.counterContainer}>
                     <Pressable
-                        style={styles.pressCounter}
                         onPress={toggleCounter('remove')}
+                        style={({ pressed }) => [{ transform: [{ scale: pressed ? 0.95 : 1 }] }, styles.pressCounter]}
                     >
-                        <Text style={styles.addText}>-</Text>
+                        <View style={styles.counterTextContainer}>
+                            <Text style={styles.addText}>-</Text>
+                        </View>
                     </Pressable>
                     <Text style={styles.counterText}>
                         {counter}
                     </Text>
                     <Pressable
-                        style={styles.pressCounter}
                         onPress={toggleCounter('add')}
+                        style={({ pressed }) => [{ transform: [{ scale: pressed ? 0.95 : 1 }] }, styles.pressCounter]}
                     >
-                        <Text style={styles.addText}>+</Text>
+                        <View style={styles.counterTextContainer}>
+                            <Text style={styles.addText}>+</Text>
+                        </View>
                     </Pressable>
                 </View>
-                <SolidButton
-                    onPress={buyItem}
-                    label={'Comprar por $' + (powerUp?.price * counter)}
-                />
-                <SolidButton
-                    onPress={onPress}
-                    label='Cancelar'
-                    variant='secondary'
-                />
+                <View style={styles.buttonsContainer}>
+                    <SolidButton
+                        onPress={buyItem}
+                        variant='primary'
+                        label={'Comprar por $' + (powerUp?.price * counter)}
+                    />
+                    <SolidButton
+                        onPress={onPress}
+                        label='Cancelar'
+                    />
+                </View>
             </View>
         </Modal>
     )
@@ -97,22 +112,43 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'white',
+        backgroundColor: colors.backgroundCard,
+    },
+    emojiContainer: {
+        position: 'absolute',
+        zIndex: 3,
+        top: -30,
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    blurImage: {
+        position: 'absolute',
+        width: '100%',
+        resizeMode: 'contain',
+    },
+    emojiText: {
+        position: 'absolute',
+        zIndex: 2,
+        fontSize: 96,
+        fontFamily: fonts.bold,
     },
     title: {
-        fontSize: 28,
+        fontSize: 24,
         textAlign: 'center',
-        fontFamily: 'Rubik-Bold',
+        color: colors.letter,
+        fontFamily: fonts.bold,
     },
     subtitle: {
-        fontSize: 18,
-        color: '#555',
+        fontSize: 16,
+        opacity: 0.7,
         textAlign: 'center',
-        fontFamily: 'Rubik-Medium',
+        color: colors.letter,
+        fontFamily: fonts.medium,
     },
     counterContainer: {
         width: '100%',
-        marginVertical: 32,
+        marginVertical: 24,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -120,17 +156,39 @@ const styles = StyleSheet.create({
     pressCounter: {
         width: 65,
         height: 65,
-        borderRadius: 20,
+        borderRadius: 18,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#e4e3f1',
+        borderWidth: 4,
+        borderColor: colors.borderShadow,
+        backgroundColor: colors.backgroundShadow,
+    },
+    counterTextContainer: {
+        position: 'absolute',
+        top: 0,
+        width: '98%',
+        height: '92%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderWidth: 4,
+        borderRadius: 14,
+        borderColor: colors.borderContainer,
+        backgroundColor: colors.backgroundContainer,
     },
     addText: {
         fontSize: 24,
-        fontFamily: 'Rubik-Medium',
+        color: colors.letter,
+        fontFamily: fonts.medium,
     },
     counterText: {
         fontSize: 48,
-        fontFamily: 'Rubik-Bold',
+        color: colors.letter,
+        fontFamily: fonts.bold,
+    },
+    buttonsContainer: {
+        gap: 4,
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 })

@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react'
-import { Image, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import { ItemStoreCard } from '../../src/components/ItemStoreCard'
 import { BuyModal } from '../../src/components/BuyModal'
-import { items } from '../../src/contants/ui'
-import usePowerUps from '../../src/hooks/usePowerUps'
 import { MoneyAdCard } from '../../src/components/MoneyAdCard'
-
-const dollarSection = require('../../assets/images/dollar-section.png')
-const powerUpsSection = require('../../assets/images/power-ups-section.png')
+import { items } from '../../src/contants/ui'
+import { colors, fonts } from '../../src/contants/theme'
+import usePowerUps from '../../src/hooks/usePowerUps'
 
 export default function Store() {
     const [isBuying, setIsBuying] = useState(false)
@@ -29,23 +27,33 @@ export default function Store() {
 
     return (
         <View style={styles.container}>
-            {isBuying &&
-                <BuyModal
-                    onPress={() => toggleModal()}
-                    powerUp={selectedItem}
-                />
-            }
+            {isBuying && <BuyModal onPress={() => toggleModal()} powerUp={selectedItem} />}
+            {/* <ImageBackground source={home} style={{ position: 'absolute', width: '100%', height: '100%' }} /> */}
             <ScrollView
+                overScrollMode='never'
                 style={styles.scrollContainer}
                 showsVerticalScrollIndicator={false}
-                overScrollMode='never'
             >
                 <View style={styles.viewContainer}>
-                    <Image source={dollarSection} style={styles.imageSection} />
-                    <MoneyAdCard />
+                    <View style={styles.sectionTitleContainer}>
+                        <View style={styles.sectionTextContainer}>
+                            <View style={styles.reflection} />
+                            <Text style={styles.titleSection}>Billetes gratis</Text>
+                        </View>
+                        <View style={styles.sectionShadow} />
+                    </View>
+                    <View style={styles.sectionContainer}>
+                        <MoneyAdCard />
+                    </View>
 
-                    <Image source={powerUpsSection} style={styles.imageSection} />
-                    <View style={styles.powerUpsContainer}>
+                    <View style={styles.sectionTitleContainer}>
+                        <View style={styles.sectionTextContainer}>
+                            <View style={styles.reflection} />
+                            <Text style={styles.titleSection}>Power Ups</Text>
+                        </View>
+                        <View style={styles.sectionShadow} />
+                    </View>
+                    <View style={styles.sectionContainer}>
                         {items.map((item, index) => (
                             <ItemStoreCard
                                 key={index}
@@ -64,20 +72,37 @@ export default function Store() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#e9f0ff',
+        backgroundColor: colors.backgroundScreen,
     },
-    imageSection: {
+    sectionTitleContainer: {
         width: '100%',
-        marginVertical: -40,
-        resizeMode: 'contain',
+        overflow: 'hidden',
+        backgroundColor: colors.backgroundCard,
     },
-    sectionText: {
+    sectionTextContainer: {
+        width: '100%',
+        height: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    sectionShadow: {
+        width: '100%',
+        height: 8,
+        backgroundColor: colors.shadowCard,
+    },
+    titleSection: {
+        fontSize: 18,
+        color: colors.textCard,
+        fontFamily: fonts.bold,
+    },
+    reflection: {
         position: 'absolute',
-        zIndex: 2,
-        top: 28,
-        fontSize: 16,
-        color: 'white',
-        fontFamily: 'Rubik-Medium',
+        left: -150,
+        width: '100%',
+        height: '300%',
+        opacity: 0.1,
+        backgroundColor: colors.shadow,
+        transform: [{ rotate: '-45deg' }],
     },
     scrollContainer: {
         width: '100%',
@@ -86,12 +111,16 @@ const styles = StyleSheet.create({
     viewContainer: {
         width: '100%',
         height: '100%',
-        padding: 24,
+        paddingBottom: 16,
+        alignItems: 'center',
     },
-    powerUpsContainer: {
+    sectionContainer: {
         width: '100%',
         gap: 8,
-        flexDirection: 'row',
         flexWrap: 'wrap',
+        flexDirection: 'row',
+        paddingVertical: 16,
+        paddingHorizontal: 24,
+        justifyContent: 'space-between',
     },
 })

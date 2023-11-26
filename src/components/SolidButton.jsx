@@ -1,79 +1,71 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { colors, fonts } from '../contants/theme'
 
-export function SolidButton({ label, variant = 'primary', onPress }) {
+export function SolidButton({ label, variant, onPress }) {
     const styles = getStyles(variant)
 
     return (
         <Pressable
             onPress={onPress}
             style={({ pressed }) => [{ transform: [{ scale: pressed ? 0.95 : 1 }] }, styles.pressContainer]}
-            android_ripple={{ color: 'rgba(255, 255, 255, 0.3)', borderless: true }}
         >
-            <View style={styles.buttonContainer}>
-                <View style={styles.shadow} />
-                <View style={styles.content}>
-                    <Text style={styles.label}>
-                        {label}
-                    </Text>
-                </View>
+            <View style={styles.labelContainer}>
+                <Text style={styles.label}>
+                    {label}
+                </Text>
             </View>
         </Pressable>
     )
 }
 
 const getStyles = (variant) => {
-    let buttonColor, buttonBorder, textColor
+    let backgroundButton, borderButton, borderShadow, backgroundShadow, textColor, borderWidthButton
 
     switch (variant) {
         case 'primary':
-            buttonColor = '#3177ff'
-            buttonBorder = '#1e60e0'
-            textColor = 'white'
-            break
-        case 'secondary':
-            buttonColor = 'white'
-            buttonBorder = '#e4e3f1'
-            textColor = 'black'
+            borderShadow = colors.borderShadow
+            backgroundShadow = colors.backgroundShadow
+            borderButton = colors.shadowCard
+            backgroundButton = colors.shadowCard
+            textColor = colors.letter
+            borderWidthButton = 4
             break
         default:
-            buttonColor = '#3177ff'
-            buttonBorder = '#1e60e0'
-            textColor = 'white'
+            borderShadow = colors.borderShadow
+            backgroundShadow = colors.backgroundShadow
+            borderButton = colors.borderContainer
+            backgroundButton = colors.backgroundContainer
+            textColor = colors.letter
+            borderWidthButton = 4
             break
     }
 
     return StyleSheet.create({
         pressContainer: {
             width: '100%',
-            height: 70,
-        },
-        buttonContainer: {
-            width: '100%',
-            height: '100%',
-            position: 'relative',
-        },
-        shadow: {
-            width: '100%',
-            height: '96%',
+            height: 60,
             borderRadius: 16,
-            backgroundColor: buttonBorder,
+            alignItems: 'center',
+            borderWidth: 4,
+            borderColor: borderShadow,
+            backgroundColor: backgroundShadow,
         },
-        content: {
+        labelContainer: {
             position: 'absolute',
             zIndex: 2,
             width: '100%',
             height: '90%',
-            borderWidth: 4,
-            borderRadius: 18,
+            borderRadius: 10,
             alignItems: 'center',
             justifyContent: 'center',
-            borderColor: buttonBorder,
-            backgroundColor: buttonColor,
+            borderColor: borderButton,
+            borderWidth: borderWidthButton,
+            backgroundColor: backgroundButton,
         },
         label: {
-            fontSize: 18,
+            fontSize: 16,
             color: textColor,
-            fontFamily: 'Rubik-Medium',
+            fontFamily: fonts.medium,
         },
     })
 }

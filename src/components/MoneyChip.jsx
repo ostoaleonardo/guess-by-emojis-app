@@ -1,6 +1,7 @@
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
-import useMoney from '../hooks/useMoney'
+import { Pressable, StyleSheet, Text, View } from 'react-native'
 import { router } from 'expo-router'
+import { colors, fonts } from '../contants/theme'
+import useMoney from '../hooks/useMoney'
 
 export function MoneyChip() {
     const { money } = useMoney()
@@ -48,13 +49,14 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         alignItems: 'center',
         justifyContent: 'center',
-        borderColor: '#e4e3f1',
-        backgroundColor: 'white',
+        borderColor: colors.borderMoneyShadow,
+        backgroundColor: colors.backgroundMoneyContainer,
     },
     moneyText: {
         fontSize: 12,
         marginLeft: 28,
-        fontFamily: 'Rubik-Medium',
+        color: colors.textCard,
+        fontFamily: fonts.medium,
     },
     plusIcon: {
         width: 18,
@@ -64,7 +66,7 @@ const styles = StyleSheet.create({
         color: 'white',
         textAlign: 'center',
         textAlignVertical: 'center',
-        fontFamily: 'Rubik-Medium',
-        backgroundColor: '#3177ff',
+        fontFamily: fonts.bold, 
+        backgroundColor: colors.borderMoneyContainer,
     },
 })

@@ -1,4 +1,5 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { colors, fonts } from '../contants/theme'
 
 export function ItemStoreCard({ item, count, onPress }) {
     return (
@@ -9,109 +10,138 @@ export function ItemStoreCard({ item, count, onPress }) {
             <View style={styles.shadow} />
             <View style={styles.container}>
                 <View style={styles.emojiContainer}>
+                <View style={styles.reflection} />
                     <Text style={styles.emojiText}>
                         {item.emoji}
                     </Text>
-                    <Text style={styles.counterText}>
-                        {count}
-                    </Text>
                 </View>
-                <Text style={styles.title}>
-                    {item.title}
-                </Text>
-                <View style={styles.priceContainer}>
-                    <Text style={styles.priceIcon}>💵</Text>
-                    <Text style={styles.priceText}>
-                        {item.price}
-                    </Text>
+                <View style={styles.priceCounterContainer}>
+                    <View style={styles.priceContainer}>
+                        <View style={styles.priceTextContainer}>
+                            <Text style={styles.priceText}>
+                                💵 {item.price}
+                            </Text>
+                        </View>
+                    </View>
+                    <View style={styles.counterContainer}>
+                        <View style={styles.counterTextContainer}>
+                            <Text style={styles.counterText}>
+                                {count}
+                            </Text>
+                        </View>
+                    </View>
                 </View>
             </View>
-        </Pressable>
+        </Pressable >
     )
 }
 
 const styles = StyleSheet.create({
     pressContainer: {
-        position: 'relative',
         width: '48%',
-        height: 200,
+        aspectRatio: 1,
         alignItems: 'center',
     },
     shadow: {
-        width: '96%',
+        width: '100%',
         height: '100%',
         borderRadius: 16,
-        backgroundColor: '#e4e3f1',
+        backgroundColor: colors.shadowCard,
     },
     container: {
         position: 'absolute',
         zIndex: 2,
-        gap: 8,
         width: '100%',
         height: '96%',
-        padding: 16,
         borderRadius: 16,
+        overflow: 'hidden',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'white',
+        backgroundColor: colors.backgroundCard,
     },
     emojiContainer: {
-        width: 80,
-        height: 80,
+        width: '50%',
         aspectRatio: 1,
         borderRadius: 16,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#e4e3f14a',
+        borderWidth: 4,
+        borderColor: colors.borderContainer,
+        backgroundColor: colors.backgroundContainer,
     },
     emojiText: {
-        fontSize: 32,
+        fontSize: 24,
         textAlign: 'center',
     },
-    counterText: {
-        position: 'absolute',
-        top: -5,
-        right: -5,
-        width: 24,
-        height: 24,
-        padding: 4,
-        fontSize: 10,
-        borderRadius: 16,
-        textAlign: 'center',
-        textAlignVertical: 'center',
-        color: 'white',
-        fontFamily: 'Rubik-Medium',
-        backgroundColor: '#3177FF',
-    },
-    title: {
-        fontSize: 14,
-        textAlign: 'center',
-        fontFamily: 'Rubik-Medium',
-    },
-    subtitle: {
-        fontSize: 14,
-        color: '#555',
-        textAlign: 'center',
-        fontFamily: 'Rubik-Medium',
-    },
-    priceContainer: {
-        borderWidth: 2,
-        borderRadius: 20,
-        paddingVertical: 2,
-        paddingHorizontal: 8,
+    priceCounterContainer: {
+        width: '100%',
+        gap: 2,
+        marginTop: 5,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        borderColor: '#e4e3f1',
-        backgroundColor: 'white',
     },
-    priceIcon: {
-        fontSize: 14,
-        paddingRight: 8,
-        fontFamily: 'Rubik-Medium',
+    priceContainer: {
+        width: 70,
+        height: 35,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderWidth: 3,
+        borderRadius: 12,
+        borderColor: colors.borderMoneyShadow,
+    },
+    priceTextContainer: {
+        position: 'absolute',
+        top: 0,
+        width: '100%',
+        height: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderWidth: 3,
+        borderRadius: 10,
+        borderColor: colors.borderMoneyContainer,
+        backgroundColor: colors.backgroundMoneyContainer,
     },
     priceText: {
-        fontSize: 14,
-        fontFamily: 'Rubik-Medium',
+        fontSize: 12,
+        color: 'white',
+        fontFamily: fonts.bold,
+    },
+    counterContainer: {
+        width: 35,
+        height: 35,
+        borderRadius: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderWidth: 3,
+        borderColor: '#5c1d1d',
+    },
+    counterTextContainer: {
+        position: 'absolute',
+        top: 0,
+        zIndex: 2,
+        width: '100%',
+        height: '100%',
+        borderRadius: 6,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderWidth: 3,
+        borderColor: '#D64141',
+        backgroundColor: '#E25656',
+    },
+    counterText: {
+        fontSize: 12,
+        color: 'white',
+        textAlign: 'center',
+        fontFamily: fonts.medium,
+    },
+    reflection: {
+        position: 'absolute',
+        left: -30,
+        width: '80%',
+        height: '220%',
+        opacity: 0.1,
+        backgroundColor: colors.backgroundCard,
+        transform: [{ rotate: '45deg' }],
     },
 })

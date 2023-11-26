@@ -1,20 +1,18 @@
 import { useEffect, useState } from 'react'
 import { useGlobalSearchParams, useRouter } from 'expo-router'
-import { Image, StyleSheet, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import { LetterKey } from '../../src/components/LetterKey'
 import { LetterAnswer } from '../../src/components/LetterAnswer'
 import { EmojiText } from '../../src/components/EmojiText'
 import { PowerUp } from '../../src/components/PowerUp'
-import { items } from '../../src/contants/ui'
-import { movies, series, characters, videogames, brands, countries } from '../../src/contants/emojis'
 import { WinModal } from '../../src/components/WinModal'
 import { Alert } from '../../src/components/Alert'
+import { items } from '../../src/contants/ui'
+import { colors } from '../../src/contants/theme'
+import { movies, series, characters, videogames, brands, countries } from '../../src/contants/emojis'
 import useUnlockLevels from '../../src/hooks/useUnlockLevels'
 import usePowerUps from '../../src/hooks/usePowerUps'
 import useMoney from '../../src/hooks/useMoney'
-
-const header = require('../../assets/images/header.png')
-const board = require('../../assets/images/board.png')
 
 export default function Game() {
     const router = useRouter()
@@ -264,9 +262,9 @@ export default function Game() {
         <View style={styles.container}>
             {showAlert !== '' && <Alert label={showAlert} />}
             {youWin && <WinModal level={guess} mode={params.mode} />}
-            <Image source={header} style={styles.imageHeader} />
+            {/* <Image source={header} style={styles.imageHeader} /> */}
             <View style={styles.topContainer}>
-                <Image source={board} style={styles.board} />
+                {/* <Image source={board} style={styles.board} /> */}
                 <View style={styles.topContent}>
                     <View style={styles.emojisContainer}>
                         {guess.emojis?.map((emoji, index) => (
@@ -285,6 +283,7 @@ export default function Game() {
                 </View>
             </View>
             <View style={styles.bottomContainer}>
+                {/* <Image source={wall} style={styles.board} /> */}
                 <View style={styles.powerUpsContainer}>
                     {items.map((item, index) => (
                         <PowerUp
@@ -313,7 +312,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        backgroundColor: '#e9f0ff',
+        backgroundColor: colors.backgroundScreen,
     },
     imageHeader: {
         width: '100%',
@@ -323,22 +322,21 @@ const styles = StyleSheet.create({
     topContainer: {
         position: 'relative',
         flex: 1,
-        width: '90%',
-        marginVertical: 16,
         alignItems: 'center',
     },
     board: {
         position: 'absolute',
-        zIndex: 1,
-        width: '100%',
-        height: '100%',
+        top: -100,
+        zIndex: 0,
+        width: '200%',
+        height: '200%',
         resizeMode: 'stretch',
     },
     topContent: {
         position: 'absolute',
-        zIndex: 2,
+        zIndex: 3,
         gap: 24,
-        width: '90%',
+        width: '100%',
         height: '100%',
         alignItems: 'center',
         justifyContent: 'center',
@@ -363,23 +361,22 @@ const styles = StyleSheet.create({
         position: 'relative',
         width: '100%',
         flex: 1,
-        gap: 8,
+        gap: 16,
         alignItems: 'center',
-        backgroundColor: 'white',
+        backgroundColor: colors.backgroundHeader,
     },
-    keyboardContainer: {
-        gap: 4,
+    powerUpsContainer: {
+        gap: 8,
         width: '90%',
+        marginTop: 20,
         flexWrap: 'wrap',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
     },
-    powerUpsContainer: {
-        gap: 8,
+    keyboardContainer: {
+        gap: 4,
         width: '90%',
-        marginTop: 16,
-        marginBottom: 12,
         flexWrap: 'wrap',
         flexDirection: 'row',
         alignItems: 'center',

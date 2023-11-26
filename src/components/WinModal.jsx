@@ -2,6 +2,7 @@ import { router } from 'expo-router'
 import { Modal, StyleSheet, Text, View } from 'react-native'
 import { SolidButton } from './SolidButton'
 import { EmojiText } from './EmojiText'
+import { colors, fonts } from '../contants/theme'
 
 export function WinModal({ level, mode }) {
     const goLevels = () => {
@@ -49,12 +50,12 @@ const styles = StyleSheet.create({
         borderRadius: 24,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'white',
+        backgroundColor: colors.backgroundCard,
     },
     title: {
-        fontSize: 28,
+        fontSize: 24,
         textAlign: 'center',
-        fontFamily: 'Rubik-Bold',
+        fontFamily: fonts.bold,
     },
     emojisContainer: {
         gap: 10,
@@ -70,12 +71,12 @@ const styles = StyleSheet.create({
         marginBottom: 16,
         color: '#3177ff',
         textAlign: 'center',
-        fontFamily: 'Rubik-Bold',
+        fontFamily: fonts.bold,
     },
     subtitle: {
-        fontSize: 18,
+        fontSize: 16,
         marginBottom: 32,
         textAlign: 'center',
-        fontFamily: 'Rubik-Medium',
+        fontFamily: fonts.medium,
     },
 })

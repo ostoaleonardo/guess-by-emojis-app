@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native'
+import { colors, fonts } from '../contants/theme'
 
 export function Alert({ label }) {
     return (
@@ -26,12 +27,13 @@ const styles = StyleSheet.create({
         padding: 18,
         borderWidth: 3,
         borderRadius: 24,
-        borderColor: '#e4e3f1',
-        backgroundColor: 'white',
+        borderColor: colors.borderContainer,
+        backgroundColor: colors.backgroundCard,
     },
     title: {
         fontSize: 16,
         textAlign: 'center',
-        fontFamily: 'Rubik-Medium',
+        color: colors.textCard,
+        fontFamily: fonts.medium,
     },
 })

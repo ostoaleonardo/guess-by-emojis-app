@@ -1,11 +1,10 @@
 import { useCallback, useState } from 'react'
 import { useGlobalSearchParams, useFocusEffect } from 'expo-router'
-import { Image, StyleSheet, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import { EmojiCard } from '../../src/components/EmojiCard'
 import { movies, series, characters, videogames, brands, countries } from '../../src/contants/emojis'
+import { colors } from '../../src/contants/theme'
 import useUnlockLevels from '../../src/hooks/useUnlockLevels'
-
-const image = require('../../assets/images/header.png')
 
 export default function Levels() {
     const params = useGlobalSearchParams()
@@ -32,7 +31,6 @@ export default function Levels() {
 
     return (
         <View style={styles.container}>
-            <Image source={image} style={styles.imageHeader} />
             <View style={styles.grid}>
                 {level.length > 0 && mode.map((item, index) => (
                     <EmojiCard
@@ -50,7 +48,7 @@ export default function Levels() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#e9f0ff',
+        backgroundColor: colors.backgroundScreen,
     },
     imageHeader: {
         width: '100%',

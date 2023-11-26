@@ -1,4 +1,5 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { colors, fonts } from '../contants/theme'
 
 export function LetterAnswer({ onPress, letter }) {
     return (
@@ -44,8 +45,8 @@ const styles = StyleSheet.create({
         height: '100%',
         borderWidth: 3,
         borderRadius: 10,
-        borderColor: '#070200',
-        backgroundColor: '#7d878b',
+        borderColor: colors.borderShadow,
+        backgroundColor: colors.backgroundShadow,
     },
     letterContainer: {
         position: 'absolute',
@@ -57,14 +58,14 @@ const styles = StyleSheet.create({
         borderRadius: 6,
         alignItems: 'center',
         justifyContent: 'center',
-        borderColor: '#fefde7',
-        backgroundColor: '#c5c5b9',
+        borderColor: colors.borderContainer,
+        backgroundColor: colors.backgroundContainer,
     },
     letter: {
         fontSize: 14,
-        color: '#070200',
         textAlign: 'center',
-        fontFamily: 'Rubik-Bold',
+        color: colors.letter,
+        fontFamily: fonts.bold,
         textTransform: 'uppercase',
     },
     emptyContainer: {
@@ -72,7 +73,7 @@ const styles = StyleSheet.create({
         height: 35,
         borderRadius: 10,
         opacity: 0.2,
-        backgroundColor: '#3e170f',
+        backgroundColor: colors.backgroundContainer,
     },
     dash: {
         width: '40%',
@@ -81,6 +82,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         opacity: 0.2,
-        backgroundColor: '#3e170f',
+        backgroundColor: colors.backgroundContainer,
     }
 })

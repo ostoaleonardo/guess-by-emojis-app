@@ -1,4 +1,5 @@
 import { Stack, useLocalSearchParams } from 'expo-router'
+import { fonts } from '../../src/contants/theme'
 
 export default function GameLayout() {
     const params = useLocalSearchParams()
@@ -7,12 +8,11 @@ export default function GameLayout() {
         <Stack
             screenOptions={{
                 headerTransparent: true,
-
                 headerShadowVisible: false,
 
                 headerTitleStyle: {
                     fontSize: 24,
-                    fontFamily: 'Rubik-Bold',
+                    fontFamily: fonts.bold,
                 },
 
                 headerTintColor: 'white',

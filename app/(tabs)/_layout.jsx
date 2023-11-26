@@ -1,45 +1,41 @@
-import { Tabs, usePathname } from 'expo-router'
-import { Image, View } from 'react-native'
+import { Tabs } from 'expo-router'
 import { MoneyChip } from '../../src/components/MoneyChip'
+import { ItemTabBar } from '../../src/components/ItemTabBar'
+import { colors, fonts } from '../../src/contants/theme'
 
-const header = require('../../assets/images/header.png')
 const homeIcon = require('../../assets/icons/home.png')
 const storeIcon = require('../../assets/icons/store.png')
 
 export default function TabsLayout() {
-    const pathname = usePathname()
-
     return (
         <Tabs
             screenOptions={{
-                headerBackground: () => (
-                    <Image source={header} style={{ width: '100%', height: 100, resizeMode: 'stretch' }} />
-                ),
+                headerShadowVisible: false,
+
+                headerStyle: {
+                    backgroundColor: colors.backgroundHeader,
+                },
 
                 headerTitleStyle: {
                     fontSize: 24,
-                    fontFamily: 'Rubik-Bold',
+                    fontFamily: fonts.bold,
                 },
 
                 headerTintColor: 'white',
                 headerTitleAlign: 'center',
 
-                tabBarStyle: {
-                    height: 80,
-                    backgroundColor: 'white',
-                    borderColor: 'transparent',
-                },
-
-                tabBarLabelStyle: {
-                    fontSize: 14,
-                    fontFamily: 'Rubik-Bold',
-                },
-
-                tabBarShowLabel: false,
-
                 headerRight: () => (
                     <MoneyChip />
                 ),
+
+                tabBarStyle: {
+                    height: 70,
+                    elevation: 0,
+                    borderTopWidth: 0,
+                    backgroundColor: '#18161f',
+                },
+
+                tabBarShowLabel: false,
             }}
         >
             <Tabs.Screen
@@ -47,13 +43,13 @@ export default function TabsLayout() {
                 options={{
                     title: 'Inicio',
                     tabBarIcon: () => (
-                        <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                            <Image
-                                source={homeIcon}
-                                style={{ width: 42, height: 42 }}
-                            />
-                            {pathname === '/home' && <View style={{ width: 10, height: 5, backgroundColor: '#212121', borderRadius: 10 }} />}
-                        </View>
+                        <ItemTabBar
+                            item={{
+                                path: '/home',
+                                icon: homeIcon,
+                                tintColor: '#3177ff'
+                            }}
+                        />
                     ),
                 }}
             />
@@ -62,13 +58,13 @@ export default function TabsLayout() {
                 options={{
                     title: 'Tienda',
                     tabBarIcon: () => (
-                        <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                            <Image
-                                source={storeIcon}
-                                style={{ width: 42, height: 42 }}
-                            />
-                            {pathname === '/store' && <View style={{ width: 10, height: 5, backgroundColor: '#212121', borderRadius: 10 }} />}
-                        </View>
+                        <ItemTabBar
+                            item={{
+                                path: '/store',
+                                icon: storeIcon,
+                                tintColor: '#3177ff'
+                            }}
+                        />
                     ),
                 }}
             />

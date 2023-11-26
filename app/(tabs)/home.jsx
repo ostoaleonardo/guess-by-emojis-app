@@ -1,6 +1,7 @@
 import { ScrollView, StyleSheet, View } from 'react-native'
 import { ModeCard } from '../../src/components/ModeCard'
 import { modes } from '../../src/contants/ui'
+import { colors } from '../../src/contants/theme'
 
 export default function Home() {
     return (
@@ -23,7 +24,7 @@ export default function Home() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#e9f0ff',
+        backgroundColor: colors.backgroundScreen,
     },
     scrollContainer: {
         width: '100%',
@@ -33,7 +34,6 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
         padding: 24,
-        paddingTop: 32,
         gap: 8,
     },
 })
