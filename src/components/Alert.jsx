@@ -1,22 +1,26 @@
 import { StyleSheet, Text, View } from 'react-native'
 import { colors, fonts } from '../contants/theme'
+import Animated, { SlideInDown, SlideOutDown } from 'react-native-reanimated'
 
 export function Alert({ label }) {
     return (
-        <View style={styles.container}>
+        <Animated.View
+            style={styles.container}
+            entering={SlideInDown} exiting={SlideOutDown}
+        >
             <View style={styles.modal}>
                 <Text style={styles.title}>
                     {label}
                 </Text>
             </View>
-        </View>
+        </Animated.View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
         position: 'absolute',
-        zIndex: 3,
+        zIndex: 4,
         bottom: 16,
         width: '100%',
         alignItems: 'center',

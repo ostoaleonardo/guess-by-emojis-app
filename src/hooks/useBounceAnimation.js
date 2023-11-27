@@ -5,13 +5,13 @@ export default function useBounceAnimation(valueToAnimate) {
     const animatedValue = useSharedValue(1)
 
     useEffect(() => {
-        if (!valueToAnimate) return
+        if (!valueToAnimate && valueToAnimate !== 0) return
 
         animatedValue.value = 0
         animatedValue.value = withSpring(1)
 
         return () => {
-            animatedValue.value = 0
+            animatedValue.value = 1
         }
     }, [valueToAnimate])
 

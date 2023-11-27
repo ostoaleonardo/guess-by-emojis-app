@@ -83,7 +83,7 @@ export function BuyModal({ onPress, powerUp }) {
                     <SolidButton
                         onPress={buyItem}
                         variant='primary'
-                        label={'Comprar por $' + (powerUp?.price * counter)}
+                        label={'Comprar por 💵 ' + (powerUp?.price * counter)}
                     />
                     <SolidButton
                         onPress={onPress}

@@ -175,12 +175,6 @@ export default function Game() {
     const toggleRevealLetter = () => {
         if (isRevealed) { return }
 
-        if (powerUps[1].count === 0) {
-            setShowAlert('No tienes este power up, puedes comprarlo en la tienda')
-            timeAlert()
-            return
-        }
-
         setIsRevealed(true)
         spendPowerUps(1, 1)
         setShowAlert('Selecciona la letra que quieras revelar')
@@ -261,8 +255,6 @@ export default function Game() {
 
     return (
         <View style={styles.container}>
-            {showAlert !== '' && <Alert label={showAlert} />}
-            {youWin && <WinModal level={guess} mode={params.mode} />}
             <View style={styles.topContainer}>
                 <Animated.View
                     style={styles.topContent}
@@ -290,7 +282,7 @@ export default function Game() {
                         <PowerUp
                             key={index}
                             item={item}
-                            count={powerUps[item.id] ? powerUps[item.id].count : 0}
+                            count={powerUps[item.id]?.count ?? 0}
                             onPress={() => enoughPowerUps(item.id)}
                         />
                     ))}
@@ -305,6 +297,8 @@ export default function Game() {
                     ))}
                 </View>
             </View>
+            {showAlert !== '' && <Alert label={showAlert} />}
+            {youWin && <WinModal level={guess} mode={params.mode} />}
         </View>
     )
 }
