@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 24,
+        color: 'white',
         textAlign: 'center',
         fontFamily: fonts.bold,
     },
@@ -67,14 +68,15 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     answer: {
-        fontSize: 24,
+        fontSize: 28,
         marginBottom: 16,
-        color: '#3177ff',
         textAlign: 'center',
         fontFamily: fonts.bold,
+        color: colors.borderContainer,
     },
     subtitle: {
         fontSize: 16,
+        color: 'white',
         marginBottom: 32,
         textAlign: 'center',
         fontFamily: fonts.medium,

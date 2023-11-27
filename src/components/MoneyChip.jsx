@@ -1,10 +1,13 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native'
 import { router } from 'expo-router'
+import { Pressable, StyleSheet, Text, View } from 'react-native'
+import Animated, { BounceIn, BounceOut } from 'react-native-reanimated'
 import { colors, fonts } from '../contants/theme'
 import useMoney from '../hooks/useMoney'
+import useBounceAnimation from '../hooks/useBounceAnimation'
 
 export function MoneyChip() {
     const { money } = useMoney()
+    const animatedStyle = useBounceAnimation(money)
 
     const goStore = () => {
         router.push('/store')
@@ -14,9 +17,12 @@ export function MoneyChip() {
         <Pressable style={styles.chipContainer} onPress={goStore}>
             <Text style={styles.dollarIcon}>💵</Text>
             <View style={styles.moneyContainer}>
-                <Text style={styles.moneyText}>
+                <Animated.Text
+                    style={[styles.moneyText, animatedStyle]}
+                    entering={BounceIn} exiting={BounceOut}
+                >
                     {money}
-                </Text>
+                </Animated.Text>
                 <Text style={styles.plusIcon}>+</Text>
             </View>
         </Pressable>
@@ -66,7 +72,7 @@ const styles = StyleSheet.create({
         color: 'white',
         textAlign: 'center',
         textAlignVertical: 'center',
-        fontFamily: fonts.bold, 
+        fontFamily: fonts.bold,
         backgroundColor: colors.borderMoneyContainer,
     },
 })

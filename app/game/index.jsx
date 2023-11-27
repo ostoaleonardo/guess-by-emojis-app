@@ -262,9 +262,7 @@ export default function Game() {
         <View style={styles.container}>
             {showAlert !== '' && <Alert label={showAlert} />}
             {youWin && <WinModal level={guess} mode={params.mode} />}
-            {/* <Image source={header} style={styles.imageHeader} /> */}
             <View style={styles.topContainer}>
-                {/* <Image source={board} style={styles.board} /> */}
                 <View style={styles.topContent}>
                     <View style={styles.emojisContainer}>
                         {guess.emojis?.map((emoji, index) => (
@@ -283,7 +281,6 @@ export default function Game() {
                 </View>
             </View>
             <View style={styles.bottomContainer}>
-                {/* <Image source={wall} style={styles.board} /> */}
                 <View style={styles.powerUpsContainer}>
                     {items.map((item, index) => (
                         <PowerUp

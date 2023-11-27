@@ -1,21 +1,25 @@
+import Animated from 'react-native-reanimated'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 import { colors, fonts } from '../contants/theme'
+import useBounceAnimation from '../hooks/useBounceAnimation'
 
 export function LetterAnswer({ onPress, letter }) {
+    const animatedStyle = useBounceAnimation(letter)
+
     return (
         <Pressable
             style={styles.pressContainer}
             onPress={letter !== false ? onPress : null}
         >
             {letter !== false && letter !== '-' ? (
-                <View style={styles.keyContainer}>
+                <Animated.View style={[styles.keyContainer, animatedStyle]}>
                     <View style={styles.shadow} />
                     <View style={styles.letterContainer}>
                         <Text style={styles.letter}>
                             {letter}
                         </Text>
                     </View>
-                </View>
+                </Animated.View>
             ) : letter === false && (
                 <View style={styles.emptyContainer} />
             )}

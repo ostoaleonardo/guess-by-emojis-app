@@ -1,11 +1,15 @@
+import Animated from 'react-native-reanimated'
+import useBounceAnimation from '../hooks/useBounceAnimation'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 import { colors, fonts } from '../contants/theme'
 
 export function PowerUp({ onPress, item, count }) {
+    const animatedStyle = useBounceAnimation(count)
+
     return (
         <Pressable
             style={styles.pressContainer}
-            onPress={onPress ?? (() => { })}
+            onPress={onPress ?? null}
         >
             <View style={styles.cardContainer}>
                 <View style={styles.shadow} />
@@ -14,9 +18,9 @@ export function PowerUp({ onPress, item, count }) {
                     <Text style={styles.emoji}>
                         {item.emoji}
                     </Text>
-                    <Text style={styles.count}>
+                    <Animated.Text style={[styles.count, animatedStyle]}>
                         {'x' + count}
-                    </Text>
+                    </Animated.Text>
                 </View>
             </View>
         </Pressable>
