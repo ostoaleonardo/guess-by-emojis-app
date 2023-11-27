@@ -1,9 +1,9 @@
 import { router } from 'expo-router'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
-import Animated, { BounceIn, BounceOut } from 'react-native-reanimated'
 import { colors, fonts } from '../contants/theme'
-import useMoney from '../hooks/useMoney'
+import Animated from 'react-native-reanimated'
 import useBounceAnimation from '../hooks/useBounceAnimation'
+import useMoney from '../hooks/useMoney'
 
 export function MoneyChip() {
     const { money } = useMoney()
@@ -17,10 +17,7 @@ export function MoneyChip() {
         <Pressable style={styles.chipContainer} onPress={goStore}>
             <Text style={styles.dollarIcon}>💵</Text>
             <View style={styles.moneyContainer}>
-                <Animated.Text
-                    style={[styles.moneyText, animatedStyle]}
-                    entering={BounceIn} exiting={BounceOut}
-                >
+                <Animated.Text style={[styles.moneyText, animatedStyle]}>
                     {money}
                 </Animated.Text>
                 <Text style={styles.plusIcon}>+</Text>

@@ -27,6 +27,10 @@ export function WinModal({ level, mode }) {
                     <Text style={styles.subtitle}>
                         Haz desbloqueado el siguiente nivel.
                     </Text>
+                    <View style={styles.moneyContainer}>
+                        <Text style={styles.moneyText}>+5</Text>
+                        <Text style={styles.plusIcon}>💵</Text>
+                    </View>
                     <SolidButton
                         onPress={goLevels}
                         label='Continuar'
@@ -77,8 +81,34 @@ const styles = StyleSheet.create({
     subtitle: {
         fontSize: 16,
         color: 'white',
-        marginBottom: 32,
         textAlign: 'center',
         fontFamily: fonts.medium,
+    },
+    moneyContainer: {
+        flexDirection: 'row',
+        gap: 4,
+        borderWidth: 3,
+        borderRadius: 20,
+        marginVertical: 16,
+        paddingHorizontal: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderColor: colors.borderMoneyShadow,
+        backgroundColor: colors.backgroundMoneyContainer,
+    },
+    moneyText: {
+        fontSize: 14,
+        marginRight: 24,
+        color: colors.textCard,
+        fontFamily: fonts.bold,
+    },
+    plusIcon: {
+        position: 'absolute',
+        top: -10,
+        right: 0,
+        fontSize: 28,
+        textAlign: 'center',
+        textAlignVertical: 'center',
+        transform: [{ rotate: '-45deg' }],
     },
 })

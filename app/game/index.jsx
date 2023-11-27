@@ -10,6 +10,7 @@ import { Alert } from '../../src/components/Alert'
 import { items } from '../../src/contants/ui'
 import { colors } from '../../src/contants/theme'
 import { movies, series, characters, videogames, brands, countries } from '../../src/contants/emojis'
+import Animated, { BounceIn, BounceOut } from 'react-native-reanimated'
 import useUnlockLevels from '../../src/hooks/useUnlockLevels'
 import usePowerUps from '../../src/hooks/usePowerUps'
 import useMoney from '../../src/hooks/useMoney'
@@ -263,7 +264,10 @@ export default function Game() {
             {showAlert !== '' && <Alert label={showAlert} />}
             {youWin && <WinModal level={guess} mode={params.mode} />}
             <View style={styles.topContainer}>
-                <View style={styles.topContent}>
+                <Animated.View
+                    style={styles.topContent}
+                    entering={BounceIn} exiting={BounceOut}
+                >
                     <View style={styles.emojisContainer}>
                         {guess.emojis?.map((emoji, index) => (
                             <EmojiText key={index} emoji={emoji} />
@@ -278,7 +282,7 @@ export default function Game() {
                             />
                         ))}
                     </View>
-                </View>
+                </Animated.View>
             </View>
             <View style={styles.bottomContainer}>
                 <View style={styles.powerUpsContainer}>
