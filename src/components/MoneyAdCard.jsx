@@ -1,22 +1,65 @@
+import { useEffect, useState } from 'react'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { RewardedAd, RewardedAdEventType, TestIds } from 'react-native-google-mobile-ads'
 import { colors, fonts } from '../contants/theme'
+import useMoney from '../hooks/useMoney'
+
+const adUnitId = __DEV__ ? TestIds.REWARDED : 'ca-app-pub-5454307717540089/4514455922'
+
+const rewarded = RewardedAd.createForAdRequest(adUnitId, {
+    requestNonPersonalizedAdsOnly: true,
+})
 
 export function MoneyAdCard() {
+    const [loaded, setLoaded] = useState(false)
+    const { addMoney } = useMoney()
+
+    useEffect(() => {
+        loadRewarded()
+    }, [])
+
+    const loadRewarded = () => {
+        const unsubscribeLoaded = rewarded.addAdEventListener(RewardedAdEventType.LOADED, () => {
+            setLoaded(true)
+        })
+
+        const unsubscribeEarned = rewarded.addAdEventListener(RewardedAdEventType.EARNED_REWARD, () => {
+            addMoney(5)
+            setLoaded(false)
+
+            setTimeout(() => {
+                rewarded.load()
+            }, 1000)
+        })
+
+        rewarded.load()
+
+        return () => {
+            unsubscribeLoaded()
+            unsubscribeEarned()
+        }
+    }
+
     return (
-        <Pressable style={styles.pressContainer}>
-            <View style={styles.shadow} />
+        <Pressable
+            style={styles.pressContainer}
+            onPress={loaded ? () => rewarded.show() : null}
+        >
             <View style={styles.container}>
                 <View style={styles.textContainer}>
-                    <View style={styles.titleContainer}>
-                        <View style={styles.shadowTitle} />
-                        <View style={styles.nameContainer}>
+                    <View style={styles.titleChipContainer}>
+                        <View style={styles.titleContainer}>
                             <Text style={styles.title}>
-                                ¡Gana billetes gratis!
+                                {loaded ? '¡Gana billetes gratis!'
+                                    : '¡No hay anuncios disponibles!'
+                                }
                             </Text>
                         </View>
                     </View>
                     <Text style={styles.subtitle}>
-                        Mira un anuncio y gana 5 billetes
+                        {loaded ? '¡Mira un anuncio y gana 5 billetes!'
+                            : '¡Vuelve mañana para ver más anuncios!'
+                        }
                     </Text>
                 </View>
                 <View style={styles.emojiContainer}>
@@ -35,10 +78,6 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 110,
         alignItems: 'center',
-    },
-    shadow: {
-        width: '100%',
-        height: '100%',
         borderRadius: 16,
         backgroundColor: colors.shadowCard,
     },
@@ -71,20 +110,14 @@ const styles = StyleSheet.create({
         gap: 4,
         marginLeft: 8,
     },
-    titleContainer: {
-        width: '85%',
+    titleChipContainer: {
         height: 35,
         borderRadius: 16,
         alignItems: 'center',
         justifyContent: 'center',
-    },
-    shadowTitle: {
-        width: '100%',
-        height: '100%',
-        borderRadius: 16,
         backgroundColor: colors.borderMoneyShadow,
     },
-    nameContainer: {
+    titleContainer: {
         position: 'absolute',
         top: 0,
         zIndex: 2,

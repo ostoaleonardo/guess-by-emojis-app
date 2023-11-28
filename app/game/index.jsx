@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useGlobalSearchParams, useRouter } from 'expo-router'
 import { StyleSheet, View } from 'react-native'
+import { BannerAdMobContainer } from '../../src/components/BannerAdMobContainer'
 import { LetterKey } from '../../src/components/LetterKey'
 import { LetterAnswer } from '../../src/components/LetterAnswer'
 import { EmojiText } from '../../src/components/EmojiText'
@@ -254,7 +255,7 @@ export default function Game() {
     }
 
     return (
-        <View style={styles.container}>
+        <BannerAdMobContainer>
             <View style={styles.topContainer}>
                 <Animated.View
                     style={styles.topContent}
@@ -299,33 +300,15 @@ export default function Game() {
             </View>
             {showAlert !== '' && <Alert label={showAlert} />}
             {youWin && <WinModal level={guess} mode={params.mode} />}
-        </View>
+        </BannerAdMobContainer>
     )
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        backgroundColor: colors.backgroundScreen,
-    },
-    imageHeader: {
-        width: '100%',
-        height: 100,
-        resizeMode: 'stretch',
-    },
     topContainer: {
         position: 'relative',
         flex: 1,
         alignItems: 'center',
-    },
-    board: {
-        position: 'absolute',
-        top: -100,
-        zIndex: 0,
-        width: '200%',
-        height: '200%',
-        resizeMode: 'stretch',
     },
     topContent: {
         position: 'absolute',

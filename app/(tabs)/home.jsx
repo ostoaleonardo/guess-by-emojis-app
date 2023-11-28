@@ -1,11 +1,11 @@
 import { ScrollView, StyleSheet, View } from 'react-native'
+import { BannerAdMobContainer } from '../../src/components/BannerAdMobContainer'
 import { ModeCard } from '../../src/components/ModeCard'
 import { modes } from '../../src/contants/ui'
-import { colors } from '../../src/contants/theme'
 
 export default function Home() {
     return (
-        <View style={styles.container}>
+        <BannerAdMobContainer>
             <ScrollView
                 overScrollMode='never'
                 style={styles.scrollContainer}
@@ -17,15 +17,11 @@ export default function Home() {
                     ))}
                 </View>
             </ScrollView>
-        </View>
+        </BannerAdMobContainer>
     )
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: colors.backgroundScreen,
-    },
     scrollContainer: {
         width: '100%',
         height: '100%',

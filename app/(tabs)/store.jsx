@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
+import { BannerAdMobContainer } from '../../src/components/BannerAdMobContainer'
 import { ItemStoreCard } from '../../src/components/ItemStoreCard'
 import { BuyModal } from '../../src/components/BuyModal'
 import { MoneyAdCard } from '../../src/components/MoneyAdCard'
@@ -26,9 +27,7 @@ export default function Store() {
     }
 
     return (
-        <View style={styles.container}>
-            {isBuying && <BuyModal onPress={() => toggleModal()} powerUp={selectedItem} />}
-            {/* <ImageBackground source={home} style={{ position: 'absolute', width: '100%', height: '100%' }} /> */}
+        <BannerAdMobContainer>
             <ScrollView
                 overScrollMode='never'
                 style={styles.scrollContainer}
@@ -65,15 +64,12 @@ export default function Store() {
                     </View>
                 </View>
             </ScrollView>
-        </View>
+            {isBuying && <BuyModal onPress={() => toggleModal()} powerUp={selectedItem} />}
+        </BannerAdMobContainer>
     )
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: colors.backgroundScreen,
-    },
     sectionTitleContainer: {
         width: '100%',
         overflow: 'hidden',

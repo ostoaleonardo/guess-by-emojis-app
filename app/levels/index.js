@@ -1,9 +1,9 @@
 import { useCallback, useState } from 'react'
 import { useGlobalSearchParams, useFocusEffect } from 'expo-router'
 import { StyleSheet, View } from 'react-native'
+import { BannerAdMobContainer } from '../../src/components/BannerAdMobContainer'
 import { EmojiCard } from '../../src/components/EmojiCard'
 import { movies, series, characters, videogames, brands, countries } from '../../src/contants/emojis'
-import { colors } from '../../src/contants/theme'
 import useUnlockLevels from '../../src/hooks/useUnlockLevels'
 
 export default function Levels() {
@@ -30,7 +30,7 @@ export default function Levels() {
     )
 
     return (
-        <View style={styles.container}>
+        <BannerAdMobContainer>
             <View style={styles.grid}>
                 {level.length > 0 && mode.map((item, index) => (
                     <EmojiCard
@@ -41,21 +41,13 @@ export default function Levels() {
                     />
                 ))}
             </View>
-        </View>
+        </BannerAdMobContainer>
     )
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: colors.backgroundScreen,
-    },
-    imageHeader: {
-        width: '100%',
-        height: 100,
-        resizeMode: 'stretch',
-    },
     grid: {
+        flex: 1,
         gap: 10,
         flexWrap: 'wrap',
         flexDirection: 'row',
