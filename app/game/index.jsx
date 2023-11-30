@@ -73,7 +73,8 @@ export default function Game() {
         if (letter === '-') { return }
 
         let indexAnswer = -1
-        const newAnswer = [...userAnswer]
+        let newAnswer = [...userAnswer]
+        let newKeyboard = [...keyboard]
 
         if (!isRevealed) {
             // Get the first empty index
@@ -82,20 +83,27 @@ export default function Game() {
 
             // Set the letter in the empty index
             newAnswer[emptyIndex] = letter
-            setUserAnswer(newAnswer)
             indexAnswer = emptyIndex
         }
 
         if (isRevealed) {
+            // Remove the letter of the index if it is not empty
             const correctIndex = revealLetter(letter)
+
+            if (newAnswer[correctIndex] !== false) {
+                newAnswer = removeLetterFromAnswer(correctIndex).newAnswer
+                newKeyboard = removeLetterFromAnswer(correctIndex).newKeyboard
+            }
+
             newAnswer[correctIndex] = letter
-            setUserAnswer(newAnswer)
-            setIsRevealed(false)
             indexAnswer = correctIndex
+            setIsRevealed(false)
         }
+        
+        // Set the new answer
+        setUserAnswer(newAnswer)
 
         // Get a new keyboard without the letter
-        const newKeyboard = [...keyboard]
         newKeyboard[index] = '-'
         setKeyboard(newKeyboard)
 
@@ -128,6 +136,8 @@ export default function Game() {
         const newKeyboard = [...keyboard]
         newKeyboard[originalPosition] = letterToReturn
         setKeyboard(newKeyboard)
+
+        return { newAnswer, newKeyboard }
     }
 
     const checkAnswer = (answer) => {
@@ -186,21 +196,18 @@ export default function Game() {
         const answerLowerCase = guess.title.toLowerCase().split('')
         const answerWithoutSpaces = answerLowerCase.map((letter) => letter === ' ' ? '-' : letter)
 
-        const letterIndices = answerWithoutSpaces.reduce((indices, char, index) => {
-            if (char === letter.toLowerCase()) { indices.push(index) }
-            return indices
-        }, [])
+        // Get the first index of the letter
+        const availableIndex = answerWithoutSpaces.findIndex((letterAnswer, index) => {
+            if (letterAnswer === letter && userAnswer[index] !== letterAnswer) {
+                return true
+            }
 
-        // Get the first index that is not revealed
-        const availableIndex = letterIndices.find((index) => !userAnswer[index])
+            return false
+        })
 
-        if (availableIndex !== undefined) {
-            userAnswer[availableIndex] = true
+        if (availableIndex !== -1) {
             return availableIndex
-        } else {
-            return -1
         }
-
     }
 
     const removeLetters = () => {
