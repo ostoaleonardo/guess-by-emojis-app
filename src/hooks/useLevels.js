@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
-export default function useUnlockLevels() {
+export default function useLevels() {
     const asyncStorageKey = 'lockedLevels'
 
     const initCategory = async (category) => {
@@ -27,6 +27,12 @@ export default function useUnlockLevels() {
         const lockedLevels = await getUnlockedLevels()
         const categoryLevels = lockedLevels[category] || await initCategory(category)
         return categoryLevels
+    }
+
+    const getLevel = async (id, category) => {
+        const categoryLevels = await getLevelsByCategory(category)
+        const level = categoryLevels.find((level) => level.id === id)
+        return level
     }
 
     const unlockLevel = async (id, category) => {
@@ -60,6 +66,7 @@ export default function useUnlockLevels() {
     return {
         getUnlockedLevels,
         getLevelsByCategory,
+        getLevel,
         unlockLevel,
         removeAllLevels,
     }

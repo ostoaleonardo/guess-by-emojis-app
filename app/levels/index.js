@@ -4,12 +4,12 @@ import { StyleSheet, View } from 'react-native'
 import { BannerAdMobContainer } from '../../src/components/BannerAdMobContainer'
 import { EmojiCard } from '../../src/components/EmojiCard'
 import { movies, series, characters, videogames, brands, countries } from '../../src/contants/emojis'
-import useUnlockLevels from '../../src/hooks/useUnlockLevels'
+import useLevels from '../../src/hooks/useLevels'
 
 export default function Levels() {
     const params = useGlobalSearchParams()
     const [level, setLevel] = useState([])
-    const { getLevelsByCategory } = useUnlockLevels()
+    const { getLevelsByCategory } = useLevels()
 
     const mode = params.mode === 'movies' ? movies
         : params.mode === 'series' ? series

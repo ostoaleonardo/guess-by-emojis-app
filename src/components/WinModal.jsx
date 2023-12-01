@@ -4,7 +4,7 @@ import { SolidButton } from './SolidButton'
 import { EmojiText } from './EmojiText'
 import { colors, fonts } from '../contants/theme'
 
-export function WinModal({ level, mode }) {
+export function WinModal({ level, mode, isNewUnlocked }) {
     const goLevels = () => {
         router.push('/levels?mode=' + mode)
     }
@@ -24,13 +24,17 @@ export function WinModal({ level, mode }) {
                     <Text style={styles.answer}>
                         {level.title}
                     </Text>
-                    <Text style={styles.subtitle}>
-                        Haz desbloqueado el siguiente nivel.
-                    </Text>
-                    <View style={styles.moneyContainer}>
-                        <Text style={styles.moneyText}>+5</Text>
-                        <Text style={styles.plusIcon}>💵</Text>
-                    </View>
+                    {isNewUnlocked && (
+                        <>
+                            <Text style={styles.subtitle}>
+                                Haz desbloqueado el siguiente nivel.
+                            </Text>
+                            <View style={styles.moneyContainer}>
+                                <Text style={styles.moneyText}>+5</Text>
+                                <Text style={styles.plusIcon}>💵</Text>
+                            </View>
+                        </>
+                    )}
                     <SolidButton
                         onPress={goLevels}
                         label='Continuar'

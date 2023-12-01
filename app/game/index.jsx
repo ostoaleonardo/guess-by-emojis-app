@@ -12,14 +12,14 @@ import { items } from '../../src/contants/ui'
 import { colors } from '../../src/contants/theme'
 import { movies, series, characters, videogames, brands, countries } from '../../src/contants/emojis'
 import Animated, { BounceIn, BounceOut } from 'react-native-reanimated'
-import useUnlockLevels from '../../src/hooks/useUnlockLevels'
+import useLevels from '../../src/hooks/useLevels'
 import usePowerUps from '../../src/hooks/usePowerUps'
 import useMoney from '../../src/hooks/useMoney'
 
 export default function Game() {
     const router = useRouter()
     const params = useGlobalSearchParams()
-    const { unlockLevel } = useUnlockLevels()
+    const { getLevel, unlockLevel } = useLevels()
     const { addMoney } = useMoney()
     const { powerUps, spendPowerUps } = usePowerUps()
     const lvl = params.id
@@ -41,6 +41,7 @@ export default function Game() {
     const [answerPositions, setAnswerPositions] = useState([])
     const [isRevealed, setIsRevealed] = useState(false)
     const [youWin, setYouWin] = useState(false)
+    const [isNewUnlocked, setIsNewUnlocked] = useState(false)
     const [showAlert, setShowAlert] = useState('')
 
     useEffect(() => {
@@ -99,7 +100,7 @@ export default function Game() {
             indexAnswer = correctIndex
             setIsRevealed(false)
         }
-        
+
         // Set the new answer
         setUserAnswer(newAnswer)
 
@@ -140,7 +141,7 @@ export default function Game() {
         return { newAnswer, newKeyboard }
     }
 
-    const checkAnswer = (answer) => {
+    const checkAnswer = async (answer) => {
         // Check if all spaces are filled
         const isAnswerComplete = answer.every((letter) => letter !== false)
         if (!isAnswerComplete) { return }
@@ -150,10 +151,22 @@ export default function Game() {
         const titleLowerCase = guess.title.toLowerCase()
 
         if (answerWithoutSpaces === titleLowerCase) {
-            addMoney(5)
+            // If the next level is not unlocked
+            const nextLevel = await getNextLevel()
+            if (nextLevel === undefined) {
+                addMoney(5)
+                unlockNextLevel()
+                setIsNewUnlocked(true)
+            }
+
             setYouWin(true)
-            unlockNextLevel()
         }
+    }
+
+    const getNextLevel = async () => {
+        const nextId = parseInt(lvl) + 1
+        const level = await getLevel(nextId, params.mode)
+        return level
     }
 
     const unlockNextLevel = async () => {
@@ -306,7 +319,7 @@ export default function Game() {
                 </View>
             </View>
             {showAlert !== '' && <Alert label={showAlert} />}
-            {youWin && <WinModal level={guess} mode={params.mode} />}
+            {youWin && <WinModal level={guess} mode={params.mode} isNewUnlocked={isNewUnlocked} />}
         </BannerAdMobContainer>
     )
 }
