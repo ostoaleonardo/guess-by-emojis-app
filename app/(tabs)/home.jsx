@@ -1,7 +1,6 @@
 import { ScrollView, StyleSheet, View } from 'react-native'
-import { BannerAdMobContainer } from '../../src/components/BannerAdMobContainer'
-import { ModeCard } from '../../src/components/ModeCard'
-import { modes } from '../../src/contants/ui'
+import { BannerAdMobContainer, ModeCard } from '../../src/components'
+import { modes } from '../../src/constants'
 
 export default function Home() {
     return (

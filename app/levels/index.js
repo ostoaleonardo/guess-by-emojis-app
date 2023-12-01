@@ -1,9 +1,8 @@
 import { useCallback, useState } from 'react'
 import { useGlobalSearchParams, useFocusEffect } from 'expo-router'
 import { StyleSheet, View } from 'react-native'
-import { BannerAdMobContainer } from '../../src/components/BannerAdMobContainer'
-import { EmojiCard } from '../../src/components/EmojiCard'
-import { movies, series, characters, videogames, brands, countries } from '../../src/contants/emojis'
+import { BannerAdMobContainer, EmojiCard } from '../../src/components'
+import { movies, series, characters, videogames, brands, countries } from '../../src/constants'
 import useLevels from '../../src/hooks/useLevels'
 
 export default function Levels() {

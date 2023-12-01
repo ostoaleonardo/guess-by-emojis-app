@@ -1,6 +1,6 @@
 import { usePathname } from 'expo-router'
 import { Image, StyleSheet, View } from 'react-native'
-import { colors } from '../contants/theme'
+import { colors } from '../../constants'
 
 export function ItemTabBar({ item }) {
     const pathname = usePathname()
@@ -19,7 +19,7 @@ export function ItemTabBar({ item }) {
             ) : (
                 <View style={styles.inactiveContainer}>
                     <View style={styles.iconInactiveContainer}>
-                    <View style={styles.reflection} />
+                        <View style={styles.reflection} />
                         <Image
                             source={item.icon}
                             style={styles.icon}

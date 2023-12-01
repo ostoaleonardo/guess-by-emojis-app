@@ -1,8 +1,8 @@
 import { router } from 'expo-router'
 import { Modal, StyleSheet, Text, View } from 'react-native'
-import { SolidButton } from './SolidButton'
-import { EmojiText } from './EmojiText'
-import { colors, fonts } from '../contants/theme'
+import { EmojiText } from '../Game/EmojiText'
+import { SolidButton } from '../Buttons/SolidButton'
+import { colors, fonts } from '../../constants'
 
 export function WinModal({ level, mode, isNewUnlocked }) {
     const goLevels = () => {

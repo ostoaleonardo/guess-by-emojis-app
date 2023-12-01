@@ -1,7 +1,7 @@
 import Animated from 'react-native-reanimated'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
-import { colors, fonts } from '../contants/theme'
-import useBounceAnimation from '../hooks/useBounceAnimation'
+import { colors, fonts } from '../../constants'
+import useBounceAnimation from '../../hooks/useBounceAnimation'
 
 export function LetterAnswer({ onPress, letter }) {
     const animatedStyle = useBounceAnimation(letter)

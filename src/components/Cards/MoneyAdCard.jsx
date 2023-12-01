@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 import { RewardedAd, RewardedAdEventType, TestIds } from 'react-native-google-mobile-ads'
-import { colors, fonts } from '../contants/theme'
-import useMoney from '../hooks/useMoney'
+import { colors, fonts } from '../../constants'
+import useMoney from '../../hooks/useMoney'
 
 const adUnitId = __DEV__ ? TestIds.REWARDED : 'ca-app-pub-5454307717540089/4514455922'
 

@@ -1,5 +1,5 @@
 import { Stack } from 'expo-router'
-import { colors, fonts } from '../../src/contants/theme'
+import { colors, fonts } from '../../src/constants'
 
 export default function LevelsLayout() {
     return (

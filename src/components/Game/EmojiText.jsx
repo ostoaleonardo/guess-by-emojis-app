@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native'
-import { colors } from '../contants/theme'
+import { colors } from '../../constants'
 
 export function EmojiText({ emoji }) {
     return (

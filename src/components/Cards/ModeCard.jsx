@@ -1,6 +1,6 @@
 import { router } from 'expo-router'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
-import { colors, fonts } from '../contants/theme'
+import { colors, fonts } from '../../constants'
 
 export function ModeCard({ item }) {
     const goLevels = () => {

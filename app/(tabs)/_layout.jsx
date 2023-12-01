@@ -1,10 +1,6 @@
 import { Tabs } from 'expo-router'
-import { MoneyChip } from '../../src/components/MoneyChip'
-import { ItemTabBar } from '../../src/components/ItemTabBar'
-import { colors, fonts } from '../../src/contants/theme'
-
-const homeIcon = require('../../assets/icons/home.png')
-const storeIcon = require('../../assets/icons/store.png')
+import { ItemTabBar, MoneyChip } from '../../src/components'
+import { colors, fonts, images } from '../../src/constants'
 
 export default function TabsLayout() {
     return (
@@ -46,7 +42,7 @@ export default function TabsLayout() {
                         <ItemTabBar
                             item={{
                                 path: '/home',
-                                icon: homeIcon,
+                                icon: images.homeIcon,
                                 tintColor: '#3177ff'
                             }}
                         />
@@ -61,7 +57,7 @@ export default function TabsLayout() {
                         <ItemTabBar
                             item={{
                                 path: '/store',
-                                icon: storeIcon,
+                                icon: images.storeIcon,
                                 tintColor: '#3177ff'
                             }}
                         />

@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import { Image, Modal, Pressable, StyleSheet, Text, View } from 'react-native'
-import { SolidButton } from './SolidButton'
-import { Alert } from './Alert'
-import { colors, fonts } from '../contants/theme'
-import useMoney from '../hooks/useMoney'
-import usePowerUps from '../hooks/usePowerUps'
+import { SolidButton } from '../Buttons/SolidButton'
+import { Alert } from '../Modals/Alert'
+import { colors, fonts } from '../../constants'
+import useMoney from '../../hooks/useMoney'
+import usePowerUps from '../../hooks/usePowerUps'
 
-const blur = require('../../assets/images/blur.png')
+const blur = require('../../../assets/images/blur.png')
 
 export function BuyModal({ onPress, powerUp }) {
     const [counter, setCounter] = useState(1)

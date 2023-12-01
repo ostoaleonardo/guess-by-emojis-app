@@ -1,11 +1,7 @@
 import { useEffect, useState } from 'react'
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
-import { BannerAdMobContainer } from '../../src/components/BannerAdMobContainer'
-import { ItemStoreCard } from '../../src/components/ItemStoreCard'
-import { BuyModal } from '../../src/components/BuyModal'
-import { MoneyAdCard } from '../../src/components/MoneyAdCard'
-import { items } from '../../src/contants/ui'
-import { colors, fonts } from '../../src/contants/theme'
+import { BannerAdMobContainer, ItemStoreCard, MoneyAdCard, BuyModal } from '../../src/components'
+import { colors, fonts, powers } from '../../src/constants'
 import usePowerUps from '../../src/hooks/usePowerUps'
 
 export default function Store() {
@@ -53,7 +49,7 @@ export default function Store() {
                         <View style={styles.sectionShadow} />
                     </View>
                     <View style={styles.sectionContainer}>
-                        {items.map((item, index) => (
+                        {powers.map((item, index) => (
                             <ItemStoreCard
                                 key={index}
                                 item={item}

@@ -1,8 +1,8 @@
 import { router } from 'expo-router'
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
-import { colors } from '../contants/theme'
+import { colors } from '../../constants'
 
-const lockIcon = require('../../assets/icons/lock.png')
+const lockIcon = require('../../../assets/icons/lock.png')
 
 export function EmojiCard({ item, mode, isUnlocked = false }) {
     const goLevel = () => {

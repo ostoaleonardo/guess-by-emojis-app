@@ -1,5 +1,5 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native'
-import { colors, fonts } from '../contants/theme'
+import { colors, fonts } from '../../constants'
 
 export function ItemStoreCard({ item, count, onPress }) {
     return (
@@ -10,7 +10,7 @@ export function ItemStoreCard({ item, count, onPress }) {
             <View style={styles.shadow} />
             <View style={styles.container}>
                 <View style={styles.emojiContainer}>
-                <View style={styles.reflection} />
+                    <View style={styles.reflection} />
                     <Text style={styles.emojiText}>
                         {item.emoji}
                     </Text>

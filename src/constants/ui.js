@@ -43,7 +43,7 @@ export const modes = [
     }
 ]
 
-export const items = [{
+export const powers = [{
         id: 1,
         title: 'Una letra',
         description: 'Revela una letra especifica de la palabra',

@@ -1,5 +1,5 @@
 import { Stack, useLocalSearchParams } from 'expo-router'
-import { fonts } from '../../src/contants/theme'
+import { fonts } from '../../src/constants'
 
 export default function GameLayout() {
     const params = useLocalSearchParams()

@@ -1,9 +1,9 @@
 import { router } from 'expo-router'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
-import { colors, fonts } from '../contants/theme'
+import { colors, fonts } from '../../constants'
 import Animated from 'react-native-reanimated'
-import useBounceAnimation from '../hooks/useBounceAnimation'
-import useMoney from '../hooks/useMoney'
+import useBounceAnimation from '../../hooks/useBounceAnimation'
+import useMoney from '../../hooks/useMoney'
 
 export function MoneyChip() {
     const { money } = useMoney()

@@ -1,9 +1,9 @@
-import Animated from 'react-native-reanimated'
-import useBounceAnimation from '../hooks/useBounceAnimation'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
-import { colors, fonts } from '../contants/theme'
+import { colors, fonts } from '../../constants'
+import Animated from 'react-native-reanimated'
+import useBounceAnimation from '../../hooks/useBounceAnimation'
 
-export function PowerUp({ onPress, item, count}) {
+export function PowerUp({ onPress, item, count }) {
     const animatedStyle = useBounceAnimation(count)
 
     return (

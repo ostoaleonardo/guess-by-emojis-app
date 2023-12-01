@@ -1,8 +1,8 @@
 import { StyleSheet, View } from 'react-native'
 import { BannerAdMob } from './BannerAdMob'
-import { colors } from '../contants/theme'
+import { colors } from '../../constants'
 
-export function BannerAdMobContainer({children}) {
+export function BannerAdMobContainer({ children }) {
     return (
         <View style={styles.container}>
             {children}

@@ -26,11 +26,11 @@ const colors = {
     borderMoneyShadow: '#042813',
     borderMoneyContainer: '#208249',
     backgroundMoneyContainer: '#50ac7f',
-};
+}
 
 const fonts = {
     medium: 'Rubik-Medium',
     bold: 'Rubik-Bold',
-};
+}
 
-export { colors, fonts };
+export { colors, fonts }

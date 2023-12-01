@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View } from 'react-native'
-import { colors, fonts } from '../contants/theme'
 import Animated, { SlideInDown, SlideOutDown } from 'react-native-reanimated'
+import { StyleSheet, Text, View } from 'react-native'
+import { colors, fonts } from '../../constants'
 
 export function Alert({ label }) {
     return (

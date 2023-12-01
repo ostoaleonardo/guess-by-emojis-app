@@ -1,16 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useGlobalSearchParams, useRouter } from 'expo-router'
 import { StyleSheet, View } from 'react-native'
-import { BannerAdMobContainer } from '../../src/components/BannerAdMobContainer'
-import { LetterKey } from '../../src/components/LetterKey'
-import { LetterAnswer } from '../../src/components/LetterAnswer'
-import { EmojiText } from '../../src/components/EmojiText'
-import { PowerUp } from '../../src/components/PowerUp'
-import { WinModal } from '../../src/components/WinModal'
-import { Alert } from '../../src/components/Alert'
-import { items } from '../../src/contants/ui'
-import { colors } from '../../src/contants/theme'
-import { movies, series, characters, videogames, brands, countries } from '../../src/contants/emojis'
+import { BannerAdMobContainer, EmojiText, LetterAnswer, LetterKey, PowerUp, Alert, WinModal } from '../../src/components'
+import { movies, series, characters, videogames, brands, countries, powers, colors } from '../../src/constants'
 import Animated, { BounceIn, BounceOut } from 'react-native-reanimated'
 import useLevels from '../../src/hooks/useLevels'
 import usePowerUps from '../../src/hooks/usePowerUps'
@@ -299,7 +291,7 @@ export default function Game() {
             </View>
             <View style={styles.bottomContainer}>
                 <View style={styles.powerUpsContainer}>
-                    {items.map((item, index) => (
+                    {powers.map((item, index) => (
                         <PowerUp
                             key={index}
                             item={item}
