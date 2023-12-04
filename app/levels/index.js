@@ -41,6 +41,7 @@ export default function Levels() {
 const styles = StyleSheet.create({
     grid: {
         flex: 1,
+        maxWidth: 450,
         gap: 10,
         flexWrap: 'wrap',
         flexDirection: 'row',

@@ -66,6 +66,10 @@ export default function Store() {
 }
 
 const styles = StyleSheet.create({
+    scrollContainer: {
+        width: '100%',
+        height: '100%',
+    },
     sectionTitleContainer: {
         width: '100%',
         overflow: 'hidden',
@@ -96,10 +100,6 @@ const styles = StyleSheet.create({
         backgroundColor: colors.shadow,
         transform: [{ rotate: '-45deg' }],
     },
-    scrollContainer: {
-        width: '100%',
-        height: '100%',
-    },
     viewContainer: {
         width: '100%',
         height: '100%',
@@ -108,6 +108,7 @@ const styles = StyleSheet.create({
     },
     sectionContainer: {
         width: '100%',
+        maxWidth: 450,
         gap: 8,
         flexWrap: 'wrap',
         flexDirection: 'row',

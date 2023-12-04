@@ -23,6 +23,7 @@ export default function Home() {
 const styles = StyleSheet.create({
     scrollContainer: {
         width: '100%',
+        maxWidth: 450,
         height: '100%',
     },
     viewContainer: {

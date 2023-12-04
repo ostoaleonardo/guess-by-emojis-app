@@ -11,53 +11,57 @@ export function WinModal({ level, mode, isNewUnlocked }) {
 
     return (
         <Modal animationType='slide' transparent={true} statusBarTranslucent>
-            <View style={styles.container}>
-                <View style={styles.modal}>
-                    <Text style={styles.title}>
-                        ¡Nivel completado!
-                    </Text>
-                    <View style={styles.emojisContainer}>
-                        {level.emojis?.map((emoji, index) => (
-                            <EmojiText key={index} emoji={emoji} />
-                        ))}
-                    </View>
-                    <Text style={styles.answer}>
-                        {level.title}
-                    </Text>
-                    {isNewUnlocked && (
-                        <>
-                            <Text style={styles.subtitle}>
-                                Haz desbloqueado el siguiente nivel.
-                            </Text>
-                            <View style={styles.moneyContainer}>
-                                <Text style={styles.moneyText}>+5</Text>
-                                <Text style={styles.plusIcon}>💵</Text>
-                            </View>
-                        </>
-                    )}
-                    <SolidButton
-                        onPress={goLevels}
-                        label='Continuar'
-                    />
+            <View style={styles.background} />
+            <View style={styles.modal}>
+                <Text style={styles.title}>
+                    ¡Nivel completado!
+                </Text>
+                <View style={styles.emojisContainer}>
+                    {level.emojis?.map((emoji, index) => (
+                        <EmojiText key={index} emoji={emoji} />
+                    ))}
                 </View>
+                <Text style={styles.answer}>
+                    {level.title}
+                </Text>
+                {isNewUnlocked && (
+                    <>
+                        <Text style={styles.subtitle}>
+                            Haz desbloqueado el siguiente nivel.
+                        </Text>
+                        <View style={styles.moneyContainer}>
+                            <Text style={styles.moneyText}>+5</Text>
+                            <Text style={styles.plusIcon}>💵</Text>
+                        </View>
+                    </>
+                )}
+                <SolidButton
+                    onPress={goLevels}
+                    label='Continuar'
+                />
             </View>
         </Modal>
     )
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    background: {
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
+        opacity: 0.5,
+        backgroundColor: 'black',
     },
     modal: {
         width: '90%',
+        maxWidth: 450,
         padding: 32,
         borderRadius: 24,
+        alignSelf: 'center',
         alignItems: 'center',
         justifyContent: 'center',
+        marginTop: 'auto',
+        marginBottom: 'auto',
         backgroundColor: colors.backgroundCard,
     },
     title: {

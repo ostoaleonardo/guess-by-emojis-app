@@ -307,6 +307,7 @@ const styles = StyleSheet.create({
     topContainer: {
         position: 'relative',
         flex: 1,
+        maxWidth: 450,
         alignItems: 'center',
     },
     topContent: {
@@ -345,6 +346,7 @@ const styles = StyleSheet.create({
     powerUpsContainer: {
         gap: 8,
         width: '90%',
+        maxWidth: 450,
         marginTop: 20,
         flexWrap: 'wrap',
         flexDirection: 'row',
@@ -354,6 +356,7 @@ const styles = StyleSheet.create({
     keyboardContainer: {
         gap: 4,
         width: '90%',
+        maxWidth: 450,
         flexWrap: 'wrap',
         flexDirection: 'row',
         alignItems: 'center',

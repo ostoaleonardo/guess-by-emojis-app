@@ -14,6 +14,7 @@ export function BannerAdMobContainer({ children }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        alignItems: 'center',
         backgroundColor: colors.backgroundScreen,
     },
 })

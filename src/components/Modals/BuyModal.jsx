@@ -104,14 +104,15 @@ const styles = StyleSheet.create({
         backgroundColor: 'black',
     },
     modal: {
-        marginTop: 'auto',
-        marginBottom: 'auto',
         width: '90%',
+        maxWidth: 450,
         padding: 32,
         borderRadius: 24,
         alignSelf: 'center',
         alignItems: 'center',
         justifyContent: 'center',
+        marginTop: 'auto',
+        marginBottom: 'auto',
         backgroundColor: colors.backgroundCard,
     },
     emojiContainer: {
@@ -124,6 +125,7 @@ const styles = StyleSheet.create({
     },
     blurImage: {
         position: 'absolute',
+        top: 50,
         width: '100%',
         resizeMode: 'contain',
     },
