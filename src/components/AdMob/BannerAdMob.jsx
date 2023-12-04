@@ -8,8 +8,6 @@ export function BannerAdMob() {
     
     if (!isConnected) return null
 
-    // return null
-
     return (
         <BannerAd
             unitId={adUnitId}

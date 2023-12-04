@@ -36,11 +36,7 @@ export default function Game() {
         const level = mode[levelId - 1]
         setLevel(level)
         getKeyboard(level.title)
-        setUserAnswer(
-            Array(level.title.length)
-                .fill(false)
-                .map((letter, index) => level.title[index] === ' ' ? ' ' : letter)
-        )
+        setUserAnswer(level.title.split('').map((letter) => letter === ' ' ? ' ' : false))
     }
 
     const getKeyboard = (title) => {
@@ -74,13 +70,13 @@ export default function Game() {
             const correctIndex = revealLetter(letter)
 
             if (newAnswer[correctIndex] !== false) {
-                newAnswer = removeLetterFromAnswer(correctIndex).newAnswer
-                newKeyboard = removeLetterFromAnswer(correctIndex).newKeyboard
+                const { newAnswer: updatedAnswer, newKeyboard: updatedKeyboard } = removeLetterFromAnswer(correctIndex)
+                newAnswer = updatedAnswer
+                newKeyboard = updatedKeyboard
             }
 
             newAnswer[correctIndex] = letter
             indexAnswer = correctIndex
-            setIsRevealed(false)
         }
 
         // Set the new answer
@@ -126,22 +122,24 @@ export default function Game() {
     const checkAnswer = async (answer) => {
         // Check if all spaces are filled
         const isAnswerComplete = answer.every((letter) => letter !== false)
-        if (!isAnswerComplete) { return }
 
-        // Join answer reclacing '-' with spaces
-        const answerWithoutSpaces = answer.join('')
-        const titleLowerCase = level.title.toLowerCase()
+        if (isAnswerComplete) {
+            // Join answer reclacing '-' with spaces
+            const answerWithoutSpaces = answer.join('')
+            const titleLowerCase = level.title.toLowerCase()
 
-        if (answerWithoutSpaces === titleLowerCase) {
-            // If the next level is not unlocked
-            const nextLevel = await getNextLevel()
-            if (nextLevel === undefined) {
-                addMoney(5)
-                unlockNextLevel()
-                setIsNewUnlocked(true)
+            if (answerWithoutSpaces === titleLowerCase) {
+                // If the next level is not unlocked
+                const nextLevel = await getNextLevel()
+
+                if (!nextLevel) {
+                    addMoney(5)
+                    unlockNextLevel()
+                    setIsNewUnlocked(true)
+                }
+
+                setYouWin(true)
             }
-
-            setYouWin(true)
         }
     }
 
