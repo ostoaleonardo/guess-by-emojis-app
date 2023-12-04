@@ -11,22 +11,18 @@ export function LetterAnswer({ onPress, letter }) {
             style={styles.pressContainer}
             onPress={letter !== false ? onPress : null}
         >
-            {letter !== false && letter !== '-' ? (
-                <Animated.View style={[styles.keyContainer, animatedStyle]}>
-                    <View style={styles.shadow} />
-                    <View style={styles.letterContainer}>
-                        <Text style={styles.letter}>
-                            {letter}
-                        </Text>
-                    </View>
-                </Animated.View>
-            ) : letter === false && (
-                <View style={styles.emptyContainer} />
-            )}
-
-            {letter === '-' && (
-                <View style={styles.dash} />
-            )}
+            {letter === false ? <View style={styles.emptyContainer} />
+                : letter === ' ' ? <View style={styles.dash} />
+                    : (
+                        <Animated.View style={[styles.keyContainer, animatedStyle]}>
+                            <View style={styles.shadow} />
+                            <View style={styles.letterContainer}>
+                                <Text style={styles.letter}>
+                                    {letter}
+                                </Text>
+                            </View>
+                        </Animated.View>
+                    )}
         </Pressable>
     )
 }

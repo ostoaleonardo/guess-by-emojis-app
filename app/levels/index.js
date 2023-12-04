@@ -2,20 +2,14 @@ import { useCallback, useState } from 'react'
 import { useGlobalSearchParams, useFocusEffect } from 'expo-router'
 import { StyleSheet, View } from 'react-native'
 import { BannerAdMobContainer, EmojiCard } from '../../src/components'
-import { movies, series, characters, videogames, brands, countries } from '../../src/constants'
+import { getMode } from '../../src/utils/getMode'
 import useLevels from '../../src/hooks/useLevels'
 
 export default function Levels() {
     const params = useGlobalSearchParams()
+    const mode = getMode(params.mode).levels
     const [level, setLevel] = useState([])
     const { getLevelsByCategory } = useLevels()
-
-    const mode = params.mode === 'movies' ? movies
-        : params.mode === 'series' ? series
-            : params.mode === 'characters' ? characters
-                : params.mode === 'videogames' ? videogames
-                    : params.mode === 'brands' ? brands
-                        : params.mode === 'countries' && countries
 
     useFocusEffect(
         useCallback(() => {

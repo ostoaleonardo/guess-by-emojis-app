@@ -12,18 +12,17 @@ export function LetterKey({ onPress, letter }) {
                 style={styles.pressContainer}
                 onPress={onPress}
             >
-                {letter !== '-' ? (
-                    <View style={styles.keyContainer}>
-                        <View style={styles.shadow} />
-                        <View style={styles.letterContainer}>
-                            <Text style={styles.letter}>
-                                {letter}
-                            </Text>
+                {letter === false ? <View style={styles.empty} />
+                    : (
+                        <View style={styles.keyContainer}>
+                            <View style={styles.shadow} />
+                            <View style={styles.letterContainer}>
+                                <Text style={styles.letter}>
+                                    {letter}
+                                </Text>
+                            </View>
                         </View>
-                    </View>
-                ) : (
-                    <View style={styles.empty} />
-                )}
+                    )}
             </Pressable>
         </Animated.View>
     )

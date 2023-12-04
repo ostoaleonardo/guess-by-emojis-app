@@ -22,7 +22,7 @@ export default function GameLayout() {
             <Stack.Screen
                 name='index'
                 options={{
-                    headerTitle: params.name ?? '',
+                    headerTitle: params.title ?? '',
                 }}
             />
         </Stack>

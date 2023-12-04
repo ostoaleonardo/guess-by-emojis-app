@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 import { useGlobalSearchParams, useRouter } from 'expo-router'
 import { StyleSheet, View } from 'react-native'
-import { BannerAdMobContainer, EmojiText, LetterAnswer, LetterKey, PowerUp, Alert, WinModal } from '../../src/components'
-import { movies, series, characters, videogames, brands, countries, powers, colors } from '../../src/constants'
 import Animated, { BounceIn, BounceOut } from 'react-native-reanimated'
+import { BannerAdMobContainer, EmojiText, LetterAnswer, LetterKey, PowerUp, Alert, WinModal } from '../../src/components'
+import { powers, colors } from '../../src/constants'
+import { getMode } from '../../src/utils/getMode'
 import useLevels from '../../src/hooks/useLevels'
 import usePowerUps from '../../src/hooks/usePowerUps'
 import useMoney from '../../src/hooks/useMoney'
@@ -14,20 +15,9 @@ export default function Game() {
     const { getLevel, unlockLevel } = useLevels()
     const { addMoney } = useMoney()
     const { powerUps, spendPowerUps } = usePowerUps()
-    const lvl = params.id
-    const mode = params.mode === 'movies' ? movies
-        : params.mode === 'series' ? series
-            : params.mode === 'characters' ? characters
-                : params.mode === 'videogames' ? videogames
-                    : params.mode === 'brands' ? brands
-                        : params.mode === 'countries' && countries
-    const title = params.mode === 'movies' ? 'Películas'
-        : params.mode === 'series' ? 'Series'
-            : params.mode === 'characters' ? 'Personajes'
-                : params.mode === 'videogames' ? 'Videojuegos'
-                    : params.mode === 'brands' ? 'Marcas'
-                        : params.mode === 'countries' && 'Países'
-    const [guess, setGuess] = useState({})
+    const levelId = params.id
+    const mode = getMode(params.mode).levels
+    const [level, setLevel] = useState({})
     const [userAnswer, setUserAnswer] = useState([])
     const [keyboard, setKeyboard] = useState([])
     const [answerPositions, setAnswerPositions] = useState([])
@@ -37,18 +27,19 @@ export default function Game() {
     const [showAlert, setShowAlert] = useState('')
 
     useEffect(() => {
-        router.setParams({ name: title })
+        const title = getMode(params.mode).title
+        router.setParams({ title })
         getEmojis()
     }, [])
 
     const getEmojis = () => {
-        const level = mode[lvl - 1]
-        setGuess(level)
+        const level = mode[levelId - 1]
+        setLevel(level)
         getKeyboard(level.title)
         setUserAnswer(
             Array(level.title.length)
                 .fill(false)
-                .map((_, index) => level.title[index] === ' ' && '-')
+                .map((letter, index) => level.title[index] === ' ' ? ' ' : letter)
         )
     }
 
@@ -63,7 +54,7 @@ export default function Game() {
 
     const addLetterToAnswer = (letter, index) => {
         // If the letter is a space, return
-        if (letter === '-') { return }
+        if (letter === ' ') { return }
 
         let indexAnswer = -1
         let newAnswer = [...userAnswer]
@@ -71,8 +62,7 @@ export default function Game() {
 
         if (!isRevealed) {
             // Get the first empty index
-            var emptyIndex = newAnswer.indexOf(false)
-            if (newAnswer[emptyIndex] === '-') { emptyIndex += 1 }
+            const emptyIndex = newAnswer.indexOf(false)
 
             // Set the letter in the empty index
             newAnswer[emptyIndex] = letter
@@ -97,7 +87,7 @@ export default function Game() {
         setUserAnswer(newAnswer)
 
         // Get a new keyboard without the letter
-        newKeyboard[index] = '-'
+        newKeyboard[index] = false
         setKeyboard(newKeyboard)
 
         // Save the letter (original and new position)
@@ -112,7 +102,7 @@ export default function Game() {
 
     const removeLetterFromAnswer = (index) => {
         // If the letter is a space, return
-        if (userAnswer[index] === '-') { return }
+        if (userAnswer[index] === ' ') { return }
 
         // Get the original position of the letter
         const originalPosition = answerPositions[index].original
@@ -139,8 +129,8 @@ export default function Game() {
         if (!isAnswerComplete) { return }
 
         // Join answer reclacing '-' with spaces
-        const answerWithoutSpaces = answer.join('').replace(/-/g, ' ')
-        const titleLowerCase = guess.title.toLowerCase()
+        const answerWithoutSpaces = answer.join('')
+        const titleLowerCase = level.title.toLowerCase()
 
         if (answerWithoutSpaces === titleLowerCase) {
             // If the next level is not unlocked
@@ -156,13 +146,13 @@ export default function Game() {
     }
 
     const getNextLevel = async () => {
-        const nextId = parseInt(lvl) + 1
+        const nextId = parseInt(levelId) + 1
         const level = await getLevel(nextId, params.mode)
         return level
     }
 
     const unlockNextLevel = async () => {
-        const nextId = parseInt(lvl) + 1
+        const nextId = parseInt(levelId) + 1
         await unlockLevel(nextId, params.mode)
     }
 
@@ -198,11 +188,10 @@ export default function Game() {
 
     const revealLetter = (letter) => {
         // When is pressed, the user can select a letter to reveal
-        const answerLowerCase = guess.title.toLowerCase().split('')
-        const answerWithoutSpaces = answerLowerCase.map((letter) => letter === ' ' ? '-' : letter)
+        const answer = level.title.toLowerCase().split('')
 
         // Get the first index of the letter
-        const availableIndex = answerWithoutSpaces.findIndex((letterAnswer, index) => {
+        const availableIndex = answer.findIndex((letterAnswer, index) => {
             if (letterAnswer === letter && userAnswer[index] !== letterAnswer) {
                 return true
             }
@@ -217,13 +206,12 @@ export default function Game() {
 
     const removeLetters = () => {
         // Remove of the answer the letters that are not in the correct position
-        const answer = guess.title.toLowerCase().split('')
-        const answerWithoutSpaces = answer.map((letter) => letter === ' ' ? '-' : letter)
+        const answer = level.title.toLowerCase().split('')
 
         const newAnswer = [...userAnswer]
 
         // If there are no letters to remove, return
-        if (newAnswer.every((letter, index) => letter === false || letter.toLowerCase() === answerWithoutSpaces[index])) {
+        if (newAnswer.every((letter, index) => letter === false || letter === answer[index])) {
             setShowAlert('No hay letras que eliminar')
             timeAlert()
             return
@@ -233,7 +221,7 @@ export default function Game() {
         const newAnswerPositions = [...answerPositions]
 
         newAnswer.forEach((letter, index) => {
-            if (letter !== answerWithoutSpaces[index]) {
+            if (letter !== answer[index]) {
                 const originalPosition = answerPositions[index]?.original
                 newKeyboard[originalPosition] = letter
                 newAnswer[index] = false
@@ -248,16 +236,15 @@ export default function Game() {
 
     const revealAnswer = () => {
         // Get the answer without spaces
-        const answer = guess.title.toLowerCase().split('')
-        const answerWithoutSpaces = answer.map((letter) => letter === ' ' ? '-' : letter)
-        setUserAnswer(answerWithoutSpaces)
+        const answer = level.title.toLowerCase().split('')
+        setUserAnswer(answer)
 
-        // Set the keyboard to empty with '-'
-        const newKeyboard = keyboard.fill('-')
-        setKeyboard(newKeyboard)
-
+        checkAnswer(answer)
         spendPowerUps(3, 1)
-        checkAnswer(answerWithoutSpaces)
+
+        // Set the keyboard to empty spaces
+        const newKeyboard = keyboard.fill(false)
+        setKeyboard(newKeyboard)
     }
 
     const timeAlert = () => {
@@ -274,7 +261,7 @@ export default function Game() {
                     entering={BounceIn} exiting={BounceOut}
                 >
                     <View style={styles.emojisContainer}>
-                        {guess.emojis?.map((emoji, index) => (
+                        {level.emojis?.map((emoji, index) => (
                             <EmojiText key={index} emoji={emoji} />
                         ))}
                     </View>
@@ -311,7 +298,7 @@ export default function Game() {
                 </View>
             </View>
             {showAlert !== '' && <Alert label={showAlert} />}
-            {youWin && <WinModal level={guess} mode={params.mode} isNewUnlocked={isNewUnlocked} />}
+            {youWin && <WinModal level={level} mode={params.mode} isNewUnlocked={isNewUnlocked} />}
         </BannerAdMobContainer>
     )
 }
