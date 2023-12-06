@@ -48,9 +48,7 @@ export function BuyModal({ onPress, powerUp }) {
             <Image source={blur} style={styles.blurImage} />
             <View style={styles.modal}>
                 <View style={styles.emojiContainer}>
-                    <Text style={styles.emojiText}>
-                        {powerUp?.emoji}
-                    </Text>
+                    <Image source={powerUp?.emoji} style={styles.emoji} />
                 </View>
                 <Text style={styles.title}>
                     {powerUp?.title}
@@ -125,15 +123,15 @@ const styles = StyleSheet.create({
     },
     blurImage: {
         position: 'absolute',
-        top: 50,
+        top: 150,
         width: '100%',
         resizeMode: 'contain',
     },
-    emojiText: {
+    emoji: {
         position: 'absolute',
         zIndex: 2,
-        fontSize: 96,
-        fontFamily: fonts.bold,
+        width: 130,
+        height: 130,
     },
     title: {
         fontSize: 24,

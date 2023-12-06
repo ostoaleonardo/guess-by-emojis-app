@@ -13,8 +13,8 @@ import { ItemStoreCard } from './Cards/ItemStoreCard'
 import { MoneyChip } from './Cards/MoneyChip'
 
 // Game
+import { EmojiLevel } from './Game/EmojiLevel'
 import { EmojiCard } from './Game/EmojiCard'
-import { EmojiText } from './Game/EmojiText'
 import { LetterAnswer } from './Game/LetterAnswer'
 import { LetterKey } from './Game/LetterKey'
 import { PowerUp } from './Game/PowerUp'
@@ -42,8 +42,8 @@ export {
     MoneyChip,
 
     // Game
+    EmojiLevel,
     EmojiCard,
-    EmojiText,
     LetterAnswer,
     LetterKey,
     PowerUp,

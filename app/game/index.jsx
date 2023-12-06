@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useGlobalSearchParams, useRouter } from 'expo-router'
 import { StyleSheet, View } from 'react-native'
 import Animated, { BounceIn, BounceOut } from 'react-native-reanimated'
-import { BannerAdMobContainer, EmojiText, LetterAnswer, LetterKey, PowerUp, Alert, WinModal } from '../../src/components'
+import { BannerAdMobContainer, EmojiCard, LetterAnswer, LetterKey, PowerUp, Alert, WinModal } from '../../src/components'
 import { powers, colors } from '../../src/constants'
 import { getMode } from '../../src/utils/getMode'
 import useLevels from '../../src/hooks/useLevels'
@@ -260,7 +260,7 @@ export default function Game() {
                 >
                     <View style={styles.emojisContainer}>
                         {level.emojis?.map((emoji, index) => (
-                            <EmojiText key={index} emoji={emoji} />
+                            <EmojiCard key={index} emoji={emoji} />
                         ))}
                     </View>
                     <View style={styles.answerContainer}>

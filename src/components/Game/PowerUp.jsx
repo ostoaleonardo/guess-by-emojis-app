@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 import { colors, fonts } from '../../constants'
 import Animated from 'react-native-reanimated'
 import useBounceAnimation from '../../hooks/useBounceAnimation'
@@ -15,9 +15,10 @@ export function PowerUp({ onPress, item, count }) {
                 <View style={styles.shadow} />
                 <View style={styles.powerContainer}>
                     <View style={styles.reflection} />
-                    <Text style={styles.emoji}>
+                    <Image source={item.emoji} style={styles.emoji} />
+                    {/* <Text style={styles.emoji}>
                         {item.emoji}
-                    </Text>
+                    </Text> */}
                     <Animated.Text style={[styles.count, animatedStyle]}>
                         {'x' + count}
                     </Animated.Text>
@@ -73,7 +74,8 @@ const styles = StyleSheet.create({
         transform: [{ rotate: '20deg' }],
     },
     emoji: {
-        fontSize: 16,
+        width: 24,
+        height: 24,
     },
     count: {
         fontSize: 16,

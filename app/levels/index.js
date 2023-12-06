@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react'
 import { useGlobalSearchParams, useFocusEffect } from 'expo-router'
 import { StyleSheet, View } from 'react-native'
-import { BannerAdMobContainer, EmojiCard } from '../../src/components'
+import { BannerAdMobContainer, EmojiLevel } from '../../src/components'
 import { getMode } from '../../src/utils/getMode'
 import useLevels from '../../src/hooks/useLevels'
 
@@ -26,7 +26,7 @@ export default function Levels() {
         <BannerAdMobContainer>
             <View style={styles.grid}>
                 {level.length > 0 && mode.map((item, index) => (
-                    <EmojiCard
+                    <EmojiLevel
                         key={index}
                         item={item}
                         mode={params.mode}

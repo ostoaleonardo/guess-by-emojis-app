@@ -1,8 +1,8 @@
 import { router } from 'expo-router'
-import { Modal, StyleSheet, Text, View } from 'react-native'
-import { EmojiText } from '../Game/EmojiText'
+import { Image, Modal, StyleSheet, Text, View } from 'react-native'
+import { EmojiCard } from '../Game/EmojiCard'
 import { SolidButton } from '../Buttons/SolidButton'
-import { colors, fonts } from '../../constants'
+import { colors, fonts, images } from '../../constants'
 
 export function WinModal({ level, mode, isNewUnlocked }) {
     const goLevels = () => {
@@ -18,7 +18,7 @@ export function WinModal({ level, mode, isNewUnlocked }) {
                 </Text>
                 <View style={styles.emojisContainer}>
                     {level.emojis?.map((emoji, index) => (
-                        <EmojiText key={index} emoji={emoji} />
+                        <EmojiCard key={index} emoji={emoji} />
                     ))}
                 </View>
                 <Text style={styles.answer}>
@@ -31,7 +31,7 @@ export function WinModal({ level, mode, isNewUnlocked }) {
                         </Text>
                         <View style={styles.moneyContainer}>
                             <Text style={styles.moneyText}>+5</Text>
-                            <Text style={styles.plusIcon}>💵</Text>
+                            <Image source={images.dollars} style={styles.dollarIcon} />
                         </View>
                     </>
                 )}
@@ -110,13 +110,12 @@ const styles = StyleSheet.create({
         color: colors.textCard,
         fontFamily: fonts.bold,
     },
-    plusIcon: {
+    dollarIcon: {
         position: 'absolute',
-        top: -10,
+        top: -6,
         right: 0,
-        fontSize: 28,
-        textAlign: 'center',
-        textAlignVertical: 'center',
+        width: 32,
+        height: 32,
         transform: [{ rotate: '-45deg' }],
     },
 })

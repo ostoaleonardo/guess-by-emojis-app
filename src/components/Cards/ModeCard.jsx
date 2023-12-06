@@ -1,5 +1,5 @@
 import { router } from 'expo-router'
-import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 import { colors, fonts } from '../../constants'
 
 export function ModeCard({ item }) {
@@ -16,9 +16,7 @@ export function ModeCard({ item }) {
             <View style={styles.container}>
                 <View style={styles.reflection} />
                 <View style={styles.emojiContainer}>
-                    <Text style={styles.emojiText}>
-                        {item.emoji}
-                    </Text>
+                    <Image source={item.emoji} style={styles.emoji} />
                 </View>
                 <View style={styles.titleContainer}>
                     <Text style={styles.title}>
@@ -80,9 +78,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    emojiText: {
-        fontSize: 32,
-        textAlign: 'center',
+    emoji: {
+        width: 48,
+        height: 48,
     },
     titleContainer: {
         marginLeft: 16,

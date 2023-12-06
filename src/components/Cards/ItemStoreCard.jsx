@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 import { colors, fonts } from '../../constants'
 
 export function ItemStoreCard({ item, count, onPress }) {
@@ -11,9 +11,7 @@ export function ItemStoreCard({ item, count, onPress }) {
             <View style={styles.container}>
                 <View style={styles.emojiContainer}>
                     <View style={styles.reflection} />
-                    <Text style={styles.emojiText}>
-                        {item.emoji}
-                    </Text>
+                    <Image source={item.emoji} style={styles.emoji} />
                 </View>
                 <View style={styles.priceCounterContainer}>
                     <View style={styles.priceContainer}>
@@ -69,9 +67,9 @@ const styles = StyleSheet.create({
         borderColor: colors.borderContainer,
         backgroundColor: colors.backgroundContainer,
     },
-    emojiText: {
-        fontSize: 24,
-        textAlign: 'center',
+    emoji: {
+        width: '60%',
+        height: '60%',
     },
     priceCounterContainer: {
         width: '100%',

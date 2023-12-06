@@ -7,6 +7,7 @@ export function BannerAdMob() {
     const { isConnected } = NetInfo.useNetInfo()
     
     if (!isConnected) return null
+    return null
 
     return (
         <BannerAd
