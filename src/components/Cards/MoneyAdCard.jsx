@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 import { RewardedAd, RewardedAdEventType, TestIds } from 'react-native-google-mobile-ads'
-import { colors, fonts } from '../../constants'
+import { colors, fonts, images } from '../../constants'
 import useMoney from '../../hooks/useMoney'
 
 const adUnitId = __DEV__ ? TestIds.REWARDED : 'ca-app-pub-5454307717540089/4514455922'
@@ -63,9 +63,7 @@ export function MoneyAdCard() {
                     </Text>
                 </View>
                 <View style={styles.emojiContainer}>
-                    <Text style={styles.emojiText}>
-                        💸
-                    </Text>
+                    <Image source={images.moneyWithWings} style={styles.emoji} />
                 </View>
             </View>
         </Pressable>
@@ -98,12 +96,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    emojiText: {
+    emoji: {
         position: 'absolute',
-        right: -30,
-        fontSize: 84,
-        textAlign: 'center',
-        transform: [{ rotate: '-45deg' }],
+        right: -42,
+        bottom: -76,
+        width: 128,
+        height: 128,
     },
     textContainer: {
         flex: 2,

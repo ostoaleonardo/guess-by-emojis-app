@@ -66,6 +66,7 @@ import man from '../../assets/images/emojis/man.png'
 import martialArtsUniform from '../../assets/images/emojis/martial-arts-uniform.png'
 import mobilePhone from '../../assets/images/emojis/mobile-phone.png'
 import moneyBag from '../../assets/images/emojis/money-bag.png'
+import moneyWithWings from '../../assets/images/emojis/money-with-wings.png'
 import monkey from '../../assets/images/emojis/monkey.png'
 import mouseFace from '../../assets/images/emojis/mouse-face.png'
 import movieCamera from '../../assets/images/emojis/movie-camera.png'
@@ -124,6 +125,28 @@ import window from '../../assets/images/emojis/window.png'
 import yellowCircle from '../../assets/images/emojis/yellow-circle.png'
 import zombieMan from '../../assets/images/emojis/zombie-man.png'
 import zombieWoman from '../../assets/images/emojis/zombie-woman.png'
+
+// Flags
+import arFlag from '../../assets/images/flags/ar-flag.png'
+import auFlag from '../../assets/images/flags/au-flag.png'
+import brFlag from '../../assets/images/flags/br-flag.png'
+import caFlag from '../../assets/images/flags/ca-flag.png'
+import clFlag from '../../assets/images/flags/cl-flag.png'
+import cnFlag from '../../assets/images/flags/cn-flag.png'
+import coFlag from '../../assets/images/flags/co-flag.png'
+import deFlag from '../../assets/images/flags/de-flag.png'
+import esFlag from '../../assets/images/flags/es-flag.png'
+import frFlag from '../../assets/images/flags/fr-flag.png'
+import gbFlag from '../../assets/images/flags/gb-flag.png'
+import inFlag from '../../assets/images/flags/in-flag.png'
+import itFlag from '../../assets/images/flags/it-flag.png'
+import jpFlag from '../../assets/images/flags/jp-flag.png'
+import krFlag from '../../assets/images/flags/kr-flag.png'
+import mxFlag from '../../assets/images/flags/mx-flag.png'
+import peFlag from '../../assets/images/flags/pe-flag.png'
+import ruFlag from '../../assets/images/flags/ru-flag.png'
+import usFlag from '../../assets/images/flags/us-flag.png'
+import zaFlag from '../../assets/images/flags/za-flag.png'
 
 export default {
     // Icons
@@ -194,6 +217,7 @@ export default {
     martialArtsUniform,
     mobilePhone,
     moneyBag,
+    moneyWithWings,
     monkey,
     mouseFace,
     movieCamera,
@@ -252,4 +276,26 @@ export default {
     yellowCircle,
     zombieMan,
     zombieWoman,
+
+    // Flags
+    arFlag,
+    auFlag,
+    brFlag,
+    caFlag,
+    clFlag,
+    cnFlag,
+    coFlag,
+    deFlag,
+    esFlag,
+    frFlag,
+    gbFlag,
+    inFlag,
+    itFlag,
+    jpFlag,
+    krFlag,
+    mxFlag,
+    peFlag,
+    ruFlag,
+    usFlag,
+    zaFlag,
 }
