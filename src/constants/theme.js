@@ -1,31 +1,22 @@
 const colors = {
-    backgroundScreen: '#201e29',
-    backgroundHeader: '#18161f',
-    shadow: '#e4e3f1',
+    backgroundScreen: '#f8f8ee',
 
-    // Store screen
-    textCard: '#fffdfe',
-    shadowCard: '#201e33',
-    backgroundCard: '#322f4d',
+    borderColor: '#d1d0d4',
+    textCard: '#313b42',
+    shadowCard: '#141418',
+    backgroundCard: '#fffdfe',
 
-    shadowBlueChip: '#0046ce',
-    backgroundBlueChip: '#3177ff',
+    // Buttons
+    closeButton: '#f04d6a',
+    primaryButton: '#74c02e',
+    secondaryButton: '#e4e4e4',
 
-    shadowGreenChip: '#429a46',
-    backgroundGreenChip: '#4cbf51',
-
-    // Game screen
-    letter: '#fffdfe',
-    borderShadow: '#010014',
-    backgroundShadow: '#322f4d',
-
-    borderContainer: '#8494bb',
-    backgroundContainer: '#6a799e',
+    whiteColor: '#fffdfe',
 
     // Money
     borderMoneyShadow: '#042813',
-    borderMoneyContainer: '#208249',
-    backgroundMoneyContainer: '#50ac7f',
+    borderMoneyContainer: '#116346',
+    backgroundMoneyContainer: '#21cf5f',
 }
 
 const fonts = {

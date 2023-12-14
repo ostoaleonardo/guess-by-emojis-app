@@ -1,5 +1,6 @@
 import { Stack, useLocalSearchParams } from 'expo-router'
-import { fonts } from '../../src/constants'
+import { MoneyChipButton } from '../../src/components'
+import { colors, fonts } from '../../src/constants'
 
 export default function GameLayout() {
     const params = useLocalSearchParams()
@@ -7,16 +8,24 @@ export default function GameLayout() {
     return (
         <Stack
             screenOptions={{
-                headerTransparent: true,
                 headerShadowVisible: false,
+
+                headerStyle: {
+                    backgroundColor: colors.backgroundScreen,
+                },
 
                 headerTitleStyle: {
                     fontSize: 24,
                     fontFamily: fonts.bold,
+                    color: colors.textCard,
                 },
 
-                headerTintColor: 'white',
                 headerTitleAlign: 'center',
+                headerTintColor: colors.textCard,
+
+                headerRight: () => (
+                    <MoneyChipButton />
+                ),
             }}
         >
             <Stack.Screen

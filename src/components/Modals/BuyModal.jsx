@@ -1,93 +1,74 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Image, Modal, Pressable, StyleSheet, Text, View } from 'react-native'
-import { SolidButton } from '../Buttons/SolidButton'
-import { Alert } from '../Modals/Alert'
-import { colors, fonts } from '../../constants'
+import { BuyButton } from '../Buttons/BuyButton'
+import { AdButton } from '../Buttons/AdButton'
+import { colors, fonts, images } from '../../constants'
 import useMoney from '../../hooks/useMoney'
 import usePowerUps from '../../hooks/usePowerUps'
+import Animated, { FadeIn } from 'react-native-reanimated'
 
 const blur = require('../../../assets/images/blur.png')
 
-export function BuyModal({ onPress, powerUp }) {
-    const [counter, setCounter] = useState(1)
-    const [enoughMoney, setEnoughMoney] = useState('')
-    const { money, spendMoney } = useMoney()
-    const { addPowerUps } = usePowerUps()
-
-    const toggleCounter = (action) => () => {
-        action === 'add' && counter < 10 && setCounter(counter + 1)
-        action === 'remove' && counter > 1 && setCounter(counter - 1)
-    }
+export function BuyModal({ powerUp, onClose }) {
+    const { money } = useMoney()
+    const { buyPowerUp } = usePowerUps()
+    const [isNotEnoughMoney, setIsNotEnoughMoney] = useState(false)
+    let isBought = false
 
     const buyItem = async () => {
-        if (money < powerUp.price * counter) {
-            showAlert('No tienes suficiente dinero')
-            return
+        if (money < powerUp.price) {
+            setIsNotEnoughMoney(true)
+        } else {
+            isBought = await buyPowerUp(powerUp.price)
+            onClose(isBought)
         }
-
-        await spendMoney(powerUp.price * counter)
-        await addPowerUps(powerUp.id, counter)
-        onPress()
     }
 
-    const showAlert = (message) => {
-        setEnoughMoney(message)
-        timeAlert()
+    const toggleCloseModal = () => {
+        onClose(false)
+        setIsNotEnoughMoney(false)
     }
 
-    const timeAlert = () => {
-        setTimeout(() => {
-            setEnoughMoney('')
-        }, 3000)
-    }
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsNotEnoughMoney(false)
+        }, 2000)
+
+        return () => clearTimeout(timer)
+    }, [isNotEnoughMoney])
 
     return (
-        <Modal animationType='slide' transparent={true} statusBarTranslucent>
-            {enoughMoney && <Alert label={enoughMoney} />}
+        <Modal
+            transparent={true}
+            animationType='slide'
+            statusBarTranslucent
+        >
             <View style={styles.background} />
             <Image source={blur} style={styles.blurImage} />
             <View style={styles.modal}>
                 <View style={styles.emojiContainer}>
                     <Image source={powerUp?.emoji} style={styles.emoji} />
                 </View>
-                <Text style={styles.title}>
-                    {powerUp?.title}
-                </Text>
-                <Text style={styles.subtitle}>
+                <Text style={styles.description}>
                     {powerUp?.description}
                 </Text>
-                <View style={styles.counterContainer}>
-                    <Pressable
-                        onPress={toggleCounter('remove')}
-                        style={({ pressed }) => [{ transform: [{ scale: pressed ? 0.95 : 1 }] }, styles.pressCounter]}
-                    >
-                        <View style={styles.counterTextContainer}>
-                            <Text style={styles.addText}>-</Text>
-                        </View>
-                    </Pressable>
-                    <Text style={styles.counterText}>
-                        {counter}
-                    </Text>
-                    <Pressable
-                        onPress={toggleCounter('add')}
-                        style={({ pressed }) => [{ transform: [{ scale: pressed ? 0.95 : 1 }] }, styles.pressCounter]}
-                    >
-                        <View style={styles.counterTextContainer}>
-                            <Text style={styles.addText}>+</Text>
-                        </View>
-                    </Pressable>
-                </View>
                 <View style={styles.buttonsContainer}>
-                    <SolidButton
-                        onPress={buyItem}
-                        variant='primary'
-                        label={'Comprar por 💵 ' + (powerUp?.price * counter)}
-                    />
-                    <SolidButton
-                        onPress={onPress}
-                        label='Cancelar'
-                    />
+                    <BuyButton price={powerUp.price} onPress={buyItem} />
+                    <AdButton />
                 </View>
+                {isNotEnoughMoney && (
+                    <Animated.View
+                        style={styles.noMoneyContainer}
+                        entering={FadeIn.duration(100)}
+                    >
+                        <Text style={styles.noMoney}>
+                            No tienes suficiente dinero
+                        </Text>
+                    </Animated.View>
+                )}
+                <Pressable style={styles.closeButton} onPress={toggleCloseModal}>
+                    <Image source={images.close} style={styles.closeIcon} />
+                </Pressable>
             </View>
         </Modal>
     )
@@ -105,7 +86,7 @@ const styles = StyleSheet.create({
         width: '90%',
         maxWidth: 450,
         padding: 32,
-        borderRadius: 24,
+        borderRadius: 40,
         alignSelf: 'center',
         alignItems: 'center',
         justifyContent: 'center',
@@ -133,62 +114,48 @@ const styles = StyleSheet.create({
         width: 130,
         height: 130,
     },
-    title: {
+    description: {
         fontSize: 24,
+        opacity: 0.8,
+        marginVertical: 16,
         textAlign: 'center',
-        color: colors.letter,
+        color: colors.textCard,
         fontFamily: fonts.bold,
     },
-    subtitle: {
-        fontSize: 16,
-        opacity: 0.7,
-        textAlign: 'center',
-        color: colors.letter,
-        fontFamily: fonts.medium,
-    },
-    counterContainer: {
+    buttonsContainer: {
         width: '100%',
-        marginVertical: 24,
+        gap: 4,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
     },
-    pressCounter: {
-        width: 65,
-        height: 65,
-        borderRadius: 18,
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderWidth: 4,
-        borderColor: colors.borderShadow,
-        backgroundColor: colors.backgroundShadow,
-    },
-    counterTextContainer: {
+    closeButton: {
         position: 'absolute',
-        top: 0,
-        width: '98%',
-        height: '92%',
+        zIndex: 3,
+        top: -16,
+        right: -16,
+        padding: 12,
+        borderRadius: 32,
         alignItems: 'center',
         justifyContent: 'center',
-        borderWidth: 4,
-        borderRadius: 14,
-        borderColor: colors.borderContainer,
-        backgroundColor: colors.backgroundContainer,
+        backgroundColor: colors.closeButton,
     },
-    addText: {
-        fontSize: 24,
-        color: colors.letter,
-        fontFamily: fonts.medium,
+    closeIcon: {
+        width: 24,
+        height: 24,
     },
-    counterText: {
-        fontSize: 48,
-        color: colors.letter,
-        fontFamily: fonts.bold,
-    },
-    buttonsContainer: {
-        gap: 4,
+    noMoneyContainer: {
+        position: 'absolute',
         width: '100%',
+        height: '100%',
         alignItems: 'center',
         justifyContent: 'center',
+        backgroundColor: colors.backgroundCard,
+    },
+    noMoney: {
+        fontSize: 24,
+        textAlign: 'center',
+        color: colors.textCard,
+        fontFamily: fonts.bold,
     },
 })

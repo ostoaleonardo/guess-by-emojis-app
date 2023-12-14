@@ -4,51 +4,45 @@ export const modes = [
     {
         mode: 'movies',
         title: 'Peliculas',
-        description: 'Nuevas y clásicas',
         emoji: images.popcorn,
-        levels: '+20 niveles',
+        levels: '50',
     },
     {
         mode: 'series',
         title: 'Series',
-        description: 'Populares y de culto',
         emoji: images.television,
-        levels: '+20 niveles',
+        levels: '50',
     },
     {
         mode: 'characters',
         title: 'Personajes',
-        description: 'De películas y videojuegos',
         emoji: images.alienMonster,
-        levels: '+20 niveles',
+        levels: '50',
     },
     {
         mode: 'videogames',
         title: 'Videojuegos',
-        description: 'De todas las consolas',
         emoji: images.joystick,
-        levels: '+20 niveles',
+        levels: '50',
     },
     {
         mode: 'brands',
         title: 'Marcas',
-        description: 'Tus marcas favoritas',
         emoji: images.packageBox,
-        levels: '+20 niveles',
+        levels: '50',
     },
     {
         mode: 'countries',
         title: 'Paises',
-        description: 'Paises de todo el mundo',
         emoji: images.globe,
-        levels: '+20 niveles',
+        levels: '50',
     }
 ]
 
 export const powers = [{
         id: 1,
         title: 'Una letra',
-        description: 'Revela una letra especifica de la palabra',
+        description: 'Revela una letra especifica de la respuesta',
         price: 20,
         emoji: images.magnifyingGlass,
     },
@@ -62,7 +56,7 @@ export const powers = [{
     {
         id: 3,
         title: 'Revelar',
-        description: 'Revela la palabra completa',
+        description: 'Revela la respuesta completa',
         price: 50,
         emoji: images.bomb,
     }

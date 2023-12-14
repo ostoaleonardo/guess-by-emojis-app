@@ -3,6 +3,7 @@ import { Image, Modal, StyleSheet, Text, View } from 'react-native'
 import { EmojiCard } from '../Game/EmojiCard'
 import { SolidButton } from '../Buttons/SolidButton'
 import { colors, fonts, images } from '../../constants'
+import { MoneyChip } from '../Cards/MoneyChip'
 
 export function WinModal({ level, mode, isNewUnlocked }) {
     const goLevels = () => {
@@ -30,15 +31,11 @@ export function WinModal({ level, mode, isNewUnlocked }) {
                             Haz desbloqueado el siguiente nivel.
                         </Text>
                         <View style={styles.moneyContainer}>
-                            <Text style={styles.moneyText}>+5</Text>
-                            <Image source={images.dollars} style={styles.dollarIcon} />
+                            <MoneyChip money='+5' />
                         </View>
                     </>
                 )}
-                <SolidButton
-                    onPress={goLevels}
-                    label='Continuar'
-                />
+                <SolidButton onPress={goLevels} label='Continuar' />
             </View>
         </Modal>
     )
@@ -56,7 +53,7 @@ const styles = StyleSheet.create({
         width: '90%',
         maxWidth: 450,
         padding: 32,
-        borderRadius: 24,
+        borderRadius: 40,
         alignSelf: 'center',
         alignItems: 'center',
         justifyContent: 'center',
@@ -66,56 +63,50 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 24,
-        color: 'white',
         textAlign: 'center',
+        color: colors.textCard,
         fontFamily: fonts.bold,
     },
     emojisContainer: {
         gap: 10,
-        width: '100%',
+        padding: 16,
         marginVertical: 16,
+        borderRadius: 28,
         flexWrap: 'wrap',
         flexDirection: 'row',
         alignContent: 'center',
         justifyContent: 'center',
+        backgroundColor: colors.backgroundScreen,
     },
     answer: {
         fontSize: 28,
         marginBottom: 16,
         textAlign: 'center',
         fontFamily: fonts.bold,
-        color: colors.borderContainer,
+        color: colors.textCard,
     },
     subtitle: {
         fontSize: 16,
-        color: 'white',
+        color: colors.textCard,
         textAlign: 'center',
         fontFamily: fonts.medium,
     },
     moneyContainer: {
-        flexDirection: 'row',
-        gap: 4,
-        borderWidth: 3,
-        borderRadius: 20,
-        marginVertical: 16,
-        paddingHorizontal: 10,
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderColor: colors.borderMoneyShadow,
-        backgroundColor: colors.backgroundMoneyContainer,
+        marginTop: 16,
+        marginBottom: 32,
     },
     moneyText: {
-        fontSize: 14,
-        marginRight: 24,
-        color: colors.textCard,
+        fontSize: 18,
+        marginRight: 40,
         fontFamily: fonts.bold,
+        color: colors.textCard,
     },
-    dollarIcon: {
+    coinIcon: {
         position: 'absolute',
+        zIndex: 3,
         top: -6,
-        right: 0,
-        width: 32,
-        height: 32,
-        transform: [{ rotate: '-45deg' }],
+        right: -6,
+        width: 42,
+        height: 42,
     },
 })

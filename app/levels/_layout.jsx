@@ -1,4 +1,5 @@
 import { Stack } from 'expo-router'
+import { MoneyChipButton } from '../../src/components'
 import { colors, fonts } from '../../src/constants'
 
 export default function LevelsLayout() {
@@ -8,16 +9,21 @@ export default function LevelsLayout() {
                 headerShadowVisible: false,
 
                 headerStyle: {
-                    backgroundColor: colors.backgroundHeader,
+                    backgroundColor: colors.backgroundScreen,
                 },
 
                 headerTitleStyle: {
                     fontSize: 24,
                     fontFamily: fonts.bold,
+                    color: colors.textCard,
                 },
 
-                headerTintColor: 'white',
                 headerTitleAlign: 'center',
+                headerTintColor: colors.textCard,
+
+                headerRight: () => (
+                    <MoneyChipButton />
+                ),
             }}
         >
             <Stack.Screen

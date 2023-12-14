@@ -29,9 +29,9 @@ const styles = StyleSheet.create({
     modal: {
         width: '90%',
         padding: 18,
-        borderWidth: 3,
+        borderWidth: 1,
         borderRadius: 24,
-        borderColor: colors.borderContainer,
+        borderColor: colors.borderColor,
         backgroundColor: colors.backgroundCard,
     },
     title: {

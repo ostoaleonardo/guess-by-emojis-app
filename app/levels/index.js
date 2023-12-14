@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react'
 import { useGlobalSearchParams, useFocusEffect } from 'expo-router'
-import { StyleSheet, View } from 'react-native'
+import { ScrollView, StyleSheet, View } from 'react-native'
 import { BannerAdMobContainer, EmojiLevel } from '../../src/components'
 import { getMode } from '../../src/utils/getMode'
 import useLevels from '../../src/hooks/useLevels'
@@ -24,29 +24,35 @@ export default function Levels() {
 
     return (
         <BannerAdMobContainer>
-            <View style={styles.grid}>
-                {level.length > 0 && mode.map((item, index) => (
-                    <EmojiLevel
-                        key={index}
-                        item={item}
-                        mode={params.mode}
-                        isUnlocked={index === 0 ? true : level[index]?.unlocked}
-                    />
-                ))}
-            </View>
+            <ScrollView
+                overScrollMode='never'
+                style={styles.scrollContainer}
+                showsVerticalScrollIndicator={false}
+            >
+                <View style={styles.levelsContainer}>
+                    {level.length > 0 && mode.map((item, index) => (
+                        <EmojiLevel
+                            key={index}
+                            item={item}
+                            mode={params.mode}
+                            isUnlocked={level[index]?.unlocked}
+                        />
+                    ))}
+                </View>
+            </ScrollView>
         </BannerAdMobContainer>
     )
 }
 
 const styles = StyleSheet.create({
-    grid: {
+    levelsContainer: {
         flex: 1,
         maxWidth: 450,
         gap: 10,
+        padding: 20,
         flexWrap: 'wrap',
         flexDirection: 'row',
-        paddingVertical: 24,
-        paddingHorizontal: 20,
+        alignItems: 'center',
         justifyContent: 'center',
     },
 })

@@ -1,4 +1,5 @@
 // Icons
+import logo from '../../assets/images/logo.png'
 import homeIcon from '../../assets/icons/home.png'
 import storeIcon from '../../assets/icons/store.png'
 
@@ -31,6 +32,8 @@ import chartIncreasing from '../../assets/images/emojis/chart-increasing.png'
 import child from '../../assets/images/emojis/child.png'
 import chocolateBar from '../../assets/images/emojis/chocolate-bar.png'
 import classicalBuilding from '../../assets/images/emojis/classical-building.png'
+import close from '../../assets/images/emojis/close.png'
+import coin from '../../assets/images/emojis/coin.png'
 import cook from '../../assets/images/emojis/cook.png'
 import cooking from '../../assets/images/emojis/cooking.png'
 import cowboyHatFace from '../../assets/images/emojis/cowboy-hat-face.png'
@@ -41,7 +44,9 @@ import dollars from '../../assets/images/emojis/dollars.png'
 import donut from '../../assets/images/emojis/donut.png'
 import dragon from '../../assets/images/emojis/dragon.png'
 import dropOfBlood from '../../assets/images/emojis/drop-of-blood.png'
+import emptyCoin from '../../assets/images/emojis/empty-coin.png'
 import family from '../../assets/images/emojis/family.png'
+import filmFrames from '../../assets/images/emojis/film-frames.png'
 import fire from '../../assets/images/emojis/fire.png'
 import ghost from '../../assets/images/emojis/ghost.png'
 import globe from '../../assets/images/emojis/globe.png'
@@ -150,6 +155,7 @@ import zaFlag from '../../assets/images/flags/za-flag.png'
 
 export default {
     // Icons
+    logo,
     homeIcon,
     storeIcon,
 
@@ -182,6 +188,8 @@ export default {
     child,
     chocolateBar,
     classicalBuilding,
+    close,
+    coin,
     cook,
     cooking,
     cowboyHatFace,
@@ -192,7 +200,9 @@ export default {
     donut,
     dragon,
     dropOfBlood,
+    emptyCoin,
     family,
+    filmFrames,
     fire,
     ghost,
     globe,

@@ -3,6 +3,8 @@ import { Stack } from 'expo-router'
 import { useFonts } from 'expo-font'
 import * as SplashScreen from 'expo-splash-screen'
 import { Providers } from './providers'
+import { MoneyChipButton } from '../src/components'
+import { colors } from '../src/constants'
 
 export default function AppLayout() {
     const [fontsLoaded, fontError] = useFonts({
@@ -32,13 +34,36 @@ export default function AppLayout() {
         <Providers>
             <Stack
                 screenOptions={{
-                    headerShown: false,
-                    navigationBarHidden: true,
-                    statusBarTranslucent: true,
+                    headerShadowVisible: false,
+
+                    headerStyle: {
+                        backgroundColor: colors.backgroundScreen,
+                    },
+
+                    headerRight: () => (
+                        <MoneyChipButton />
+                    ),
                 }}
                 onLayout={onLayoutRootView}
             >
-                <Stack.Screen name='(tabs)' />
+                <Stack.Screen
+                    name='index'
+                    options={{
+                        headerTitle: '',
+                    }}
+                />
+                <Stack.Screen
+                    name='levels'
+                    options={{
+                        headerShown: false,
+                    }}
+                />
+                <Stack.Screen
+                    name='game'
+                    options={{
+                        headerShown: false,
+                    }}
+                />
             </Stack>
         </Providers>
     )

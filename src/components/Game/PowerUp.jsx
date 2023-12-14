@@ -1,85 +1,86 @@
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
-import { colors, fonts } from '../../constants'
-import Animated from 'react-native-reanimated'
-import useBounceAnimation from '../../hooks/useBounceAnimation'
+import { colors, fonts, images } from '../../constants'
 
-export function PowerUp({ onPress, item, count }) {
-    const animatedStyle = useBounceAnimation(count)
+export function PowerUp({ onPress, item }) {
+    const styles = getStyles(item.id)
 
     return (
         <Pressable
             style={styles.pressContainer}
             onPress={onPress ?? null}
         >
-            <View style={styles.cardContainer}>
-                <View style={styles.shadow} />
-                <View style={styles.powerContainer}>
-                    <View style={styles.reflection} />
-                    <Image source={item.emoji} style={styles.emoji} />
-                    {/* <Text style={styles.emoji}>
-                        {item.emoji}
-                    </Text> */}
-                    <Animated.Text style={[styles.count, animatedStyle]}>
-                        {'x' + count}
-                    </Animated.Text>
+            <View style={styles.powerContainer}>
+                <Image source={item.emoji} style={styles.emoji} />
+                <View style={styles.coinContainer}>
+                    <Image source={images.emptyCoin} style={styles.coinIcon} />
+                    <Text style={styles.coinText}>{item.price}</Text>
                 </View>
             </View>
         </Pressable>
     )
 }
 
-const styles = StyleSheet.create({
-    pressContainer: {
-        width: '30%',
-        height: 60,
-    },
-    cardContainer: {
-        position: 'relative',
-        width: '100%',
-        height: '100%',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    shadow: {
-        width: '100%',
-        height: '100%',
-        borderWidth: 4,
-        borderRadius: 16,
-        borderColor: colors.borderShadow,
-        backgroundColor: colors.backgroundShadow,
-    },
-    powerContainer: {
-        position: 'absolute',
-        zIndex: 2,
-        top: 2,
-        width: '90%',
-        height: '82%',
-        borderRadius: 12,
-        flexDirection: 'row',
-        alignItems: 'center',
-        paddingHorizontal: 12,
-        borderWidth: 3,
-        overflow: 'hidden',
-        justifyContent: 'space-between',
-        borderColor: colors.borderContainer,
-        backgroundColor: colors.backgroundContainer,
-    },
-    reflection: {
-        position: 'absolute',
-        left: 10,
-        width: 25,
-        height: '150%',
-        opacity: 0.2,
-        backgroundColor: colors.backgroundCard,
-        transform: [{ rotate: '20deg' }],
-    },
-    emoji: {
-        width: 24,
-        height: 24,
-    },
-    count: {
-        fontSize: 16,
-        fontFamily: fonts.bold,
-        color: colors.letter,
-    },
-})
+const getStyles = (variant) => {
+    let backgroundButton, borderButton, textColor
+
+    switch (variant) {
+        case 1:
+            borderButton = '#9165ab'
+            backgroundButton = '#c592d3'
+            textColor = '#f8f8ee'
+            break
+        case 2:
+            borderButton = '#dbb951'
+            backgroundButton = '#f1cc5b'
+            textColor = '#f8f8ee'
+            break
+        case 3:
+            borderButton = '#c8526d'
+            backgroundButton = '#e9617c'
+            textColor = '#f8f8ee'
+            break
+    }
+
+    return StyleSheet.create({
+        pressContainer: {
+            width: 70,
+            height: 70,
+            borderRadius: 20,
+            backgroundColor: borderButton,
+        },
+        powerContainer: {
+            position: 'absolute',
+            zIndex: 2,
+            width: '100%',
+            height: '94%',
+            borderWidth: 3,
+            borderRadius: 20,
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderColor: borderButton,
+            backgroundColor: backgroundButton,
+        },
+        emoji: {
+            width: 28,
+            height: 28,
+        },
+        coinContainer: {
+            position: 'absolute',
+            zIndex: 6,
+            top: -15,
+            right: -15,
+            alignItems: 'center',
+            justifyContent: 'center',
+        },
+        coinIcon: {
+            width: 40,
+            height: 40,
+        },
+        coinText: {
+            position: 'absolute',
+            fontSize: 16,
+            fontFamily: fonts.bold,
+            color: colors.whiteColor,
+        },
+    })
+}

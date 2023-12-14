@@ -15,7 +15,6 @@ export function LetterAnswer({ onPress, letter }) {
                 : letter === ' ' ? <View style={styles.dash} />
                     : (
                         <Animated.View style={[styles.keyContainer, animatedStyle]}>
-                            <View style={styles.shadow} />
                             <View style={styles.letterContainer}>
                                 <Text style={styles.letter}>
                                     {letter}
@@ -39,49 +38,44 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
         alignItems: 'center',
-    },
-    shadow: {
-        width: '100%',
-        height: '100%',
-        borderWidth: 3,
-        borderRadius: 10,
-        borderColor: colors.borderShadow,
-        backgroundColor: colors.backgroundShadow,
+        justifyContent: 'center',
+        borderRadius: 12,
+        backgroundColor: colors.textCard,
     },
     letterContainer: {
         position: 'absolute',
-        top: 1,
+        top: 0,
         zIndex: 2,
-        width: '80%',
-        height: '80%',
-        borderWidth: 2,
-        borderRadius: 6,
+        width: '100%',
+        height: '92%',
+        borderWidth: 3,
+        borderRadius: 10,
         alignItems: 'center',
         justifyContent: 'center',
-        borderColor: colors.borderContainer,
-        backgroundColor: colors.backgroundContainer,
+        borderColor: colors.textCard,
+        backgroundColor: colors.whiteColor,
     },
     letter: {
         fontSize: 14,
         textAlign: 'center',
-        color: colors.letter,
+        color: colors.textCard,
         fontFamily: fonts.bold,
         textTransform: 'uppercase',
     },
     emptyContainer: {
         width: 35,
         height: 35,
-        borderRadius: 10,
         opacity: 0.2,
-        backgroundColor: colors.backgroundContainer,
+        borderRadius: 10,
+        backgroundColor: '#313b42',
     },
     dash: {
         width: '40%',
         height: '20%',
+        opacity: 0.2,
         borderRadius: 10,
         alignItems: 'center',
         justifyContent: 'center',
-        opacity: 0.2,
-        backgroundColor: colors.backgroundContainer,
+        backgroundColor: '#313b42',
     }
 })

@@ -2,11 +2,10 @@ import { useEffect, useState } from 'react'
 import { useGlobalSearchParams, useRouter } from 'expo-router'
 import { StyleSheet, View } from 'react-native'
 import Animated, { BounceIn, BounceOut } from 'react-native-reanimated'
-import { BannerAdMobContainer, EmojiCard, LetterAnswer, LetterKey, PowerUp, Alert, WinModal } from '../../src/components'
-import { powers, colors } from '../../src/constants'
+import { BannerAdMobContainer, EmojiCard, LetterAnswer, LetterKey, PowerUp, Alert, WinModal, BuyModal } from '../../src/components'
+import { colors, powers } from '../../src/constants'
 import { getMode } from '../../src/utils/getMode'
 import useLevels from '../../src/hooks/useLevels'
-import usePowerUps from '../../src/hooks/usePowerUps'
 import useMoney from '../../src/hooks/useMoney'
 
 export default function Game() {
@@ -14,7 +13,6 @@ export default function Game() {
     const params = useGlobalSearchParams()
     const { getLevel, unlockLevel } = useLevels()
     const { addMoney } = useMoney()
-    const { powerUps, spendPowerUps } = usePowerUps()
     const levelId = params.id
     const mode = getMode(params.mode).levels
     const [level, setLevel] = useState({})
@@ -25,6 +23,8 @@ export default function Game() {
     const [youWin, setYouWin] = useState(false)
     const [isNewUnlocked, setIsNewUnlocked] = useState(false)
     const [showAlert, setShowAlert] = useState('')
+    const [powerUp, setPowerUp] = useState(null)
+    const [showBuyModal, setShowBuyModal] = useState(false)
 
     useEffect(() => {
         const title = getMode(params.mode).title
@@ -154,13 +154,22 @@ export default function Game() {
         await unlockLevel(nextId, params.mode)
     }
 
-    const enoughPowerUps = (id) => {
-        if (powerUps[id].count < 1) {
-            setShowAlert('No tienes este power up, puedes comprarlo en la tienda')
-            timeAlert()
-            return
-        }
+    const toogleBuyModal = (powerUp) => {
+        setPowerUp(powerUp)
+        setShowBuyModal(true)
+    }
 
+    const toggleCloseModal = (isBought) => {
+        setShowBuyModal(false)
+        console.log('showBuyModal', showBuyModal)
+        console.log('isBought', isBought)
+
+        if (isBought) {
+            togglePowerUps(powerUp.id)
+        }
+    }
+
+    const togglePowerUps = (id) => {
         switch (id) {
             case 1:
                 toggleRevealLetter()
@@ -180,7 +189,7 @@ export default function Game() {
         if (isRevealed) { return }
 
         setIsRevealed(true)
-        spendPowerUps(1, 1)
+        // spendPowerUps(1, 1)
         setShowAlert('Selecciona la letra que quieras revelar')
     }
 
@@ -226,7 +235,7 @@ export default function Game() {
             }
         })
 
-        spendPowerUps(2, 1)
+        // spendPowerUps(2, 1)
         setUserAnswer(newAnswer)
         setKeyboard(newKeyboard)
         setAnswerPositions(newAnswerPositions)
@@ -238,7 +247,7 @@ export default function Game() {
         setUserAnswer(answer)
 
         checkAnswer(answer)
-        spendPowerUps(3, 1)
+        // spendPowerUps(3, 1)
 
         // Set the keyboard to empty spaces
         const newKeyboard = keyboard.fill(false)
@@ -280,8 +289,7 @@ export default function Game() {
                         <PowerUp
                             key={index}
                             item={item}
-                            count={powerUps[item.id]?.count ?? 0}
-                            onPress={() => enoughPowerUps(item.id)}
+                            onPress={() => toogleBuyModal(item)}
                         />
                     ))}
                 </View>
@@ -296,6 +304,7 @@ export default function Game() {
                 </View>
             </View>
             {showAlert !== '' && <Alert label={showAlert} />}
+            {showBuyModal && <BuyModal powerUp={powerUp} onClose={toggleCloseModal} />}
             {youWin && <WinModal level={level} mode={params.mode} isNewUnlocked={isNewUnlocked} />}
         </BannerAdMobContainer>
     )
@@ -303,58 +312,53 @@ export default function Game() {
 
 const styles = StyleSheet.create({
     topContainer: {
-        position: 'relative',
         flex: 1,
         maxWidth: 450,
-        alignItems: 'center',
     },
     topContent: {
-        position: 'absolute',
-        zIndex: 3,
-        gap: 24,
-        width: '100%',
-        height: '100%',
+        flex: 1,
+        gap: 32,
         alignItems: 'center',
         justifyContent: 'center',
     },
     emojisContainer: {
         gap: 10,
-        width: '100%',
-        paddingTop: 24,
+        padding: 16,
+        borderWidth: 1,
+        borderRadius: 28,
         flexWrap: 'wrap',
         flexDirection: 'row',
-        alignContent: 'center',
-        justifyContent: 'center',
+        borderColor: colors.borderColor,
+        backgroundColor: colors.backgroundCard,
     },
     answerContainer: {
         gap: 4,
         width: '90%',
         flexWrap: 'wrap',
         flexDirection: 'row',
+        alignItems: 'center',
         justifyContent: 'center',
     },
-    bottomContainer: {
-        position: 'relative',
-        width: '100%',
-        flex: 1,
-        gap: 16,
-        alignItems: 'center',
-        backgroundColor: colors.backgroundHeader,
-    },
     powerUpsContainer: {
-        gap: 8,
         width: '90%',
-        maxWidth: 450,
-        marginTop: 20,
+        maxWidth: 350,
+        gap: 16,
         flexWrap: 'wrap',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
     },
+    bottomContainer: {
+        width: '100%',
+        flex: 1,
+        gap: 16,
+        alignItems: 'center',
+    },
     keyboardContainer: {
-        gap: 4,
         width: '90%',
         maxWidth: 450,
+        gap: 4,
+        paddingTop: 16,
         flexWrap: 'wrap',
         flexDirection: 'row',
         alignItems: 'center',

@@ -15,7 +15,6 @@ export function LetterKey({ onPress, letter }) {
                 {letter === false ? <View style={styles.empty} />
                     : (
                         <View style={styles.keyContainer}>
-                            <View style={styles.shadow} />
                             <View style={styles.letterContainer}>
                                 <Text style={styles.letter}>
                                     {letter}
@@ -41,31 +40,25 @@ const styles = StyleSheet.create({
         height: '100%',
         alignItems: 'center',
         justifyContent: 'center',
-    },
-    shadow: {
-        width: '100%',
-        height: '100%',
-        borderWidth: 3,
-        borderRadius: 10,
-        borderColor: colors.borderShadow,
-        backgroundColor: colors.backgroundShadow,
+        borderRadius: 12,
+        backgroundColor: colors.textCard,
     },
     letterContainer: {
         position: 'absolute',
-        top: 1,
+        top: 0,
         zIndex: 2,
-        width: '80%',
-        height: '80%',
-        borderWidth: 2,
-        borderRadius: 6,
+        width: '100%',
+        height: '92%',
+        borderWidth: 3,
+        borderRadius: 10,
         alignItems: 'center',
         justifyContent: 'center',
-        borderColor: colors.borderContainer,
-        backgroundColor: colors.backgroundContainer,
+        borderColor: colors.textCard,
+        backgroundColor: colors.whiteColor,
     },
     letter: {
         fontSize: 16,
-        color: colors.letter,
+        color: colors.textCard,
         textAlign: 'center',
         fontFamily: fonts.bold,
         textTransform: 'uppercase',
@@ -77,7 +70,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         alignItems: 'center',
         justifyContent: 'center',
-        opacity: 0.05,
-        backgroundColor: colors.letter,
+        opacity: 0.2,
+        backgroundColor: '#313b42',
     }
 })
