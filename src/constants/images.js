@@ -2,6 +2,7 @@
 import logo from '../../assets/images/logo.png'
 import homeIcon from '../../assets/icons/home.png'
 import storeIcon from '../../assets/icons/store.png'
+import closeIcon from '../../assets/icons/close.png'
 
 // Emojis
 import alien from '../../assets/images/emojis/alien.png'
@@ -32,7 +33,6 @@ import chartIncreasing from '../../assets/images/emojis/chart-increasing.png'
 import child from '../../assets/images/emojis/child.png'
 import chocolateBar from '../../assets/images/emojis/chocolate-bar.png'
 import classicalBuilding from '../../assets/images/emojis/classical-building.png'
-import close from '../../assets/images/emojis/close.png'
 import coin from '../../assets/images/emojis/coin.png'
 import cook from '../../assets/images/emojis/cook.png'
 import cooking from '../../assets/images/emojis/cooking.png'
@@ -158,6 +158,7 @@ export default {
     logo,
     homeIcon,
     storeIcon,
+    closeIcon,
 
     // Emojis
     alien,
@@ -188,7 +189,6 @@ export default {
     child,
     chocolateBar,
     classicalBuilding,
-    close,
     coin,
     cook,
     cooking,

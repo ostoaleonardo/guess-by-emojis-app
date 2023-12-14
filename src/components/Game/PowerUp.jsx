@@ -25,19 +25,19 @@ const getStyles = (variant) => {
 
     switch (variant) {
         case 1:
-            borderButton = '#9165ab'
-            backgroundButton = '#c592d3'
-            textColor = '#f8f8ee'
+            borderButton = colors.borderPower1
+            backgroundButton = colors.backgroundPower1
+            textColor = colors.white
             break
         case 2:
-            borderButton = '#dbb951'
-            backgroundButton = '#f1cc5b'
-            textColor = '#f8f8ee'
+            borderButton = colors.borderPower2
+            backgroundButton = colors.backgroundPower2
+            textColor = colors.white
             break
         case 3:
-            borderButton = '#c8526d'
-            backgroundButton = '#e9617c'
-            textColor = '#f8f8ee'
+            borderButton = colors.borderPower3
+            backgroundButton = colors.backgroundPower3
+            textColor = colors.white
             break
     }
 
@@ -79,8 +79,8 @@ const getStyles = (variant) => {
         coinText: {
             position: 'absolute',
             fontSize: 16,
+            color: textColor,
             fontFamily: fonts.bold,
-            color: colors.whiteColor,
         },
     })
 }

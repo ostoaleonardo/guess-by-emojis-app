@@ -31,13 +31,13 @@ const styles = StyleSheet.create({
         padding: 18,
         borderWidth: 1,
         borderRadius: 24,
-        borderColor: colors.borderColor,
-        backgroundColor: colors.backgroundCard,
+        borderColor: colors.lightGray,
+        backgroundColor: colors.white,
     },
     title: {
         fontSize: 16,
         textAlign: 'center',
-        color: colors.textCard,
+        color: colors.crayola,
         fontFamily: fonts.medium,
     },
 })

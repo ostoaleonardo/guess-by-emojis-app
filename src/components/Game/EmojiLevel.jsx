@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
         width: '30%',
         aspectRatio: 1,
         borderRadius: 32,
-        backgroundColor: colors.borderColor,
+        backgroundColor: colors.lightGray,
     },
     container: {
         position: 'absolute',
@@ -52,8 +52,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignContent: 'center',
         justifyContent: 'center',
-        borderColor: colors.borderColor,
-        backgroundColor: colors.whiteColor,
+        borderColor: colors.lightGray,
+        backgroundColor: colors.white,
     },
     emoji: {
         width: 32,
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         fontSize: 16,
         fontFamily: fonts.bold,
-        color: colors.whiteColor,
+        color: colors.white,
     },
     lockedLayer: {
         position: 'absolute',

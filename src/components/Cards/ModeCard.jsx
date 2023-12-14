@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         aspectRatio: 1,
         borderRadius: 32,
         overflow: 'hidden',
-        backgroundColor: colors.borderColor,
+        backgroundColor: colors.lightGray,
     },
     contentContainer: {
         position: 'absolute',
@@ -53,8 +53,8 @@ const styles = StyleSheet.create({
         borderRadius: 32,
         alignItems: 'center',
         justifyContent: 'center',
-        borderColor: colors.borderColor,
-        backgroundColor: colors.backgroundCard,
+        borderColor: colors.lightGray,
+        backgroundColor: colors.white,
     },
     emojiContainer: {
         width: '90%',
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 16,
-        color: colors.textCard,
+        color: colors.crayola,
         fontFamily: fonts.medium,
     },
     levelsContainer: {
@@ -79,11 +79,11 @@ const styles = StyleSheet.create({
         paddingEnd: 20,
         borderRadius: 10,
         paddingHorizontal: 4,
-        backgroundColor: colors.textCard,
+        backgroundColor: colors.crayola,
     },
     levels: {
         fontSize: 10,
-        color: colors.whiteColor,
+        color: colors.white,
         fontFamily: fonts.medium,
     },
 })

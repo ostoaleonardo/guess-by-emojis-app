@@ -74,6 +74,6 @@ const styles = StyleSheet.create({
     label: {
         fontSize: 24,
         fontFamily: fonts.bold,
-        color: colors.textCard,
+        color: colors.crayola,
     },
 })

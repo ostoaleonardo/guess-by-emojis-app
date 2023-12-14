@@ -328,8 +328,8 @@ const styles = StyleSheet.create({
         borderRadius: 28,
         flexWrap: 'wrap',
         flexDirection: 'row',
-        borderColor: colors.borderColor,
-        backgroundColor: colors.backgroundCard,
+        borderColor: colors.lightGray,
+        backgroundColor: colors.white,
     },
     answerContainer: {
         gap: 4,

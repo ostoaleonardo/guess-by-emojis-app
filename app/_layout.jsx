@@ -37,7 +37,7 @@ export default function AppLayout() {
                     headerShadowVisible: false,
 
                     headerStyle: {
-                        backgroundColor: colors.backgroundScreen,
+                        backgroundColor: colors.floralWhite,
                     },
 
                     headerRight: () => (

@@ -67,7 +67,7 @@ export function BuyModal({ powerUp, onClose }) {
                     </Animated.View>
                 )}
                 <Pressable style={styles.closeButton} onPress={toggleCloseModal}>
-                    <Image source={images.close} style={styles.closeIcon} />
+                    <Image source={images.closeIcon} style={styles.closeIcon} />
                 </Pressable>
             </View>
         </Modal>
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
         opacity: 0.5,
-        backgroundColor: 'black',
+        backgroundColor: colors.crayola,
     },
     modal: {
         width: '90%',
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginTop: 'auto',
         marginBottom: 'auto',
-        backgroundColor: colors.backgroundCard,
+        backgroundColor: colors.white,
     },
     emojiContainer: {
         position: 'absolute',
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
         opacity: 0.8,
         marginVertical: 16,
         textAlign: 'center',
-        color: colors.textCard,
+        color: colors.crayola,
         fontFamily: fonts.bold,
     },
     buttonsContainer: {
@@ -150,12 +150,12 @@ const styles = StyleSheet.create({
         height: '100%',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: colors.backgroundCard,
+        backgroundColor: colors.white,
     },
     noMoney: {
         fontSize: 24,
         textAlign: 'center',
-        color: colors.textCard,
+        color: colors.crayola,
         fontFamily: fonts.bold,
     },
 })

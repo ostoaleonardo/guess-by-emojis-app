@@ -1,22 +1,22 @@
 const colors = {
-    backgroundScreen: '#f8f8ee',
+    floralWhite: '#f8f8ee',
 
-    borderColor: '#d1d0d4',
-    textCard: '#313b42',
-    shadowCard: '#141418',
-    backgroundCard: '#fffdfe',
+    white: '#fffdfe',
+    crayola: '#313b42',
+    lightGray: '#d1d0d4',
 
     // Buttons
     closeButton: '#f04d6a',
     primaryButton: '#74c02e',
     secondaryButton: '#e4e4e4',
 
-    whiteColor: '#fffdfe',
-
-    // Money
-    borderMoneyShadow: '#042813',
-    borderMoneyContainer: '#116346',
-    backgroundMoneyContainer: '#21cf5f',
+    // Power Ups
+    borderPower1: '#9165ab',
+    backgroundPower1: '#c592d3',
+    borderPower2: '#dbb951',
+    backgroundPower2: '#f1cc5b',
+    borderPower3: '#c8526d',
+    backgroundPower3: '#e9617c',
 }
 
 const fonts = {

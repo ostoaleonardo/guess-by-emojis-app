@@ -9,17 +9,17 @@ export default function LevelsLayout() {
                 headerShadowVisible: false,
 
                 headerStyle: {
-                    backgroundColor: colors.backgroundScreen,
+                    backgroundColor: colors.floralWhite,
                 },
 
                 headerTitleStyle: {
                     fontSize: 24,
                     fontFamily: fonts.bold,
-                    color: colors.textCard,
+                    color: colors.crayola,
                 },
 
                 headerTitleAlign: 'center',
-                headerTintColor: colors.textCard,
+                headerTintColor: colors.crayola,
 
                 headerRight: () => (
                     <MoneyChipButton />

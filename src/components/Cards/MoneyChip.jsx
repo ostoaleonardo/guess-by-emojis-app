@@ -22,8 +22,8 @@ const styles = StyleSheet.create({
         paddingStart: 8,
         borderRadius: 20,
         flexDirection: 'row',
-        borderColor: colors.borderColor,
-        backgroundColor: colors.whiteColor,
+        borderColor: colors.lightGray,
+        backgroundColor: colors.white,
     },
     coinIcon: {
         position: 'absolute',
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     moneyText: {
         fontSize: 18,
         marginRight: 40,
+        color: colors.crayola,
         fontFamily: fonts.bold,
-        color: colors.textCard,
     },
 })
