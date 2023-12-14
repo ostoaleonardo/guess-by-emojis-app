@@ -1,8 +1,7 @@
 // Icons
 import logo from '../../assets/images/logo.png'
-import homeIcon from '../../assets/icons/home.png'
-import storeIcon from '../../assets/icons/store.png'
 import closeIcon from '../../assets/icons/close.png'
+import backArrowIcon from '../../assets/icons/back-arrow.png'
 
 // Emojis
 import alien from '../../assets/images/emojis/alien.png'
@@ -156,9 +155,8 @@ import zaFlag from '../../assets/images/flags/za-flag.png'
 export default {
     // Icons
     logo,
-    homeIcon,
-    storeIcon,
     closeIcon,
+    backArrowIcon,
 
     // Emojis
     alien,

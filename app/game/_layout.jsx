@@ -1,6 +1,6 @@
 import { Stack, useLocalSearchParams } from 'expo-router'
 import { MoneyChipButton } from '../../src/components'
-import { colors, fonts } from '../../src/constants'
+import { colors, fonts, images } from '../../src/constants'
 
 export default function GameLayout() {
     const params = useLocalSearchParams()
@@ -21,7 +21,6 @@ export default function GameLayout() {
                 },
 
                 headerTitleAlign: 'center',
-                headerTintColor: colors.crayola,
 
                 headerRight: () => (
                     <MoneyChipButton />
