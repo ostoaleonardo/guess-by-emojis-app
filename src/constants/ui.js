@@ -1,41 +1,48 @@
+import { fruits, movies, series, characters, videogames, brands, countries,  } from './emojis'
 import images from './images'
 
 export const modes = [
     {
+        mode: 'fruits',
+        title: 'Frutas',
+        emoji: images.apple,
+        levels: fruits.length,
+    },
+    {
         mode: 'movies',
         title: 'Peliculas',
         emoji: images.popcorn,
-        levels: '50',
+        levels: movies.length,
     },
     {
         mode: 'series',
         title: 'Series',
         emoji: images.television,
-        levels: '50',
+        levels: series.length,
     },
     {
         mode: 'characters',
         title: 'Personajes',
         emoji: images.alienMonster,
-        levels: '50',
+        levels: characters.length,
     },
     {
         mode: 'videogames',
         title: 'Videojuegos',
         emoji: images.joystick,
-        levels: '50',
+        levels: videogames.length,
     },
     {
         mode: 'brands',
         title: 'Marcas',
         emoji: images.packageBox,
-        levels: '50',
+        levels: brands.length,
     },
     {
         mode: 'countries',
         title: 'Paises',
         emoji: images.globe,
-        levels: '50',
+        levels: countries.length,
     }
 ]
 

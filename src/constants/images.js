@@ -3,17 +3,53 @@ import logo from '../../assets/images/logo.png'
 import closeIcon from '../../assets/icons/close.png'
 import backArrowIcon from '../../assets/icons/back-arrow.png'
 
+// Fruits and vegetables
+import apple from '../../assets/images/fruits-and-vegetables/apple.png'
+import avocado from '../../assets/images/fruits-and-vegetables/avocado.png'
+import banana from '../../assets/images/fruits-and-vegetables/banana.png'
+import beans from '../../assets/images/fruits-and-vegetables/beans.png'
+import bellPepper from '../../assets/images/fruits-and-vegetables/bell-pepper.png'
+import blueberries from '../../assets/images/fruits-and-vegetables/blueberries.png'
+import broccoli from '../../assets/images/fruits-and-vegetables/broccoli.png'
+import carrot from '../../assets/images/fruits-and-vegetables/carrot.png'
+import cherries from '../../assets/images/fruits-and-vegetables/cherries.png'
+import chestnut from '../../assets/images/fruits-and-vegetables/chestnut.png'
+import coconut from '../../assets/images/fruits-and-vegetables/coconut.png'
+import cucumber from '../../assets/images/fruits-and-vegetables/cucumber.png'
+import earOfCorn from '../../assets/images/fruits-and-vegetables/ear-of-corn.png'
+import eggplant from '../../assets/images/fruits-and-vegetables/eggplant.png'
+import garlic from '../../assets/images/fruits-and-vegetables/garlic.png'
+import gingerRoot from '../../assets/images/fruits-and-vegetables/ginger-root.png'
+import grapes from '../../assets/images/fruits-and-vegetables/grapes.png'
+import hotPepper from '../../assets/images/fruits-and-vegetables/hot-pepper.png'
+import kiwiFruit from '../../assets/images/fruits-and-vegetables/kiwi-fruit.png'
+import leafyGreen from '../../assets/images/fruits-and-vegetables/leafy-green.png'
+import lemon from '../../assets/images/fruits-and-vegetables/lemon.png'
+import mango from '../../assets/images/fruits-and-vegetables/mango.png'
+import melon from '../../assets/images/fruits-and-vegetables/melon.png'
+import mushroom from '../../assets/images/fruits-and-vegetables/mushroom.png'
+import olive from '../../assets/images/fruits-and-vegetables/olive.png'
+import onion from '../../assets/images/fruits-and-vegetables/onion.png'
+import peach from '../../assets/images/fruits-and-vegetables/peach.png'
+import peanuts from '../../assets/images/fruits-and-vegetables/peanuts.png'
+import peaPod from '../../assets/images/fruits-and-vegetables/pea-pod.png'
+import pear from '../../assets/images/fruits-and-vegetables/pear.png'
+import pineapple from '../../assets/images/fruits-and-vegetables/pineapple.png'
+import potato from '../../assets/images/fruits-and-vegetables/potato.png'
+import strawberry from '../../assets/images/fruits-and-vegetables/strawberry.png'
+import tangerine from '../../assets/images/fruits-and-vegetables/tangerine.png'
+import tomato from '../../assets/images/fruits-and-vegetables/tomato.png'
+import watermelon from '../../assets/images/fruits-and-vegetables/watermelon.png'
+
 // Emojis
 import alien from '../../assets/images/emojis/alien.png'
 import alienMonster from '../../assets/images/emojis/alien-monster.png'
 import angryFace from '../../assets/images/emojis/angry-face.png'
-import apple from '../../assets/images/emojis/apple.png'
 import astronaut from '../../assets/images/emojis/astronaut.png'
 import automobile from '../../assets/images/emojis/automobile.png'
 import axe from '../../assets/images/emojis/axe.png'
 import baby from '../../assets/images/emojis/baby.png'
 import balloon from '../../assets/images/emojis/balloon.png'
-import banana from '../../assets/images/emojis/banana.png'
 import bank from '../../assets/images/emojis/bank.png'
 import beerMug from '../../assets/images/emojis/beer-mug.png'
 import bird from '../../assets/images/emojis/bird.png'
@@ -25,7 +61,6 @@ import brick from '../../assets/images/emojis/brick.png'
 import bubbles from '../../assets/images/emojis/bubbles.png'
 import camara from '../../assets/images/emojis/camara.png'
 import candy from '../../assets/images/emojis/candy.png'
-import carrot from '../../assets/images/emojis/carrot.png'
 import castle from '../../assets/images/emojis/castle.png'
 import catFace from '../../assets/images/emojis/cat-face.png'
 import chartIncreasing from '../../assets/images/emojis/chart-increasing.png'
@@ -74,7 +109,6 @@ import moneyWithWings from '../../assets/images/emojis/money-with-wings.png'
 import monkey from '../../assets/images/emojis/monkey.png'
 import mouseFace from '../../assets/images/emojis/mouse-face.png'
 import movieCamera from '../../assets/images/emojis/movie-camera.png'
-import mushroom from '../../assets/images/emojis/mushroom.png'
 import musicalNote from '../../assets/images/emojis/musical-note.png'
 import musicalNotes from '../../assets/images/emojis/musical-notes.png'
 import officeWorker from '../../assets/images/emojis/office-worker.png'
@@ -84,7 +118,6 @@ import oncomingFist from '../../assets/images/emojis/oncoming-fist.png'
 import orangeCircle from '../../assets/images/emojis/orange-circle.png'
 import packageBox from '../../assets/images/emojis/package.png'
 import pageFacingUp from '../../assets/images/emojis/page-facing-up.png'
-import peach from '../../assets/images/emojis/peach.png'
 import personInBed from '../../assets/images/emojis/person-in-bed.png'
 import pick from '../../assets/images/emojis/pick.png'
 import pill from '../../assets/images/emojis/pill.png'
@@ -158,17 +191,53 @@ export default {
     closeIcon,
     backArrowIcon,
 
+    // Fruits and vegetables
+    apple,
+    avocado,
+    banana,
+    beans,
+    bellPepper,
+    blueberries,
+    broccoli,
+    carrot,
+    cherries,
+    chestnut,
+    coconut,
+    cucumber,
+    earOfCorn,
+    eggplant,
+    garlic,
+    gingerRoot,
+    grapes,
+    hotPepper,
+    kiwiFruit,
+    leafyGreen,
+    lemon,
+    mango,
+    melon,
+    mushroom,
+    olive,
+    onion,
+    peach,
+    peanuts,
+    peaPod,
+    pear,
+    pineapple,
+    potato,
+    strawberry,
+    tangerine,
+    tomato,
+    watermelon,
+
     // Emojis
     alien,
     alienMonster,
     angryFace,
-    apple,
     astronaut,
     automobile,
     axe,
     baby,
     balloon,
-    banana,
     bank,
     beerMug,
     bird,
@@ -180,7 +249,6 @@ export default {
     bubbles,
     camara,
     candy,
-    carrot,
     castle,
     catFace,
     chartIncreasing,
@@ -229,7 +297,6 @@ export default {
     monkey,
     mouseFace,
     movieCamera,
-    mushroom,
     musicalNote,
     musicalNotes,
     officeWorker,
@@ -239,7 +306,6 @@ export default {
     orangeCircle,
     packageBox,
     pageFacingUp,
-    peach,
     personInBed,
     pick,
     pill,

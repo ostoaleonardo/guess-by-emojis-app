@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 16,
+        textAlign: 'center',
         color: colors.crayola,
         fontFamily: fonts.medium,
     },

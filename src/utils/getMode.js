@@ -1,10 +1,14 @@
-import { movies, series, characters, videogames, brands, countries } from '../constants'
+import { fruits, movies, series, characters, videogames, brands, countries } from '../constants'
 
 export const getMode = (param) => {
     let title
     let levels
 
     switch (param) {
+        case 'fruits':
+            title = 'Frutas y Verduras'
+            levels = fruits
+            break
         case 'movies':
             title = 'Películas'
             levels = movies
