@@ -17,8 +17,8 @@ export function BuyButton({ price, onPress }) {
 
 const styles = StyleSheet.create({
     pressContainer: {
-        width: '38%',
-        height: 50,
+        width: '32%',
+        height: 60,
         borderRadius: 18,
         backgroundColor: colors.primaryButton,
     },
@@ -30,12 +30,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     coinIcon: {
-        width: 40,
-        height: 40,
+        width: 32,
+        height: 32,
         marginRight: 8,
     },
     label: {
-        fontSize: 24,
+        fontSize: 22,
         fontFamily: fonts.bold,
         color: colors.white,
     },

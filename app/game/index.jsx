@@ -161,8 +161,6 @@ export default function Game() {
 
     const toggleCloseModal = (isBought) => {
         setShowBuyModal(false)
-        console.log('showBuyModal', showBuyModal)
-        console.log('isBought', isBought)
 
         if (isBought) {
             togglePowerUps(powerUp.id)

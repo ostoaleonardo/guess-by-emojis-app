@@ -1,51 +1,19 @@
-import { useEffect, useState } from 'react'
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
-import { RewardedAd, RewardedAdEventType, TestIds } from 'react-native-google-mobile-ads'
 import { colors, fonts, images } from '../../constants'
+import useRewardedAd from '../../hooks/useRewardedAd'
 
-const adUnitId = __DEV__ ? TestIds.REWARDED : 'ca-app-pub-5454307717540089/4514455922'
-
-const rewarded = RewardedAd.createForAdRequest(adUnitId, {
-    requestNonPersonalizedAdsOnly: true,
-})
-
-export function AdButton() {
-    const [loaded, setLoaded] = useState(false)
-
-    useEffect(() => {
-        loadRewarded()
-    }, [])
-
-    const loadRewarded = () => {
-        const unsubscribeLoaded = rewarded.addAdEventListener(RewardedAdEventType.LOADED, () => {
-            setLoaded(true)
-        })
-
-        const unsubscribeEarned = rewarded.addAdEventListener(RewardedAdEventType.EARNED_REWARD, () => {
-            setLoaded(false)
-
-            setTimeout(() => {
-                rewarded.load()
-            }, 1000)
-        })
-
-        rewarded.load()
-
-        return () => {
-            unsubscribeLoaded()
-            unsubscribeEarned()
-        }
-    }
+export function AdButton({ onEarnedReward }) {
+    const { loaded, showRewarded } = useRewardedAd(onEarnedReward)
 
     return (
         <Pressable
-            onPress={loaded ? () => rewarded.show() : null}
+            onPress={loaded ? showRewarded : null}
             style={({ pressed }) => [{ transform: [{ scale: pressed ? 0.95 : 1 }] }, styles.pressContainer]}
         >
             <View style={styles.contentContainer}>
                 <Image source={images.filmFrames} style={styles.coinIcon} />
                 <Text style={styles.label}>
-                    Gratis
+                    {loaded ? 'Gratis' : 'Cargando...'}
                 </Text>
             </View>
         </Pressable>
@@ -54,8 +22,8 @@ export function AdButton() {
 
 const styles = StyleSheet.create({
     pressContainer: {
-        width: '60%',
-        height: 50,
+        flex: 1,
+        height: 60,
         borderRadius: 18,
         backgroundColor: colors.secondaryButton,
     },
@@ -67,12 +35,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     coinIcon: {
-        width: 40,
-        height: 40,
+        width: 32,
+        height: 32,
         marginRight: 8,
     },
     label: {
-        fontSize: 24,
+        fontSize: 22,
         fontFamily: fonts.bold,
         color: colors.crayola,
     },
