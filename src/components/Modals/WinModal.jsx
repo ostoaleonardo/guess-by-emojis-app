@@ -5,13 +5,18 @@ import { SolidButton } from '../Buttons/SolidButton'
 import { colors, fonts, images } from '../../constants'
 import { MoneyChip } from '../Cards/MoneyChip'
 
-export function WinModal({ level, mode, isNewUnlocked }) {
+export function WinModal({ level, mode, isNewUnlocked, isVisible }) {
     const goLevels = () => {
         router.push('/levels?mode=' + mode)
     }
 
     return (
-        <Modal animationType='slide' transparent={true} statusBarTranslucent>
+        <Modal
+            visible={isVisible}
+            animationType='slide'
+            transparent={true}
+            statusBarTranslucent
+        >
             <View style={styles.background} />
             <View style={styles.modal}>
                 <Text style={styles.title}>

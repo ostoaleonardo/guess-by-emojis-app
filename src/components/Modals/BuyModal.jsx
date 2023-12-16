@@ -9,17 +9,17 @@ import Animated, { FadeIn } from 'react-native-reanimated'
 
 const blur = require('../../../assets/images/blur.png')
 
-export function BuyModal({ powerUp, onClose }) {
+export function BuyModal({ powerUp, isVisible, onClose }) {
     const { money } = useMoney()
     const { buyPowerUp } = usePowerUps()
     const [isNotEnoughMoney, setIsNotEnoughMoney] = useState(false)
     let isBought = false
 
     const buyItem = async () => {
-        if (money < powerUp.price) {
+        if (money < powerUp?.price) {
             setIsNotEnoughMoney(true)
         } else {
-            isBought = await buyPowerUp(powerUp.price)
+            isBought = await buyPowerUp(powerUp?.price)
             onClose(isBought)
         }
     }
@@ -43,6 +43,7 @@ export function BuyModal({ powerUp, onClose }) {
 
     return (
         <Modal
+            visible={isVisible}
             transparent={true}
             animationType='slide'
             statusBarTranslucent
@@ -57,7 +58,7 @@ export function BuyModal({ powerUp, onClose }) {
                     {powerUp?.description}
                 </Text>
                 <View style={styles.buttonsContainer}>
-                    <BuyButton price={powerUp.price} onPress={buyItem} />
+                    <BuyButton price={powerUp?.price} onPress={buyItem} />
                     <AdButton onEarnedReward={toggleCloseWithReward} />
                 </View>
                 {isNotEnoughMoney && (

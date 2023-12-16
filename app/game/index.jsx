@@ -302,8 +302,8 @@ export default function Game() {
                 </View>
             </View>
             {showAlert !== '' && <Alert label={showAlert} />}
-            {showBuyModal && <BuyModal powerUp={powerUp} onClose={toggleCloseModal} />}
-            {youWin && <WinModal level={level} mode={params.mode} isNewUnlocked={isNewUnlocked} />}
+            <BuyModal powerUp={powerUp} isVisible={showBuyModal} onClose={toggleCloseModal} />
+            <WinModal level={level} mode={params.mode} isNewUnlocked={isNewUnlocked} isVisible={youWin} />
         </BannerAdMobContainer>
     )
 }

@@ -14,7 +14,7 @@ export const fruits = [
     { id: 11, title: 'Durazno', emojis: [images.peach] },
     { id: 12, title: 'Cereza', emojis: [images.cherries] },
     { id: 13, title: 'Fresa', emojis: [images.strawberry] },
-    { id: 14, title: 'Araándano', emojis: [images.blueberries] },
+    { id: 14, title: 'Arándano', emojis: [images.blueberries] },
     { id: 15, title: 'Kiwi', emojis: [images.kiwiFruit] },
     { id: 16, title: 'Tomate', emojis: [images.tomato] },
     { id: 17, title: 'Aceituna', emojis: [images.olive] },
