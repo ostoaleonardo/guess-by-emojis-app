@@ -2,7 +2,7 @@ import { router } from 'expo-router'
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 import { colors, fonts } from '../../constants'
 
-export function ModeCard({ item }) {
+export function ModeCard({ item, completedLevels }) {
     const goLevels = () => {
         router.push('/levels?mode=' + item.mode)
     }
@@ -19,7 +19,7 @@ export function ModeCard({ item }) {
                     </View>
                     <View style={styles.levelsContainer}>
                         <Text style={styles.levels}>
-                            1/{item.levels}
+                            {completedLevels}/{item.levels}
                         </Text>
                     </View>
                 </View>

@@ -1,9 +1,26 @@
+import { useCallback, useState } from 'react'
+import { useFocusEffect } from 'expo-router'
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import { BannerAdMobContainer, Logo, ModeCard } from '../src/components'
 import { fonts, modes } from '../src/constants'
+import useLevels from '../src/hooks/useLevels'
 import 'expo-dev-client'
 
 export default function App() {
+    const { getUnlockedLevels } = useLevels()
+    const [completedLevels, setCompletedLevels] = useState({})
+
+    useFocusEffect(
+        useCallback(() => {
+            const checkLockedCategory = async () => {
+                const levels = await getUnlockedLevels()
+                setCompletedLevels(levels)
+            }
+
+            checkLockedCategory()
+        }, [])
+    )
+
     return (
         <BannerAdMobContainer>
             <ScrollView
@@ -17,7 +34,11 @@ export default function App() {
                         Categorias
                     </Text>
                     {modes.map((item, index) => (
-                        <ModeCard key={index} item={item} />
+                        <ModeCard
+                            key={index}
+                            item={item}
+                            completedLevels={completedLevels[item.mode]?.length - 1}
+                        />
                     ))}
                 </View>
             </ScrollView>
