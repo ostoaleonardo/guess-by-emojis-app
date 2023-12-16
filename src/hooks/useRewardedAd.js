@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect } from 'react'
 import { RewardedAd, RewardedAdEventType, TestIds } from 'react-native-google-mobile-ads'
+import { RewardedAdContext } from '../context/rewardedAdContext'
 
 const adUnitId = __DEV__ ? TestIds.REWARDED : 'ca-app-pub-5454307717540089/4514455922'
 
@@ -8,14 +9,10 @@ const rewarded = RewardedAd.createForAdRequest(adUnitId, {
 })
 
 export default function useRewardedAd(onEarnedReward) {
-    const [loaded, setLoaded] = useState(false)
+    const { loaded, setLoaded } = useContext(RewardedAdContext)
 
     useEffect(() => {
-        const unsubscribe = loadRewarded()
-        
-        return () => {
-            unsubscribe()
-        }
+        loadRewarded()
     }, [])
 
     const loadRewarded = () => {
