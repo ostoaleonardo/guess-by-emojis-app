@@ -41,6 +41,103 @@ import tangerine from '../../assets/images/fruits-and-vegetables/tangerine.png'
 import tomato from '../../assets/images/fruits-and-vegetables/tomato.png'
 import watermelon from '../../assets/images/fruits-and-vegetables/watermelon.png'
 
+// Animals
+import ant from '../../assets/images/animals/ant.png'
+import babyChick from '../../assets/images/animals/baby-chick.png'
+import badger from '../../assets/images/animals/badger.png'
+import bat from '../../assets/images/animals/bat.png'
+import bear from '../../assets/images/animals/bear.png'
+import beaver from '../../assets/images/animals/beaver.png'
+import beetle from '../../assets/images/animals/beetle.png'
+import bird from '../../assets/images/animals/bird.png'
+import bison from '../../assets/images/animals/bison.png'
+import blowfish from '../../assets/images/animals/blowfish.png'
+import boar from '../../assets/images/animals/boar.png'
+import bug from '../../assets/images/animals/bug.png'
+import butterfly from '../../assets/images/animals/butterfly.png'
+import camel from '../../assets/images/animals/camel.png'
+import cat from '../../assets/images/animals/cat.png'
+import chicken from '../../assets/images/animals/chicken.png'
+import chipmunk from '../../assets/images/animals/chipmunk.png'
+import cockroach from '../../assets/images/animals/cockroach.png'
+import cow from '../../assets/images/animals/cow.png'
+import cricket from '../../assets/images/animals/cricket.png'
+import crocodile from '../../assets/images/animals/crocodile.png'
+import deer from '../../assets/images/animals/deer.png'
+import dodo from '../../assets/images/animals/dodo.png'
+import dog from '../../assets/images/animals/dog.png'
+import dolphin from '../../assets/images/animals/dolphin.png'
+import donkey from '../../assets/images/animals/donkey.png'
+import dove from '../../assets/images/animals/dove.png'
+import dragon from '../../assets/images/animals/dragon.png'
+import duck from '../../assets/images/animals/duck.png'
+import eagle from '../../assets/images/animals/eagle.png'
+import elephant from '../../assets/images/animals/elephant.png'
+import ewe from '../../assets/images/animals/ewe.png'
+import fish from '../../assets/images/animals/fish.png'
+import flamingo from '../../assets/images/animals/flamingo.png'
+import fly from '../../assets/images/animals/fly.png'
+import fox from '../../assets/images/animals/fox.png'
+import frog from '../../assets/images/animals/frog.png'
+import giraffe from '../../assets/images/animals/giraffe.png'
+import goat from '../../assets/images/animals/goat.png'
+import goose from '../../assets/images/animals/goose.png'
+import gorilla from '../../assets/images/animals/gorilla.png'
+import hamster from '../../assets/images/animals/hamster.png'
+import hedgehog from '../../assets/images/animals/hedgehog.png'
+import hippopotamus from '../../assets/images/animals/hippopotamus.png'
+import honeybee from '../../assets/images/animals/honeybee.png'
+import horse from '../../assets/images/animals/horse.png'
+import jellyfish from '../../assets/images/animals/jellyfish.png'
+import kangaroo from '../../assets/images/animals/kangaroo.png'
+import koala from '../../assets/images/animals/koala.png'
+import ladyBeetle from '../../assets/images/animals/lady-beetle.png'
+import leopard from '../../assets/images/animals/leopard.png'
+import lion from '../../assets/images/animals/lion.png'
+import lizard from '../../assets/images/animals/lizard.png'
+import llama from '../../assets/images/animals/llama.png'
+import mammoth from '../../assets/images/animals/mammoth.png'
+import monkey from '../../assets/images/animals/monkey.png'
+import moose from '../../assets/images/animals/moose.png'
+import mosquito from '../../assets/images/animals/mosquito.png'
+import mouse from '../../assets/images/animals/mouse.png'
+import octopus from '../../assets/images/animals/octopus.png'
+import otter from '../../assets/images/animals/otter.png'
+import owl from '../../assets/images/animals/owl.png'
+import ox from '../../assets/images/animals/ox.png'
+import panda from '../../assets/images/animals/panda.png'
+import parrot from '../../assets/images/animals/parrot.png'
+import peacock from '../../assets/images/animals/peacock.png'
+import penguin from '../../assets/images/animals/penguin.png'
+import pig from '../../assets/images/animals/pig.png'
+import polarBear from '../../assets/images/animals/polar-bear.png'
+import rabbit from '../../assets/images/animals/rabbit.png'
+import raccoon from '../../assets/images/animals/raccoon.png'
+import ram from '../../assets/images/animals/ram.png'
+import rat from '../../assets/images/animals/rat.png'
+import rhinoceros from '../../assets/images/animals/rhinoceros.png'
+import rooster from '../../assets/images/animals/rooster.png'
+import sauropod from '../../assets/images/animals/sauropod.png'
+import scorpion from '../../assets/images/animals/scorpion.png'
+import seal from '../../assets/images/animals/seal.png'
+import shark from '../../assets/images/animals/shark.png'
+import skunk from '../../assets/images/animals/skunk.png'
+import sloth from '../../assets/images/animals/sloth.png'
+import snail from '../../assets/images/animals/snail.png'
+import snake from '../../assets/images/animals/snake.png'
+import spider from '../../assets/images/animals/spider.png'
+import swan from '../../assets/images/animals/swan.png'
+import tiger from '../../assets/images/animals/tiger.png'
+import tRex from '../../assets/images/animals/t-rex.png'
+import turkey from '../../assets/images/animals/turkey.png'
+import turtle from '../../assets/images/animals/turtle.png'
+import unicorn from '../../assets/images/animals/unicorn.png'
+import waterBuffalo from '../../assets/images/animals/water-buffalo.png'
+import whale from '../../assets/images/animals/whale.png'
+import wolf from '../../assets/images/animals/wolf.png'
+import worm from '../../assets/images/animals/worm.png'
+import zebra from '../../assets/images/animals/zebra.png'
+
 // Emojis
 import alien from '../../assets/images/emojis/alien.png'
 import alienMonster from '../../assets/images/emojis/alien-monster.png'
@@ -52,7 +149,6 @@ import baby from '../../assets/images/emojis/baby.png'
 import balloon from '../../assets/images/emojis/balloon.png'
 import bank from '../../assets/images/emojis/bank.png'
 import beerMug from '../../assets/images/emojis/beer-mug.png'
-import bird from '../../assets/images/emojis/bird.png'
 import bomb from '../../assets/images/emojis/bomb.png'
 import books from '../../assets/images/emojis/books.png'
 import bowAndArrow from '../../assets/images/emojis/bow-and-arrow.png'
@@ -76,7 +172,6 @@ import crown from '../../assets/images/emojis/crown.png'
 import dagger from '../../assets/images/emojis/dagger.png'
 import dollars from '../../assets/images/emojis/dollars.png'
 import donut from '../../assets/images/emojis/donut.png'
-import dragon from '../../assets/images/emojis/dragon.png'
 import dropOfBlood from '../../assets/images/emojis/drop-of-blood.png'
 import emptyCoin from '../../assets/images/emojis/empty-coin.png'
 import family from '../../assets/images/emojis/family.png'
@@ -86,17 +181,14 @@ import ghost from '../../assets/images/emojis/ghost.png'
 import globe from '../../assets/images/emojis/globe.png'
 import gloves from '../../assets/images/emojis/gloves.png'
 import goblin from '../../assets/images/emojis/goblin.png'
-import gorilla from '../../assets/images/emojis/gorilla.png'
 import hammer from '../../assets/images/emojis/hammer.png'
 import headphone from '../../assets/images/emojis/headphone.png'
-import hedgehog from '../../assets/images/emojis/hedgehog.png'
 import highVoltage from '../../assets/images/emojis/high-voltage.png'
 import house from '../../assets/images/emojis/house.png'
 import ice from '../../assets/images/emojis/ice.png'
 import joystick from '../../assets/images/emojis/joystick.png'
 import king from '../../assets/images/emojis/king.png'
 import laptop from '../../assets/images/emojis/laptop.png'
-import lion from '../../assets/images/emojis/lion.png'
 import locked from '../../assets/images/emojis/locked.png'
 import lollipop from '../../assets/images/emojis/lollipop.png'
 import magicWand from '../../assets/images/emojis/magic-wand.png'
@@ -106,7 +198,6 @@ import martialArtsUniform from '../../assets/images/emojis/martial-arts-uniform.
 import mobilePhone from '../../assets/images/emojis/mobile-phone.png'
 import moneyBag from '../../assets/images/emojis/money-bag.png'
 import moneyWithWings from '../../assets/images/emojis/money-with-wings.png'
-import monkey from '../../assets/images/emojis/monkey.png'
 import mouseFace from '../../assets/images/emojis/mouse-face.png'
 import movieCamera from '../../assets/images/emojis/movie-camera.png'
 import musicalNote from '../../assets/images/emojis/musical-note.png'
@@ -144,7 +235,6 @@ import snowflake from '../../assets/images/emojis/snowflake.png'
 import soccerBall from '../../assets/images/emojis/soccer-ball.png'
 import sparkles from '../../assets/images/emojis/sparkles.png'
 import speechBalloon from '../../assets/images/emojis/speech-balloon.png'
-import spider from '../../assets/images/emojis/spider.png'
 import spiderWeb from '../../assets/images/emojis/spider-web.png'
 import sponge from '../../assets/images/emojis/sponge.png'
 import star from '../../assets/images/emojis/star.png'
@@ -229,6 +319,103 @@ export default {
     tomato,
     watermelon,
 
+    // Animals
+    ant,
+    babyChick,
+    badger,
+    bat,
+    bear,
+    beaver,
+    beetle,
+    bird,
+    bison,
+    blowfish,
+    boar,
+    bug,
+    butterfly,
+    camel,
+    cat,
+    chicken,
+    chipmunk,
+    cockroach,
+    cow,
+    cricket,
+    crocodile,
+    deer,
+    dodo,
+    dog,
+    dolphin,
+    donkey,
+    dove,
+    dragon,
+    duck,
+    eagle,
+    elephant,
+    ewe,
+    fish,
+    flamingo,
+    fly,
+    fox,
+    frog,
+    giraffe,
+    goat,
+    goose,
+    gorilla,
+    hamster,
+    hedgehog,
+    hippopotamus,
+    honeybee,
+    horse,
+    jellyfish,
+    kangaroo,
+    koala,
+    ladyBeetle,
+    leopard,
+    lion,
+    lizard,
+    llama,
+    mammoth,
+    monkey,
+    moose,
+    mosquito,
+    mouse,
+    octopus,
+    otter,
+    owl,
+    ox,
+    panda,
+    parrot,
+    peacock,
+    penguin,
+    pig,
+    polarBear,
+    rabbit,
+    raccoon,
+    ram,
+    rat,
+    rhinoceros,
+    rooster,
+    sauropod,
+    scorpion,
+    seal,
+    shark,
+    skunk,
+    sloth,
+    snail,
+    snake,
+    spider,
+    swan,
+    tiger,
+    tRex,
+    turkey,
+    turtle,
+    unicorn,
+    waterBuffalo,
+    whale,
+    wolf,
+    worm,
+    zebra,
+
     // Emojis
     alien,
     alienMonster,
@@ -240,7 +427,6 @@ export default {
     balloon,
     bank,
     beerMug,
-    bird,
     bomb,
     books,
     bowAndArrow,
@@ -264,7 +450,6 @@ export default {
     dagger,
     dollars,
     donut,
-    dragon,
     dropOfBlood,
     emptyCoin,
     family,
@@ -274,17 +459,14 @@ export default {
     globe,
     gloves,
     goblin,
-    gorilla,
     hammer,
     headphone,
-    hedgehog,
     highVoltage,
     house,
     ice,
     joystick,
     king,
     laptop,
-    lion,
     locked,
     lollipop,
     magicWand,
@@ -294,7 +476,6 @@ export default {
     mobilePhone,
     moneyBag,
     moneyWithWings,
-    monkey,
     mouseFace,
     movieCamera,
     musicalNote,
@@ -332,7 +513,6 @@ export default {
     soccerBall,
     sparkles,
     speechBalloon,
-    spider,
     spiderWeb,
     sponge,
     star,

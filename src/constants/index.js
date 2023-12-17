@@ -2,7 +2,7 @@
 import { colors, fonts } from './theme'
 
 // Levels
-import { fruits, movies, series, characters, videogames, brands, countries } from './emojis'
+import { fruits, animals, movies, series, characters, videogames, brands, countries } from './emojis'
 
 // UI
 import { modes, powers } from './ui'
@@ -17,6 +17,7 @@ export {
 
     // Levels
     fruits,
+    animals,
     movies,
     series,
     characters,

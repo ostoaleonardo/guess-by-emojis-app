@@ -1,4 +1,4 @@
-import { fruits, movies, series, characters, videogames, brands, countries,  } from './emojis'
+import { fruits, animals, movies, series, characters, videogames, brands, countries,  } from './emojis'
 import images from './images'
 
 export const modes = [
@@ -7,6 +7,12 @@ export const modes = [
         title: 'Frutas',
         emoji: images.apple,
         levels: fruits.length,
+    },
+    {
+        mode: 'animals',
+        title: 'Animales',
+        emoji: images.flamingo,
+        levels: animals.length,
     },
     {
         mode: 'movies',

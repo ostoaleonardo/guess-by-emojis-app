@@ -1,4 +1,4 @@
-import { fruits, movies, series, characters, videogames, brands, countries } from '../constants'
+import { fruits, animals, movies, series, characters, videogames, brands, countries } from '../constants'
 
 export const getMode = (param) => {
     let title
@@ -8,6 +8,10 @@ export const getMode = (param) => {
         case 'fruits':
             title = 'Frutas y Verduras'
             levels = fruits
+            break
+        case 'animals':
+            title = 'Animales'
+            levels = animals
             break
         case 'movies':
             title = 'Películas'

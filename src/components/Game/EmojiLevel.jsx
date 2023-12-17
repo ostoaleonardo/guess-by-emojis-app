@@ -20,14 +20,8 @@ export function EmojiLevel({ item, mode, isUnlocked = false }) {
 
             <View style={styles.container}>
                 {isUnlocked && item.emojis.map((emoji, index) => (
-                    <Image key={index} source={emoji} style={[styles.emoji, { opacity: isUnlocked ? 1 : 0.2 }]} />
+                    <Image key={index} source={emoji} style={styles.emoji} />
                 ))}
-                {/* {isUnlocked && (
-                    <View style={styles.coinContainer}>
-                        <Image source={images.emptyCoin} style={styles.coinIcon} />
-                        <Text style={styles.coinText}>5</Text>
-                    </View>
-                )} */}
             </View>
         </Pressable>
     )
