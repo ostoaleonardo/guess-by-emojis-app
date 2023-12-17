@@ -5,6 +5,7 @@ import { BannerAdMobContainer, Logo, ModeCard } from '../src/components'
 import { fonts, modes } from '../src/constants'
 import useLevels from '../src/hooks/useLevels'
 import 'expo-dev-client'
+import { FlatList } from 'react-native-gesture-handler'
 
 export default function App() {
     const { getUnlockedLevels } = useLevels()
@@ -40,9 +41,10 @@ export default function App() {
                             completedLevels={completedLevels[item.mode]?.length - 1}
                         />
                     ))}
-                </View>
-            </ScrollView>
-        </BannerAdMobContainer>
+                    <View style={{ width: '31%' }} />
+            </View>
+        </ScrollView>
+        </BannerAdMobContainer >
     )
 }
 
