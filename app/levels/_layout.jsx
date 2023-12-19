@@ -1,8 +1,10 @@
-import { Stack } from 'expo-router'
+import { Stack, useLocalSearchParams } from 'expo-router'
 import { MoneyChipButton } from '../../src/components'
-import { colors, fonts, images } from '../../src/constants'
+import { colors, fonts } from '../../src/constants'
 
 export default function LevelsLayout() {
+    const params = useLocalSearchParams()
+
     return (
         <Stack
             screenOptions={{
@@ -18,8 +20,6 @@ export default function LevelsLayout() {
                     color: colors.crayola,
                 },
 
-                headerTitleAlign: 'center',
-
                 headerRight: () => (
                     <MoneyChipButton />
                 ),
@@ -28,7 +28,7 @@ export default function LevelsLayout() {
             <Stack.Screen
                 name='index'
                 options={{
-                    title: 'Niveles',
+                    headerTitle: params.title ?? '',
                 }}
             />
         </Stack>

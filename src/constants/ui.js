@@ -3,56 +3,57 @@ import images from './images'
 
 export const modes = [
     {
-        mode: 'fruits',
+        name: 'fruits',
         title: 'Frutas',
         emoji: images.apple,
-        levels: fruits.length,
+        amount: fruits.length,
     },
     {
-        mode: 'animals',
+        name: 'animals',
         title: 'Animales',
         emoji: images.flamingo,
-        levels: animals.length,
+        amount: animals.length,
     },
     {
-        mode: 'movies',
+        name: 'movies',
         title: 'Peliculas',
         emoji: images.popcorn,
-        levels: movies.length,
+        amount: movies.length,
     },
     {
-        mode: 'series',
+        name: 'series',
         title: 'Series',
         emoji: images.television,
-        levels: series.length,
+        amount: series.length,
     },
     {
-        mode: 'characters',
+        name: 'characters',
         title: 'Personajes',
         emoji: images.alienMonster,
-        levels: characters.length,
+        amount: characters.length,
     },
     {
-        mode: 'videogames',
+        name: 'videogames',
         title: 'Videojuegos',
         emoji: images.joystick,
-        levels: videogames.length,
+        amount: videogames.length,
     },
     {
-        mode: 'brands',
+        name: 'brands',
         title: 'Marcas',
         emoji: images.packageBox,
-        levels: brands.length,
+        amount: brands.length,
     },
     {
-        mode: 'countries',
+        name: 'countries',
         title: 'Paises',
         emoji: images.globe,
-        levels: countries.length,
+        amount: countries.length,
     }
 ]
 
-export const powers = [{
+export const powers = [
+    {
         id: 1,
         title: 'Una letra',
         description: 'Revela una letra especifica de la respuesta',

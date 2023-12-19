@@ -1,15 +1,21 @@
-import { useCallback, useState } from 'react'
-import { useGlobalSearchParams, useFocusEffect } from 'expo-router'
+import { useCallback, useEffect, useState } from 'react'
+import { useGlobalSearchParams, useFocusEffect, useRouter } from 'expo-router'
 import { ScrollView, StyleSheet, View } from 'react-native'
 import { BannerAdMobContainer, EmojiLevel } from '../../src/components'
 import { getMode } from '../../src/utils/getMode'
 import useLevels from '../../src/hooks/useLevels'
 
 export default function Levels() {
+    const router = useRouter()
     const params = useGlobalSearchParams()
     const mode = getMode(params.mode).levels
     const [level, setLevel] = useState([])
     const { getLevelsByCategory } = useLevels()
+
+    useEffect(() => {
+        const title = getMode(params.mode).title
+        router.setParams({ title })
+    }, [])
 
     useFocusEffect(
         useCallback(() => {
