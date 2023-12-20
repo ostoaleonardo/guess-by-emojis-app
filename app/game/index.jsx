@@ -31,7 +31,7 @@ export default function Game() {
     }, [])
 
     const getEmojis = () => {
-        const level = categories[params.mode].levels[levelId - 1]
+        const level = categories[params.mode].levels[levelId]
         setLevel(level)
         getKeyboard(level.title)
         setUserAnswer(level.title.split('').map((letter) => letter === ' ' ? ' ' : false))

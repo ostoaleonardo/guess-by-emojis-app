@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react'
 import { useFocusEffect } from 'expo-router'
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
-import { BannerAdMobContainer, Logo, ModeCard } from '../src/components'
+import { BannerAdMobContainer, Logo, CategoryCard } from '../src/components'
 import { categories, fonts } from '../src/constants'
 import useLevels from '../src/hooks/useLevels'
 import 'expo-dev-client'
@@ -34,15 +34,16 @@ export default function App() {
                         Categorias
                     </Text>
                     {Object.keys(categories).map((category, index) => (
-                        <ModeCard
+                        <CategoryCard
                             key={index}
+                            name={category}
                             mode={categories[category]}
-                            completedLevels={completedLevels[category]?.length - 1}
+                            completedLevels={completedLevels[category]?.length - 1 || 0}
                         />
                     ))}
                     <View style={{ width: '31%' }} />
-            </View>
-        </ScrollView>
+                </View>
+            </ScrollView>
         </BannerAdMobContainer >
     )
 }

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { useGlobalSearchParams, useFocusEffect, useRouter } from 'expo-router'
 import { ScrollView, StyleSheet, View } from 'react-native'
-import { BannerAdMobContainer, EmojiLevel } from '../../src/components'
+import { BannerAdMobContainer, LevelCard } from '../../src/components'
 import { categories } from '../../src/constants'
 import useLevels from '../../src/hooks/useLevels'
 
@@ -36,12 +36,13 @@ export default function Levels() {
                 showsVerticalScrollIndicator={false}
             >
                 <View style={styles.levelsContainer}>
-                    {unlockedLevels.length > 0 && levels.map((level, index) => (
-                        <EmojiLevel
+                    {unlockedLevels.length > 0 && Object.keys(levels).map((level, index) => (
+                        <LevelCard
                             key={index}
-                            level={level}
+                            id={level}
+                            level={levels[level]}
                             mode={params.mode}
-                            isUnlocked={unlockedLevels[index]?.unlocked}
+                            isUnlocked={unlockedLevels[index]?.unlocked ?? false}
                         />
                     ))}
                 </View>
