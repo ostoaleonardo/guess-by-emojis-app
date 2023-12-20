@@ -4,6 +4,7 @@ import { ScrollView, StyleSheet, View } from 'react-native'
 import { BannerAdMobContainer, LevelCard } from '../../src/components'
 import { categories } from '../../src/constants'
 import useLevels from '../../src/hooks/useLevels'
+import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated'
 
 export default function Levels() {
     const router = useRouter()
@@ -35,17 +36,22 @@ export default function Levels() {
                 style={styles.scrollContainer}
                 showsVerticalScrollIndicator={false}
             >
-                <View style={styles.levelsContainer}>
-                    {unlockedLevels.length > 0 && Object.keys(levels).map((level, index) => (
-                        <LevelCard
-                            key={index}
-                            id={level}
-                            level={levels[level]}
-                            mode={params.mode}
-                            isUnlocked={unlockedLevels[index]?.unlocked ?? false}
-                        />
-                    ))}
-                </View>
+                {unlockedLevels.length > 0 && (
+                    <Animated.View
+                        style={styles.levelsContainer}
+                        entering={FadeInDown} exiting={FadeInUp}
+                    >
+                        {unlockedLevels.length > 0 && Object.keys(levels).map((level, index) => (
+                            <LevelCard
+                                key={index}
+                                id={level}
+                                level={levels[level]}
+                                mode={params.mode}
+                                isUnlocked={unlockedLevels[index]?.unlocked ?? false}
+                            />
+                        ))}
+                    </Animated.View>
+                )}
             </ScrollView>
         </BannerAdMobContainer>
     )

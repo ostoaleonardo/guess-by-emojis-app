@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react'
 import { useFocusEffect } from 'expo-router'
+import { StatusBar } from 'expo-status-bar'
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import { BannerAdMobContainer, Logo, CategoryCard } from '../src/components'
 import { categories, fonts } from '../src/constants'
@@ -44,6 +45,7 @@ export default function App() {
                     <View style={{ width: '31%' }} />
                 </View>
             </ScrollView>
+            <StatusBar hidden={true} />
         </BannerAdMobContainer >
     )
 }

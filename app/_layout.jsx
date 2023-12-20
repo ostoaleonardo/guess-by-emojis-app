@@ -43,6 +43,9 @@ export default function AppLayout() {
                     headerRight: () => (
                         <MoneyChipButton />
                     ),
+
+                    navigationBarHidden: true,
+                    statusBarHidden: true,
                 }}
                 onLayout={onLayoutRootView}
             >
