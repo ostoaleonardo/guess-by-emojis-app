@@ -3,8 +3,7 @@ import { useGlobalSearchParams, useRouter } from 'expo-router'
 import { StyleSheet, View } from 'react-native'
 import Animated, { BounceIn, BounceOut } from 'react-native-reanimated'
 import { BannerAdMobContainer, EmojiCard, LetterAnswer, LetterKey, PowerUp, Alert, WinModal, BuyModal } from '../../src/components'
-import { colors, powers } from '../../src/constants'
-import { getMode } from '../../src/utils/getMode'
+import { categories, colors, powers } from '../../src/constants'
 import useLevels from '../../src/hooks/useLevels'
 import useMoney from '../../src/hooks/useMoney'
 
@@ -14,7 +13,6 @@ export default function Game() {
     const { getLevel, unlockLevel } = useLevels()
     const { addMoney } = useMoney()
     const levelId = params.id
-    const mode = getMode(params.mode).levels
     const [level, setLevel] = useState({})
     const [userAnswer, setUserAnswer] = useState([])
     const [keyboard, setKeyboard] = useState([])
@@ -27,13 +25,13 @@ export default function Game() {
     const [showBuyModal, setShowBuyModal] = useState(false)
 
     useEffect(() => {
-        const title = getMode(params.mode).title
+        const title = categories[params.mode].title
         router.setParams({ title })
         getEmojis()
     }, [])
 
     const getEmojis = () => {
-        const level = mode[levelId - 1]
+        const level = categories[params.mode].levels[levelId - 1]
         setLevel(level)
         getKeyboard(level.title)
         setUserAnswer(level.title.split('').map((letter) => letter === ' ' ? ' ' : false))
@@ -275,7 +273,7 @@ export default function Game() {
                             <LetterAnswer
                                 key={index}
                                 onPress={() => removeLetterFromAnswer(index)}
-                                letter={letter[index] === ' ' ? '-' : letter}
+                                letter={letter}
                             />
                         ))}
                     </View>

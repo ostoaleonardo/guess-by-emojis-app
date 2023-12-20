@@ -1,10 +1,10 @@
 import { router } from 'expo-router'
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
+import { Image, Pressable, StyleSheet, View } from 'react-native'
 import { images, colors, fonts } from '../../constants'
 
-export function EmojiLevel({ item, mode, isUnlocked = false }) {
+export function EmojiLevel({ level, mode, isUnlocked = false }) {
     const goLevel = () => {
-        router.push('/game?mode=' + mode + '&id=' + item.id)
+        router.push('/game?mode=' + mode + '&id=' + level.id)
     }
 
     return (
@@ -19,7 +19,7 @@ export function EmojiLevel({ item, mode, isUnlocked = false }) {
             )}
 
             <View style={styles.container}>
-                {isUnlocked && item.emojis.map((emoji, index) => (
+                {isUnlocked && level.emojis.map((emoji, index) => (
                     <Image key={index} source={emoji} style={styles.emoji} />
                 ))}
             </View>

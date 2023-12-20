@@ -5,7 +5,7 @@ import { colors, fonts } from './theme'
 import { fruits, animals, movies, series, characters, videogames, brands, countries } from './emojis'
 
 // UI
-import { modes, powers } from './ui'
+import { categories, powers } from './ui'
 
 // Images
 import images from './images'
@@ -26,7 +26,7 @@ export {
     countries,
 
     // UI
-    modes,
+    categories,
     powers,
 
     // Images
