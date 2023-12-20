@@ -1,4 +1,4 @@
-import { fruits, animals, movies, series, characters, videogames, brands, countries, test } from './emojis'
+import { fruits, animals, movies, series, characters, videogames, brands, countries } from './emojis'
 import images from './images'
 
 export const categories = {

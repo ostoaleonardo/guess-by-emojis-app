@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useGlobalSearchParams, useRouter } from 'expo-router'
 import { StyleSheet, View } from 'react-native'
-import Animated, { BounceIn, BounceOut } from 'react-native-reanimated'
+import Animated, { FadeIn, FadeInDown, FadeInUp } from 'react-native-reanimated'
 import { BannerAdMobContainer, EmojiCard, LetterAnswer, LetterKey, PowerUp, Alert, WinModal, BuyModal } from '../../src/components'
 import { categories, colors, powers } from '../../src/constants'
 import useLevels from '../../src/hooks/useLevels'
@@ -259,44 +259,53 @@ export default function Game() {
     return (
         <BannerAdMobContainer>
             <View style={styles.topContainer}>
-                <Animated.View
-                    style={styles.topContent}
-                    entering={BounceIn} exiting={BounceOut}
-                >
-                    <View style={styles.emojisContainer}>
-                        {level.emojis?.map((emoji, index) => (
-                            <EmojiCard key={index} emoji={emoji} />
-                        ))}
-                    </View>
-                    <View style={styles.answerContainer}>
-                        {userAnswer.map((letter, index) => (
-                            <LetterAnswer
+                {level.emojis && (
+                    <Animated.View
+                        style={styles.topContent}
+                        entering={FadeInUp} exiting={FadeInDown}
+                    >
+                        <View style={styles.emojisContainer}>
+                            {level.emojis?.map((emoji, index) => (
+                                <EmojiCard key={index} emoji={emoji} />
+                            ))}
+                        </View>
+                        <View style={styles.answerContainer}>
+                            {userAnswer.map((letter, index) => (
+                                <LetterAnswer
+                                    key={index}
+                                    onPress={() => removeLetterFromAnswer(index)}
+                                    letter={letter}
+                                />
+                            ))}
+                        </View>
+                    </Animated.View>
+                )}
+            </View>
+            <View style={styles.bottomContainer}>
+                <View style={styles.bottomContent}>
+                    {keyboard.length > 0 && (
+                        <Animated.View
+                            style={styles.powerUpsContainer}
+                            entering={FadeIn} exiting={FadeInDown}
+                        >
+                            {powers.map((item, index) => (
+                                <PowerUp
+                                    key={index}
+                                    item={item}
+                                    onPress={() => toogleBuyModal(item)}
+                                />
+                            ))}
+                        </Animated.View>
+                    )}
+                    <View style={styles.keyboardContainer}>
+                        {keyboard.map((letter, index) => (
+                            <LetterKey
                                 key={index}
-                                onPress={() => removeLetterFromAnswer(index)}
+                                onPress={() => addLetterToAnswer(letter, index)}
                                 letter={letter}
                             />
                         ))}
                     </View>
-                </Animated.View>
-            </View>
-            <View style={styles.bottomContainer}>
-                <View style={styles.powerUpsContainer}>
-                    {powers.map((item, index) => (
-                        <PowerUp
-                            key={index}
-                            item={item}
-                            onPress={() => toogleBuyModal(item)}
-                        />
-                    ))}
-                </View>
-                <View style={styles.keyboardContainer}>
-                    {keyboard.map((letter, index) => (
-                        <LetterKey
-                            key={index}
-                            onPress={() => addLetterToAnswer(letter, index)}
-                            letter={letter}
-                        />
-                    ))}
                 </View>
             </View>
             {showAlert !== '' && <Alert label={showAlert} />}
@@ -309,6 +318,12 @@ export default function Game() {
 const styles = StyleSheet.create({
     topContainer: {
         flex: 1,
+        width: '100%',
+        maxWidth: 450,
+    },
+    bottomContainer: {
+        flex: 1,
+        width: '100%',
         maxWidth: 450,
     },
     topContent: {
@@ -316,6 +331,12 @@ const styles = StyleSheet.create({
         gap: 32,
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    bottomContent: {
+        flex: 1,
+        gap: 32,
+        alignItems: 'center',
+        // backgroundColor: colors.lightGray,
     },
     emojisContainer: {
         gap: 10,
@@ -344,17 +365,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    bottomContainer: {
-        width: '100%',
-        flex: 1,
-        gap: 16,
-        alignItems: 'center',
-    },
     keyboardContainer: {
         width: '90%',
         maxWidth: 450,
         gap: 4,
-        paddingTop: 16,
         flexWrap: 'wrap',
         flexDirection: 'row',
         alignItems: 'center',
