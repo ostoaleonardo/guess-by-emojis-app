@@ -12,14 +12,14 @@ export function LevelCard({ id, level, mode, isUnlocked }) {
             style={styles.cardContainer}
             onPress={isUnlocked ? goLevel : null}
         >
-            {!isUnlocked && (
+            {/* {!isUnlocked && (
                 <View style={styles.lockedLayer}>
                     <Image source={images.locked} style={styles.locked} />
                 </View>
-            )}
+            )} */}
 
             <View style={styles.container}>
-                {isUnlocked && level.emojis.map((emoji, index) => (
+                {/*isUnlocked && */level.emojis.map((emoji, index) => (
                     <Image key={index} source={emoji} style={styles.emoji} />
                 ))}
             </View>

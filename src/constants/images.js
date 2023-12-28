@@ -139,6 +139,7 @@ import worm from '../../assets/images/animals/worm.png'
 import zebra from '../../assets/images/animals/zebra.png'
 
 // Emojis
+import airplane from '../../assets/images/emojis/airplane.png'
 import alien from '../../assets/images/emojis/alien.png'
 import alienMonster from '../../assets/images/emojis/alien-monster.png'
 import angryFace from '../../assets/images/emojis/angry-face.png'
@@ -149,6 +150,8 @@ import baby from '../../assets/images/emojis/baby.png'
 import balloon from '../../assets/images/emojis/balloon.png'
 import bank from '../../assets/images/emojis/bank.png'
 import beerMug from '../../assets/images/emojis/beer-mug.png'
+import biohazard from '../../assets/images/emojis/biohazard.png'
+import blueCircle from '../../assets/images/emojis/blue-circle.png'
 import bomb from '../../assets/images/emojis/bomb.png'
 import books from '../../assets/images/emojis/books.png'
 import bowAndArrow from '../../assets/images/emojis/bow-and-arrow.png'
@@ -162,17 +165,21 @@ import catFace from '../../assets/images/emojis/cat-face.png'
 import chartIncreasing from '../../assets/images/emojis/chart-increasing.png'
 import child from '../../assets/images/emojis/child.png'
 import chocolateBar from '../../assets/images/emojis/chocolate-bar.png'
+import circusTent from '../../assets/images/emojis/circus-tent.png'
 import classicalBuilding from '../../assets/images/emojis/classical-building.png'
 import coin from '../../assets/images/emojis/coin.png'
 import cook from '../../assets/images/emojis/cook.png'
+import cookie from '../../assets/images/emojis/cookie.png'
 import cooking from '../../assets/images/emojis/cooking.png'
 import cowboyHatFace from '../../assets/images/emojis/cowboy-hat-face.png'
 import crossedSwords from '../../assets/images/emojis/crossed-swords.png'
 import crown from '../../assets/images/emojis/crown.png'
 import dagger from '../../assets/images/emojis/dagger.png'
+import desertIsland from '../../assets/images/emojis/desert-island.png'
 import dollars from '../../assets/images/emojis/dollars.png'
 import donut from '../../assets/images/emojis/donut.png'
 import dropOfBlood from '../../assets/images/emojis/drop-of-blood.png'
+import elf from '../../assets/images/emojis/elf.png'
 import emptyCoin from '../../assets/images/emojis/empty-coin.png'
 import family from '../../assets/images/emojis/family.png'
 import filmFrames from '../../assets/images/emojis/film-frames.png'
@@ -181,10 +188,13 @@ import ghost from '../../assets/images/emojis/ghost.png'
 import globe from '../../assets/images/emojis/globe.png'
 import gloves from '../../assets/images/emojis/gloves.png'
 import goblin from '../../assets/images/emojis/goblin.png'
+import guitar from '../../assets/images/emojis/guitar.png'
 import hammer from '../../assets/images/emojis/hammer.png'
 import headphone from '../../assets/images/emojis/headphone.png'
+import highHeeledShoe from '../../assets/images/emojis/high-heeled-shoe.png'
 import highVoltage from '../../assets/images/emojis/high-voltage.png'
 import house from '../../assets/images/emojis/house.png'
+import houses from '../../assets/images/emojis/houses.png'
 import ice from '../../assets/images/emojis/ice.png'
 import joystick from '../../assets/images/emojis/joystick.png'
 import king from '../../assets/images/emojis/king.png'
@@ -195,17 +205,20 @@ import magicWand from '../../assets/images/emojis/magic-wand.png'
 import magnifyingGlass from '../../assets/images/emojis/magnifying-glass.png'
 import man from '../../assets/images/emojis/man.png'
 import martialArtsUniform from '../../assets/images/emojis/martial-arts-uniform.png'
+import mermaid from '../../assets/images/emojis/mermaid.png'
 import mobilePhone from '../../assets/images/emojis/mobile-phone.png'
 import moneyBag from '../../assets/images/emojis/money-bag.png'
 import moneyWithWings from '../../assets/images/emojis/money-with-wings.png'
 import mouseFace from '../../assets/images/emojis/mouse-face.png'
 import movieCamera from '../../assets/images/emojis/movie-camera.png'
+import muscle from '../../assets/images/emojis/muscle.png'
 import musicalNote from '../../assets/images/emojis/musical-note.png'
 import musicalNotes from '../../assets/images/emojis/musical-notes.png'
 import officeWorker from '../../assets/images/emojis/office-worker.png'
 import ogre from '../../assets/images/emojis/ogre.png'
 import oldMan from '../../assets/images/emojis/old-man.png'
 import oncomingFist from '../../assets/images/emojis/oncoming-fist.png'
+import openBook from '../../assets/images/emojis/open-book.png'
 import orangeCircle from '../../assets/images/emojis/orange-circle.png'
 import packageBox from '../../assets/images/emojis/package.png'
 import pageFacingUp from '../../assets/images/emojis/page-facing-up.png'
@@ -221,6 +234,7 @@ import redCircle from '../../assets/images/emojis/red-circle.png'
 import redSquare from '../../assets/images/emojis/red-square.png'
 import redTriangle from '../../assets/images/emojis/red-triangle.png'
 import ringedPlanet from '../../assets/images/emojis/ringed-planet.png'
+import robot from '../../assets/images/emojis/robot.png'
 import rock from '../../assets/images/emojis/rock.png'
 import running from '../../assets/images/emojis/running.png'
 import runningShoe from '../../assets/images/emojis/running-shoe.png'
@@ -231,6 +245,7 @@ import ship from '../../assets/images/emojis/ship.png'
 import shoppingBags from '../../assets/images/emojis/shopping-bags.png'
 import singer from '../../assets/images/emojis/singer.png'
 import skateboard from '../../assets/images/emojis/skateboard.png'
+import skull from '../../assets/images/emojis/skull.png'
 import snowflake from '../../assets/images/emojis/snowflake.png'
 import soccerBall from '../../assets/images/emojis/soccer-ball.png'
 import sparkles from '../../assets/images/emojis/sparkles.png'
@@ -238,9 +253,12 @@ import speechBalloon from '../../assets/images/emojis/speech-balloon.png'
 import spiderWeb from '../../assets/images/emojis/spider-web.png'
 import sponge from '../../assets/images/emojis/sponge.png'
 import star from '../../assets/images/emojis/star.png'
+import superhero from '../../assets/images/emojis/superhero.png'
+import syringe from '../../assets/images/emojis/syringe.png'
 import taxi from '../../assets/images/emojis/taxi.png'
 import teddyBear from '../../assets/images/emojis/teddy-bear.png'
 import television from '../../assets/images/emojis/television.png'
+import tenOclock from '../../assets/images/emojis/ten-oclock.png'
 import testTube from '../../assets/images/emojis/test-tube.png'
 import thumbsUp from '../../assets/images/emojis/thumbs-up.png'
 import tropicalFish from '../../assets/images/emojis/tropical-fish.png'
@@ -249,30 +267,61 @@ import wastebasket from '../../assets/images/emojis/wastebasket.png'
 import waterPistol from '../../assets/images/emojis/water-pistol.png'
 import waterWave from '../../assets/images/emojis/water-wave.png'
 import window from '../../assets/images/emojis/window.png'
+import woman from '../../assets/images/emojis/woman.png'
 import yellowCircle from '../../assets/images/emojis/yellow-circle.png'
 import zombieMan from '../../assets/images/emojis/zombie-man.png'
 import zombieWoman from '../../assets/images/emojis/zombie-woman.png'
 
 // Flags
 import arFlag from '../../assets/images/flags/ar-flag.png'
+import atFlag from '../../assets/images/flags/at-flag.png'
 import auFlag from '../../assets/images/flags/au-flag.png'
+import beFlag from '../../assets/images/flags/be-flag.png'
+import bgFlag from '../../assets/images/flags/bg-flag.png'
 import brFlag from '../../assets/images/flags/br-flag.png'
 import caFlag from '../../assets/images/flags/ca-flag.png'
+import chFlag from '../../assets/images/flags/ch-flag.png'
 import clFlag from '../../assets/images/flags/cl-flag.png'
 import cnFlag from '../../assets/images/flags/cn-flag.png'
 import coFlag from '../../assets/images/flags/co-flag.png'
+import cuFlag from '../../assets/images/flags/cu-flag.png'
+import czFlag from '../../assets/images/flags/cz-flag.png'
 import deFlag from '../../assets/images/flags/de-flag.png'
+import dkFlag from '../../assets/images/flags/dk-flag.png'
+import egFlag from '../../assets/images/flags/eg-flag.png'
 import esFlag from '../../assets/images/flags/es-flag.png'
+import fiFlag from '../../assets/images/flags/fi-flag.png'
 import frFlag from '../../assets/images/flags/fr-flag.png'
 import gbFlag from '../../assets/images/flags/gb-flag.png'
+import grFlag from '../../assets/images/flags/gr-flag.png'
+import huFlag from '../../assets/images/flags/hu-flag.png'
+import idFlag from '../../assets/images/flags/id-flag.png'
 import inFlag from '../../assets/images/flags/in-flag.png'
+import iqFlag from '../../assets/images/flags/iq-flag.png'
+import irFlag from '../../assets/images/flags/ir-flag.png'
+import isFlag from '../../assets/images/flags/is-flag.png'
 import itFlag from '../../assets/images/flags/it-flag.png'
 import jpFlag from '../../assets/images/flags/jp-flag.png'
 import krFlag from '../../assets/images/flags/kr-flag.png'
 import mxFlag from '../../assets/images/flags/mx-flag.png'
+import myFlag from '../../assets/images/flags/my-flag.png'
+import ngFlag from '../../assets/images/flags/ng-flag.png'
+import nlFlag from '../../assets/images/flags/nl-flag.png'
+import noFlag from '../../assets/images/flags/no-flag.png'
+import nzFlag from '../../assets/images/flags/nz-flag.png'
 import peFlag from '../../assets/images/flags/pe-flag.png'
+import phFlag from '../../assets/images/flags/ph-flag.png'
+import pkFlag from '../../assets/images/flags/pk-flag.png'
+import plFlag from '../../assets/images/flags/pl-flag.png'
+import ptFlag from '../../assets/images/flags/pt-flag.png'
+import roFlag from '../../assets/images/flags/ro-flag.png'
 import ruFlag from '../../assets/images/flags/ru-flag.png'
+import seFlag from '../../assets/images/flags/se-flag.png'
+import thFlag from '../../assets/images/flags/th-flag.png'
+import trFlag from '../../assets/images/flags/tr-flag.png'
 import usFlag from '../../assets/images/flags/us-flag.png'
+import uyFlag from '../../assets/images/flags/uy-flag.png'
+import vnFlag from '../../assets/images/flags/vn-flag.png'
 import zaFlag from '../../assets/images/flags/za-flag.png'
 
 export default {
@@ -417,6 +466,7 @@ export default {
     zebra,
 
     // Emojis
+    airplane,
     alien,
     alienMonster,
     angryFace,
@@ -427,6 +477,8 @@ export default {
     balloon,
     bank,
     beerMug,
+    biohazard,
+    blueCircle,
     bomb,
     books,
     bowAndArrow,
@@ -440,17 +492,21 @@ export default {
     chartIncreasing,
     child,
     chocolateBar,
+    circusTent,
     classicalBuilding,
     coin,
     cook,
+    cookie,
     cooking,
     cowboyHatFace,
     crossedSwords,
     crown,
     dagger,
+    desertIsland,
     dollars,
     donut,
     dropOfBlood,
+    elf,
     emptyCoin,
     family,
     filmFrames,
@@ -459,10 +515,13 @@ export default {
     globe,
     gloves,
     goblin,
+    guitar,
     hammer,
     headphone,
+    highHeeledShoe,
     highVoltage,
     house,
+    houses,
     ice,
     joystick,
     king,
@@ -473,17 +532,20 @@ export default {
     magnifyingGlass,
     man,
     martialArtsUniform,
+    mermaid,
     mobilePhone,
     moneyBag,
     moneyWithWings,
     mouseFace,
     movieCamera,
+    muscle,
     musicalNote,
     musicalNotes,
     officeWorker,
     ogre,
     oldMan,
     oncomingFist,
+    openBook,
     orangeCircle,
     packageBox,
     pageFacingUp,
@@ -499,6 +561,7 @@ export default {
     redSquare,
     redTriangle,
     ringedPlanet,
+    robot,
     rock,
     running,
     runningShoe,
@@ -509,6 +572,7 @@ export default {
     shoppingBags,
     singer,
     skateboard,
+    skull,
     snowflake,
     soccerBall,
     sparkles,
@@ -516,9 +580,12 @@ export default {
     spiderWeb,
     sponge,
     star,
+    superhero,
+    syringe,
     taxi,
     teddyBear,
     television,
+    tenOclock,
     testTube,
     thumbsUp,
     tropicalFish,
@@ -527,29 +594,60 @@ export default {
     waterPistol,
     waterWave,
     window,
+    woman,
     yellowCircle,
     zombieMan,
     zombieWoman,
 
     // Flags
     arFlag,
+    atFlag,
     auFlag,
+    beFlag,
+    bgFlag,
     brFlag,
     caFlag,
+    chFlag,
     clFlag,
     cnFlag,
     coFlag,
+    cuFlag,
+    czFlag,
     deFlag,
+    dkFlag,
+    egFlag,
     esFlag,
+    fiFlag,
     frFlag,
     gbFlag,
+    grFlag,
+    huFlag,
+    idFlag,
     inFlag,
+    iqFlag,
+    irFlag,
+    isFlag,
     itFlag,
     jpFlag,
     krFlag,
     mxFlag,
+    myFlag,
+    ngFlag,
+    nlFlag,
+    noFlag,
+    nzFlag,
     peFlag,
+    phFlag,
+    pkFlag,
+    plFlag,
+    ptFlag,
+    roFlag,
     ruFlag,
+    seFlag,
+    thFlag,
+    trFlag,
     usFlag,
+    uyFlag,
+    vnFlag,
     zaFlag,
 }
